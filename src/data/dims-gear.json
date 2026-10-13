@@ -1,0 +1,842 @@
+[
+  {
+    "id": "q2seconds",
+    "cat": "tent23",
+    "name": "Quechua 2 Seconds, 2-person pop-up tent (Decathlon model 340082, ref. 8755225)",
+    "L": 2300,
+    "W": 1400,
+    "H": 1020,
+    "shape": "popup",
+    "parts": {
+      "innerL": 2100,
+      "innerW": 1200,
+      "vestibuleDepth": null,
+      "poles": null,
+      "doors": 1,
+      "heightFront": 1020,
+      "heightRear": 820,
+      "groundArea_m2": 3.2,
+      "foldedDiscDiameter": 650
+    },
+    "src": [
+      "https://decathlon.com.gr/en/p/340082-camping-tent-2-seconds-2-person.html",
+      "https://contents.mediadecathlon.com/p2391925/1cr1/k$8aa00d6b23ecd712f9d439076ea0aca7/camping-tent-2-seconds-2-person.jpg"
+    ],
+    "conf": "derived",
+    "note": "Decathlon publishes only the bedroom floor (120 x 210 cm, official drawing; heights 102 cm front / 82 cm rear) and a ground surface of 3.2 m2 - no outer length/width. L x W here = bedroom plus a uniform ~10 cm flysheet margin, which reproduces the official 3.2 m2 (2.30 x 1.40 m). The real outline has rounded ends, so its bounding box may be up to ~15 cm longer. Verified official values are innerL/innerW. No vestibule depth published (the basic 2 Seconds has no real porch). Pop-up: pre-fitted fibreglass hoops, nothing to insert; hoop count not published. One inner door (official text). Some regional listings still quote 98 cm headroom (older version)."
+  },
+  {
+    "id": "darwin3",
+    "cat": "tent23",
+    "name": "Coleman Darwin 3 (3-person dome tent)",
+    "L": 2700,
+    "W": 1800,
+    "H": 1200,
+    "shape": "dome",
+    "parts": {
+      "innerL": 2100,
+      "innerW": 1800,
+      "vestibuleDepth": 600,
+      "poles": 2,
+      "doors": 1,
+      "innerHeight": 1100,
+      "sleepingArea_m2": 3.8,
+      "porchArea_m2": 0.6,
+      "pitchedArea_m2": 4.4
+    },
+    "src": [
+      "https://www.colemanuk.co.uk/tents/tents-by-style/adventure-tents/darwin-3-summer-tent/SAP_2227923.html",
+      "https://e-catalog.co.uk/COLEMAN-DARWIN-3.htm"
+    ],
+    "conf": "official",
+    "note": "Variant caveat: Coleman UK no longer lists the plain Darwin 3, so the figures are from the official page of the current Darwin 3 Summer (SKU 2227923: dimensions 1.8 x 2.7 x 1.2 m, sleeping room 180 cm wide / 3.8 m2, porch 0.6 m2, headroom 110 cm) - same 2-pole frame and footprint, mesh inner. Cross-check for the classic Darwin 3 from a third-party spec table (e-catalog): outer 275 x 185 x 115 cm, inner 210 x 180 x 110 cm, vestibule 60 cm, 2 main poles, 1 entrance. innerL 2100 = 3.8 m2 / 1.8 m; vestibuleDepth = 2700 - 2100, and the porch is triangular in plan (0.6 m2), pegged to a point on the door side. Do not confuse with Darwin 3 Plus (1.8 x 3.2 x 1.3 m, extra porch pole)."
+  },
+  {
+    "id": "bizon3",
+    "cat": "tent23",
+    "name": "Husky Bizon 3 Classic",
+    "L": 3300,
+    "W": 2300,
+    "H": 1350,
+    "shape": "dome",
+    "parts": {
+      "innerL": 2200,
+      "innerW": 2150,
+      "vestibuleDepth": 1100,
+      "poles": 3,
+      "doors": 2,
+      "innerDoors": 1,
+      "sleepingSectionDepth": 2200
+    },
+    "src": [
+      "https://www.huskycz.cz/bizon-3-classic-light-grey",
+      "https://cdn.hskcz.cz/temp/img/d0/ab/94/kempingovy-stan-pro-3-osoby-bizon-3-classic-w1200-h1200-d0ab9443000dfdfae998c819a394e1d5.png"
+    ],
+    "conf": "official",
+    "note": "Exact product found on huskycz.cz (no substitute needed). Official spec: (W x L x H) 230 x 330 x 135 cm. Official dimension drawing: vestibule 110 cm + sleeping section 220 cm along the length; inner tent 220 cm (across) x 215 cm (along). Pole count (2 crossing dome poles + 1 vestibule hoop; spec lists two pole diameters 7.9 and 8.5 mm) and doors (vestibule front + one side entrance, 1 inner door) were counted on the official product renders - they are not stated in the text."
+  },
+  {
+    "id": "arpenaz41",
+    "cat": "tentfam",
+    "name": "Quechua Arpenaz 4.1 (4 persons, 1 bedroom + living room; Decathlon model 4123)",
+    "L": 4550,
+    "W": 2600,
+    "H": 1900,
+    "shape": "tunnel",
+    "parts": {
+      "innerL": 2400,
+      "innerW": 2100,
+      "vestibuleDepth": null,
+      "poles": 3,
+      "doors": 1,
+      "bedrooms": 1,
+      "bedroomHeight": 1720,
+      "livingDepth": 2350,
+      "livingWidth": 2600,
+      "livingArea_m2": 5
+    },
+    "src": [
+      "https://www.decathlon.com.gr/en/p/4123-171195-camping-tent-with-poles-arpenaz-41-4-person-1-bedroom.html",
+      "https://contents.mediadecathlon.com/p2456980/1cr1/k$ccee9f52a14ada1c78bce04d40964cdd/tent-with-poles-arpenaz-41-4-man-1-bedroom.jpg",
+      "https://manuals.plus/asin/B085HFXWKG"
+    ],
+    "conf": "official",
+    "note": "All dimensions read from Decathlon's official dimension drawing: 455 x 260 cm overall, bedroom 240 cm wide x 210 cm deep (at the rear), living room 235 cm deep / 5 m2 (front corners chamfered in plan), height 190 cm (172 cm in the bedroom). No separate vestibule: the living room is the entrance area (fold-away basin groundsheet). Pole count 3 (three fibreglass poles per a third-party copy of the user manual; matches the three roof break-points in the official side-view drawing) and door count 1 (front door, from the official photos) are not stated on the Decathlon page itself."
+  },
+  {
+    "id": "vail4",
+    "cat": "tentfam",
+    "name": "Coleman Vail 4 (4-person tunnel tent, SKU 2000038917)",
+    "L": 4700,
+    "W": 3000,
+    "H": 2000,
+    "shape": "tunnel",
+    "parts": {
+      "innerL": 2800,
+      "innerW": 2100,
+      "vestibuleDepth": 950,
+      "poles": 4,
+      "doors": 2,
+      "bedrooms": 2,
+      "bedroomWidths": [
+        1400,
+        1400
+      ],
+      "livingDepth": 1650,
+      "livingWidth": null,
+      "livingArea_m2": 5,
+      "headroom": 1900,
+      "sleepingArea_m2": 5.9,
+      "pitchedArea_m2": 10.9
+    },
+    "src": [
+      "https://www.colemanuk.co.uk/tents/tents-by-style/family-tents/vail-4-tent/SP_2236085.html",
+      "https://e-catalog.co.uk/COLEMAN-VAIL-4.htm"
+    ],
+    "conf": "official",
+    "note": "Official Coleman UK spec: dimensions 3.0 x 4.7 x 2.0 m, 2 sleeping rooms 2 x 140 cm wide, sleeping area 5.9 m2, living area 5 m2, headroom 190 cm, pitched size 10.9 m2 (plan is not a full rectangle). L, W, H, bedroom widths and areas are official. Bedroom depth 210 cm, living-room depth 165 cm, 2 outside entrances and 4 poles come from ONE third-party spec table (e-catalog: 470 x 300 x 200 outer, 210 x 280 inner, vestibule length 165 cm); they agree with the official areas (2.8 x 2.1 = 5.9 m2; 3.0 x 1.65 = 5 m2). vestibuleDepth 950 is the derived remainder for the front canopy/porch (4700 - 2100 - 1650) and includes the small rear fly overhang. A third-party review counts 3 main hoops; the 4th pole is the front canopy hoop. Coleman's own floor-plan image could not be retrieved."
+  },
+  {
+    "id": "tent6",
+    "cat": "tentfam",
+    "name": "Coleman Vail 6 (6-person tunnel tent, SKU 2000038911)",
+    "L": 4300,
+    "W": 3800,
+    "H": 2100,
+    "shape": "tunnel",
+    "parts": {
+      "innerL": 3600,
+      "innerW": 2100,
+      "vestibuleDepth": 700,
+      "poles": 4,
+      "doors": 2,
+      "bedrooms": 3,
+      "bedroomWidths": [
+        1200,
+        1200,
+        1200
+      ],
+      "livingDepth": 1350,
+      "livingWidth": null,
+      "livingArea_m2": 5.1,
+      "headroom": 2000,
+      "sleepingArea_m2": 7.6,
+      "pitchedArea_m2": 12.7
+    },
+    "src": [
+      "https://www.colemanuk.co.uk/tents/tents-by-style/family-tents/vail6-tent/SP_2236086.html",
+      "https://e-catalog.co.uk/COLEMAN-VAIL-6.htm"
+    ],
+    "conf": "official",
+    "note": "Exact product chosen: Coleman Vail 6. Official Coleman UK spec: dimensions 3.8 x 4.3 x 2.1 m, 3 sleeping rooms (1 x 240 cm double-width with removable divider + 1 x 120 cm), sleeping area 7.6 m2, living area 5.1 m2, headroom 200 cm, pitched size 12.7 m2 (plan is not a full rectangle). L, W, H, bedroom widths and areas are official. Bedroom block 360 x 210 cm, living-room depth 135 cm, front canopy ~70 cm, 2 outside entrances and 4 poles come from ONE third-party spec table (e-catalog); they are consistent with the official figures (3.6 x 2.1 = 7.6 m2; 3.8 x 1.35 = 5.1 m2; 2100 + 1350 + 700 + ~150 overhang = 4300) and 4 arches are visible on the official product photo. Conflicting figures seen and NOT used: e-catalog outer 360 x 380 cm (excludes the canopy) and an Amazon-derived 5.7 x 3.8 m. Coleman's own floor-plan image could not be retrieved. Alternative checked but not used: Quechua Arpenaz 6.3 - official drawing 420 cm wide, 3 bedrooms 140 x 210 cm, living room 190 cm deep / 8 m2, height 227 cm, 3 poles, total length not dimensioned (~4.9-5.0 m incl. the two front porches)."
+  },
+  {
+    "id": "foothill",
+    "cat": "rooftent",
+    "name": "Thule Tepui Foothill (2-person roof top tent, 901250)",
+    "L": 2130,
+    "W": 1190,
+    "H": 930,
+    "shape": "rect",
+    "parts": {
+      "closedL": 2108,
+      "closedW": 610,
+      "closedH": 240,
+      "openL": 2130,
+      "openW": 1190,
+      "sleepingL": 2130,
+      "sleepingW": 1190,
+      "ladderSide": "long side (outer 2.1 m edge of the fold-out half; the tent flips open sideways)"
+    },
+    "src": [
+      "https://theoutfitters.nf.ca/products/tepui-foothill-2-person-roof-top-tent-agave-green",
+      "https://varuste.net/uk/p110740/thule-tepui-foothill",
+      "https://www.rackwarehouse.com/products/thule-901250-tepui-foothill-rooftop-tent/",
+      "https://www.thule.com/en-au/rooftop-tents-and-accessories/rooftop-tents/thule-foothill-2-_-901042"
+    ],
+    "conf": "two-sources",
+    "note": "The original Tepui Foothill (901250) is no longer on thule.com - its product URL now lands on the rooftop-tent listing, which carries only the successor Thule Foothill 2 (901042; official: open 213 x 125 x 93 cm, closed 213 x 64 x 29 cm, sleeping footprint 204 x 116 cm). For 901250 two independent retailers give identical figures: open 213 x 119 cm, closed 210.8 x 61 x 24 cm, sleeping footprint 213 x 119 cm (a third gives the US spec 84 x 47 x 40 in open, 83 x 24 x 9.5 in closed). Open height differs by source: 93 cm (metric spec, = peak internal height) vs 101.6 cm (40 in, US spec); H uses 93 cm. H is the tent height above the roof rack. Ladder side is not in the spec tables; inferred from the flip-open design (hinge along the long side, wide door on the long side)."
+  },
+  {
+    "id": "kukenam3",
+    "cat": "rooftent",
+    "name": "Thule Tepui Explorer Kukenam 3 (3-person; currently listed as \"Thule Tepui Explorer Kukenam\", 901044)",
+    "L": 2440,
+    "W": 1430,
+    "H": 1320,
+    "shape": "rect",
+    "parts": {
+      "closedL": 1220,
+      "closedW": 1430,
+      "closedH": 310,
+      "openL": 2440,
+      "openW": 1430,
+      "sleepingL": 2440,
+      "sleepingW": 1420,
+      "ladderSide": "short side (the 1430 mm far end of the fold-out half)"
+    },
+    "src": [
+      "https://www.thule.com/en-gb/rooftop-tents-and-accessories/rooftop-tents/thule-tepui-explorer-kukenam-_-901044",
+      "https://www.thule.com/en-sk/rooftop-tents-and-accessories/rooftop-tents/thule-tepui-explorer-kukenam-_-901044"
+    ],
+    "conf": "official",
+    "note": "thule.com technical specifications: sleeping capacity 3 person, sleeping footprint 244 x 142 cm, dimensions open 244 x 143 x 132 cm, closed 122 x 143 x 31 cm, peak internal height 132 cm. Thule now sells this tent as \"Thule Tepui Explorer Kukenam\" (901044); the older \"Kukenam 3\" SKU 901300 is listed by retailers with the same spec in inches (96 x 56 x 52 open, 48 x 56 x 12 closed). H is the tent height above the roof rack. The tent folds in half along its length, so the ladder supports the 143 cm-wide far end; ladder position is not in Thule's spec table (inferred from the fold geometry)."
+  },
+  {
+    "id": "skycamp",
+    "cat": "rooftent",
+    "name": "iKamper Skycamp 3.0",
+    "L": 2172,
+    "W": 1962,
+    "H": 1219,
+    "shape": "rect",
+    "parts": {
+      "closedL": 2172,
+      "closedW": 1391,
+      "closedH": 343,
+      "openL": 2172,
+      "openW": 1962,
+      "sleepingL": 2102,
+      "sleepingW": 1962,
+      "ladderSide": "long side (outer edge of the fold-out floor panel, opposite the shell hinge)",
+      "ladderLength": 2250
+    },
+    "src": [
+      "https://ikamper.com/products/skycamp-3-0",
+      "https://help.ikamper.com/en/articles/11691910-skycamp-3-0-full-size-guide"
+    ],
+    "conf": "official",
+    "note": "ikamper.com specifications: footprint (closed) 85 1/2 x 54 3/4 in, sleeping area 82 3/4 x 77 1/4 in, height closed/open 13 1/2 / 48 in, ladder 225 cm (inches converted to mm). iKamper's help centre gives the same sizes as 217 x 140 cm and 210 x 196 cm (its \"open\"/\"closed\" labels are swapped). iKamper publishes no outer open envelope: L = closed shell length (the shell stays in place), W = open sleeping width; the hinge-side shell wall adds roughly 3 cm (not published). H is the open tent height above the roof rack. Ladder position is not in the spec; inferred from the fold-out design (panel hinged on the long side)."
+  },
+  {
+    "id": "f45s260",
+    "cat": "awning",
+    "name": "Fiamma F45s 260",
+    "L": 2630,
+    "W": 2000,
+    "H": null,
+    "shape": "rect",
+    "parts": {
+      "caseLength": 2630,
+      "canopyLength": 2470,
+      "extension": 2000,
+      "shadeArea_m2": 4.9,
+      "caseDepth": 85,
+      "caseHeight": 136
+    },
+    "src": [
+      "https://www.fiammaexpert.com/image/data/download/catalogues/EN/Product_Catalogue_2026_EN.pdf",
+      "https://www.fiamma.it/en/product/f45s/"
+    ],
+    "conf": "official",
+    "note": "Fiamma 2026 product catalogue, p. 13, table \"F45s - models and dimensions\": Length A (case) 263 cm, Length B (canopy fabric) 247 cm, Extension C 200 cm, shade surface 4.9 m2, 19.5 kg. L = case length A (full length on the vehicle wall); the shaded rectangle is canopyLength x extension. Case cross-section 85 x 136 mm as marked on the catalogue drawing (depth/height assignment read from the drawing). H is null: mounting height depends on the vehicle. UK retailer Jacksons Leisure prints the same A/B/C table."
+  },
+  {
+    "id": "f45s350",
+    "cat": "awning",
+    "name": "Fiamma F45s 350",
+    "L": 3480,
+    "W": 2500,
+    "H": null,
+    "shape": "rect",
+    "parts": {
+      "caseLength": 3480,
+      "canopyLength": 3310,
+      "extension": 2500,
+      "shadeArea_m2": 8.3,
+      "caseDepth": 85,
+      "caseHeight": 136
+    },
+    "src": [
+      "https://www.fiammaexpert.com/image/data/download/catalogues/EN/Product_Catalogue_2026_EN.pdf",
+      "https://www.fiamma.it/en/product/f45s/"
+    ],
+    "conf": "official",
+    "note": "Fiamma 2026 product catalogue, p. 13, table \"F45s - models and dimensions\": Length A (case) 348 cm, Length B (canopy fabric) 331 cm, Extension C 250 cm, shade surface 8.3 m2, 25.0 kg. L = case length A (full length on the vehicle wall); the shaded rectangle is canopyLength x extension. Case cross-section 85 x 136 mm as marked on the catalogue drawing (depth/height assignment read from the drawing). H is null: mounting height depends on the vehicle. UK retailer Jacksons Leisure prints the same A/B/C table."
+  },
+  {
+    "id": "f45s450",
+    "cat": "awning",
+    "name": "Fiamma F45s 450",
+    "L": 4480,
+    "W": 2500,
+    "H": null,
+    "shape": "rect",
+    "parts": {
+      "caseLength": 4480,
+      "canopyLength": 4310,
+      "extension": 2500,
+      "shadeArea_m2": 10.8,
+      "caseDepth": 85,
+      "caseHeight": 136
+    },
+    "src": [
+      "https://www.fiammaexpert.com/image/data/download/catalogues/EN/Product_Catalogue_2026_EN.pdf",
+      "https://www.fiamma.it/en/product/f45s/"
+    ],
+    "conf": "official",
+    "note": "Fiamma 2026 product catalogue, p. 13, table \"F45s - models and dimensions\": Length A (case) 448 cm, Length B (canopy fabric) 431 cm, Extension C 250 cm, shade surface 10.8 m2, 29.5 kg. L = case length A (full length on the vehicle wall); the shaded rectangle is canopyLength x extension. Case cross-section 85 x 136 mm as marked on the catalogue drawing (depth/height assignment read from the drawing). H is null: mounting height depends on the vehicle. UK retailer Jacksons Leisure prints the same A/B/C table. The 400/425/450 sizes include one tension rafter."
+  },
+  {
+    "id": "rally260",
+    "cat": "awningtent",
+    "name": "Dometic Rally AIR Pro 260 (S = caravan height / M = motorhome height)",
+    "L": 2600,
+    "W": 2500,
+    "H": 2650,
+    "shape": "rect",
+    "parts": {
+      "airBeams": 3,
+      "frontPanels": 2,
+      "doors": "one side door on each side (LH + RH), in the side panels next to the vehicle wall (the official floor plan marks entrances on the two sides only); side and front panels zip out",
+      "frontHeight": 1850,
+      "connectionHeightS": [
+        2350,
+        2650
+      ],
+      "connectionHeightM": [
+        2650,
+        2950
+      ]
+    },
+    "src": [
+      "https://www.dometic.com/en-gb/product/dometic-rally-air-pro-260-m-9120001128",
+      "https://media.dometic.com/externalassets/16-1601-160117-160117004_9120001128_78173.png"
+    ],
+    "conf": "official",
+    "note": "dometic.com (Rally AIR Pro 260 M, 9120001128): product width 2600 mm, depth 2500 mm, height 2950 mm, connection height 265-295 cm; official floor-plan image shows 2600 x 2500 with a side door on both sides and zip-out side/front panels. The S (caravan) version shares the footprint; its page has been retired, so H = 2650 is the S max connection height (235-265 cm) rather than a fetched 260 S value. Air beams: 3 AirPoles counted on the official product photo (left, centre, right; 2 front panels) - Dometic states only \"Single Point Inflation\". frontHeight 1850 is from a retailer table and matches Dometic's 2026 data for the successor Rally AIR Tour. Model line is being replaced by Rally AIR Tour (same 2600 x 2500 footprint)."
+  },
+  {
+    "id": "rally330",
+    "cat": "awningtent",
+    "name": "Dometic Rally AIR Pro 330 (S = caravan height / M = motorhome height)",
+    "L": 3300,
+    "W": 2500,
+    "H": 2650,
+    "shape": "rect",
+    "parts": {
+      "airBeams": 3,
+      "frontPanels": 2,
+      "doors": "one side door on each side (LH + RH), in the side panels next to the vehicle wall (the official floor plan marks entrances on the two sides only); side and front panels zip out",
+      "frontHeight": 1850,
+      "connectionHeightS": [
+        2350,
+        2650
+      ],
+      "connectionHeightM": [
+        2650,
+        2950
+      ]
+    },
+    "src": [
+      "https://www.dometic.com/en-gb/product/dometic-rally-air-pro-330-m-9120001130",
+      "https://media.dometic.com/externalassets/16-1601-160117-160117004_9120001130_78174.png"
+    ],
+    "conf": "official",
+    "note": "dometic.com (Rally AIR Pro 330 M, 9120001130): product width 3300 mm, depth 2500 mm, height 2950 mm, connection height 265-295 cm; official floor-plan image shows 3300 x 2500 with a side door on both sides and zip-out side/front panels. The S (caravan) version shares the footprint; its page has been retired, so H = 2650 is the S max connection height (235-265 cm). Air beams: 3 AirPoles counted on the official product photo (2 front panels). frontHeight 1850 is from a retailer table and matches Dometic's 2026 data for the successor Rally AIR Tour."
+  },
+  {
+    "id": "rally390",
+    "cat": "awningtent",
+    "name": "Dometic Rally AIR Pro 390 (S = caravan height / M = motorhome height)",
+    "L": 3900,
+    "W": 2500,
+    "H": 2650,
+    "shape": "rect",
+    "parts": {
+      "airBeams": 3,
+      "frontPanels": 2,
+      "doors": "one side door on each side (LH + RH), in the side panels next to the vehicle wall (the official floor plan marks entrances on the two sides only); side and front panels zip out",
+      "frontHeight": 1850,
+      "connectionHeightS": [
+        2350,
+        2650
+      ],
+      "connectionHeightM": [
+        2650,
+        2950
+      ]
+    },
+    "src": [
+      "https://media.dometic.com/externalassets/16-1601-160117-160117004_9120001131_78172.png",
+      "https://media.dometic.com/externalassets/16-1601-160117-160117004_9120001131_78171.png",
+      "https://www.dometic.com/en-gb/outdoor/motorhome-and-van/rv-awnings/inflatable-awnings/rallyairprostatic-308855",
+      "https://www.dometic.com/en-gb/product/dometic-rally-air-tour-390-s-9120002325"
+    ],
+    "conf": "official",
+    "note": "The Rally AIR Pro 390 product pages (390 S 9120001131 / 390 M 9120001132) have been retired from dometic.com and now redirect to the 260 M page; the search-index copy of the official 390 S page reads width 3900 mm, depth 2500 mm, height 2650 mm, connection height 235-265 cm. Still online and viewed directly: Dometic's floor-plan images no. 78171/78172 (same image series as the 260 plan 78173 and the 330 plan 78174) showing 3900 x 2500 with a side door on both sides and zip-out side/front panels, and the official page of the successor Rally AIR Tour 390 S (3900 x 2500 x 2650 mm). Retailer pages for the 390 are no longer online. Air beams = 3 is INFERRED (same 2-front-panel layout as the 260/330 and as the successor's scope of delivery), not verified on a 390 photo. frontHeight 1850 from a retailer table / successor data."
+  },
+  {
+    "id": "eventm",
+    "cat": "gazebo",
+    "name": "Coleman Event Shelter M (3 x 3 m, SKU 2000034470)",
+    "L": 3000,
+    "W": 3000,
+    "H": 2100,
+    "shape": "rect",
+    "parts": {
+      "legSpan": 3000,
+      "roofSize": 3000,
+      "headroomCentre": 2100,
+      "headroomSides": 1790,
+      "legs": 4
+    },
+    "src": [
+      "https://www.colemanuk.co.uk/shelters-gazebos/event-shelters/event-shelter-m/SP_1814268.html",
+      "https://www.garden4less.co.uk/product/coleman-medium-event-shelter-3-x-3m"
+    ],
+    "conf": "official",
+    "note": "Coleman UK product page (SKU 2000034470): dimensions 3.0 x 3.0 m, headroom 210 cm (centre) / 179 cm (sides), steel poles. The page text was read through the search index - colemanuk.co.uk bot protection blocked a direct fetch of this page. Coleman publishes one square footprint only: the shelter stands on 4 curved steel legs at the corners and the canopy runs down to those legs, so legSpan (leg to leg along a side) and roofSize are both the nominal size; guy lines extend beyond the footprint. A retailer copy of Coleman's line drawing shows the same 300 x 300 cm square plan (it labels the height 218 cm, which differs from the 210 cm on the Coleman page)."
+  },
+  {
+    "id": "eventl",
+    "cat": "gazebo",
+    "name": "Coleman Event Shelter L (3.65 x 3.65 m, SKU 2000034471)",
+    "L": 3650,
+    "W": 3650,
+    "H": 2180,
+    "shape": "rect",
+    "parts": {
+      "legSpan": 3650,
+      "roofSize": 3650,
+      "headroomCentre": 2180,
+      "headroomSides": 1690,
+      "legs": 4
+    },
+    "src": [
+      "https://colemanuk.co.uk/tents-shelters/shelters/event-shelters/event-shelter-l/SAP_2000034471.html"
+    ],
+    "conf": "official",
+    "note": "Coleman UK product page (SKU 2000034471): dimensions 3.65 x 3.65 m, headroom 218 cm (centre) / 169 cm (sides), steel poles. The page text was read through the search index - colemanuk.co.uk bot protection blocked a direct fetch of this page. Coleman publishes one square footprint only: the shelter stands on 4 curved steel legs at the corners and the canopy runs down to those legs, so legSpan (leg to leg along a side) and roofSize are both the nominal size; guy lines extend beyond the footprint. Living area 13.32 m2."
+  },
+  {
+    "id": "eventxl",
+    "cat": "gazebo",
+    "name": "Coleman Event Shelter XL (4.5 x 4.5 m, SKU 2000034472)",
+    "L": 4500,
+    "W": 4500,
+    "H": 2280,
+    "shape": "rect",
+    "parts": {
+      "legSpan": 4500,
+      "roofSize": 4500,
+      "headroomCentre": 2280,
+      "headroomSides": 1900,
+      "legs": 4
+    },
+    "src": [
+      "https://www.colemanuk.co.uk/shelters-gazebos/event-shelters/event-shelter-xl/SP_2236047.html"
+    ],
+    "conf": "official",
+    "note": "Coleman UK product page (SKU 2000034472): dimensions 4.5 x 4.5 m, headroom 228 cm (centre) / 190 cm (sides), steel poles. The page text was read through the search index - colemanuk.co.uk bot protection blocked a direct fetch of this page. Coleman publishes one square footprint only: the shelter stands on 4 curved steel legs at the corners and the canopy runs down to those legs, so legSpan (leg to leg along a side) and roofSize are both the nominal size; guy lines extend beyond the footprint. Living area 20.25 m2."
+  },
+  {
+    "id": "set2",
+    "cat": "tableset",
+    "name": "Folding camping table for 2 + 2 chairs (Quechua 2-4 people table + 2 Lafuma FGX XL)",
+    "L": 1700,
+    "W": 800,
+    "H": 820,
+    "shape": "rect",
+    "parts": {
+      "tableL": 800,
+      "tableW": 600,
+      "tableH": 700,
+      "chairW": 550,
+      "chairD": 550,
+      "chairH": 820,
+      "chairs": 2,
+      "layout": "1 chair on each long (800 mm) side, facing each other",
+      "acrossTable": 1700,
+      "alongTable": 800,
+      "products": {
+        "table": "Quechua (Decathlon) folding camping table, 2 to 4 people: top 80 x 60 cm, height 70 cm",
+        "chair": "Lafuma Mobilier FGX XL folding director's armchair (LFM1346): 55 W x 55 D x 82 H cm open"
+      }
+    },
+    "src": [
+      "https://www.decathlon.com.gr/en/p/6330-214464-quechua-camping-folding-table.html",
+      "https://www.lafuma-mobilier.fr/fauteuil-regisseur-pliant-fgx-xl-vert-moss-tube-titane-lfm1346-8557.html"
+    ],
+    "conf": "derived",
+    "note": "DERIVED set footprint (not a published figure). Table and chair sizes are official (Decathlon product page; Lafuma product page). Rule used: chairs pulled out so that each chair's front edge is flush with the table edge (no tuck-under, no extra walking clearance). Across the table: 600 + 2 x 550 = 1700; along the table: max(800, 550) = 800. H = chair height."
+  },
+  {
+    "id": "set4",
+    "cat": "tableset",
+    "name": "Folding camping table for 4 + 4 chairs (Quechua 4-6 people table + 4 Lafuma FGX XL)",
+    "L": 1700,
+    "W": 1200,
+    "H": 820,
+    "shape": "rect",
+    "parts": {
+      "tableL": 1200,
+      "tableW": 600,
+      "tableH": 700,
+      "chairW": 550,
+      "chairD": 550,
+      "chairH": 820,
+      "chairs": 4,
+      "layout": "2 chairs on each long (1200 mm) side",
+      "acrossTable": 1700,
+      "alongTable": 1200,
+      "products": {
+        "table": "Quechua (Decathlon) folding camping table, 4 to 6 people: top 120 x 60 cm, height 45 or 70 cm",
+        "chair": "Lafuma Mobilier FGX XL folding director's armchair (LFM1346): 55 W x 55 D x 82 H cm open"
+      }
+    },
+    "src": [
+      "https://www.decathlon.com.gr/en/p/109685-223183-quechua-camping-folding-table.html",
+      "https://www.lafuma-mobilier.fr/fauteuil-regisseur-pliant-fgx-xl-vert-moss-tube-titane-lfm1346-8557.html"
+    ],
+    "conf": "derived",
+    "note": "DERIVED set footprint (not a published figure). Table and chair sizes are official (Decathlon product page; Lafuma product page). Rule used: chairs pulled out so that each chair's front edge is flush with the table edge (no tuck-under, no extra walking clearance). Across the table: 600 + 2 x 550 = 1700; along the table: max(1200, 2 x 550) = 1200. H = chair height."
+  },
+  {
+    "id": "set6",
+    "cat": "tableset",
+    "name": "Folding camping table for 6 + 6 chairs (Quechua large 6-8 people table + 6 Lafuma FGX XL)",
+    "L": 1900,
+    "W": 1650,
+    "H": 820,
+    "shape": "rect",
+    "parts": {
+      "tableL": 1600,
+      "tableW": 800,
+      "tableH": 710,
+      "chairW": 550,
+      "chairD": 550,
+      "chairH": 820,
+      "chairs": 6,
+      "layout": "3 chairs on each long (1600 mm) side",
+      "acrossTable": 1900,
+      "alongTable": 1650,
+      "products": {
+        "table": "Quechua (Decathlon) large folding camping table, 6 to 8 people: top 160 x 80 cm, height 71 cm",
+        "chair": "Lafuma Mobilier FGX XL folding director's armchair (LFM1346): 55 W x 55 D x 82 H cm open"
+      }
+    },
+    "src": [
+      "https://www.decathlon.com.gr/en/p/10858-231892-quechua-camping-folding-table.html",
+      "https://www.lafuma-mobilier.fr/fauteuil-regisseur-pliant-fgx-xl-vert-moss-tube-titane-lfm1346-8557.html"
+    ],
+    "conf": "derived",
+    "note": "DERIVED set footprint (not a published figure). Table and chair sizes are official (Decathlon product page; Lafuma product page). Rule used: chairs pulled out so that each chair's front edge is flush with the table edge (no tuck-under, no extra walking clearance). Across the table: 800 + 2 x 550 = 1900; along the table: max(1600, 3 x 550) = 1650 (three 55 cm chairs overhang the 160 cm top by 2.5 cm at each end). Alternative layout 2 + 2 on the long sides and 1 at each end would be 2700 x 1900. H = chair height."
+  },
+  {
+    "id": "goanywhere",
+    "cat": "grill",
+    "name": "Weber Go-Anywhere charcoal barbecue (1131004)",
+    "L": 534,
+    "W": 310,
+    "H": 369,
+    "shape": "rect",
+    "parts": {
+      "cookingAreaL": 420,
+      "cookingAreaW": 260,
+      "sideTables": 0
+    },
+    "src": [
+      "https://www.weber.com/GB/en/charcoal-barbecues/portable-charcoal-barbecues/go-anywhere-charcoal-barbecue/1131004.html"
+    ],
+    "conf": "official",
+    "note": "weber.com: dimensions lid closed 36.9 cm H x 53.4 cm W x 31 cm D; primary cooking area 42 x 26 cm. No side tables; footprint in use equals the lid-closed footprint (the lid is lifted off)."
+  },
+  {
+    "id": "mastertouch",
+    "cat": "grill",
+    "name": "Weber Master-Touch GBS E-5750, 57 cm (14701004)",
+    "L": 760,
+    "W": 650,
+    "H": 1070,
+    "shape": "rect",
+    "parts": {
+      "lidDiameter": 570,
+      "cookingArea_cm2": 2342,
+      "lidClosedW": 650,
+      "lidClosedD": 720,
+      "lidClosedH": 1070,
+      "lidOpenW": 650,
+      "lidOpenD": 760,
+      "lidOpenH": 1180,
+      "sideTables": 0
+    },
+    "src": [
+      "https://www.weber.com/GB/en/charcoal-barbecues/master-touch/master-touch-gbs-e-5750-charcoal-barbecue-57-cm/14701004.html"
+    ],
+    "conf": "official",
+    "note": "weber.com: lid closed 107 cm H x 65 cm W x 72 cm D; lid open 118 cm H x 65 cm W x 76 cm D; diameter 57 cm. L x W = footprint in use (lid open in the Tuck-Away holder, 76 x 65 cm); H = lid-closed height. The kettle itself is a 57 cm circle inside this rectangle."
+  },
+  {
+    "id": "spirit310",
+    "cat": "grill",
+    "name": "Weber Spirit II E-310 gas barbecue (45010008 / EU 45010174)",
+    "L": 1321,
+    "W": 686,
+    "H": 1130,
+    "shape": "rect",
+    "parts": {
+      "cookingAreaL": 600,
+      "cookingAreaW": 460,
+      "warmingRackL": 557,
+      "warmingRackW": 114,
+      "sideTables": 2,
+      "lidClosedD": 686,
+      "lidOpenD": 660,
+      "lidOpenH": 1448,
+      "widthLeftTableDown": 1070
+    },
+    "src": [
+      "https://www.weber.com/ID/en/gas/spirit/spirit-ii-e-310-gas-grill/45010008.html"
+    ],
+    "conf": "official",
+    "note": "weber.com (Spirit II E-310, part 45010008): lid closed 113.03 cm H x 132.08 cm W x 68.58 cm D; lid open 144.78 cm H x 132.08 cm W x 66.04 cm D; primary cooking area 60 x 46 cm; 2 side tables (the 132 cm width is with both tables up). Values are inch conversions (44.5 x 52 x 27 in). widthLeftTableDown 1070 (left table folded, 42 in) is UNVERIFIED: it was seen only in search-index summaries of a retailer listing that is no longer online, not on the Weber page fetched. The Spirit II has been dropped from most European weber.com sites - the EU SKU 45010174 now redirects to the 2025 Spirit E-310 (117 H x 123 W x 67.5 D cm lid closed), which is a different grill."
+  },
+  {
+    "id": "bike20",
+    "cat": "bike",
+    "name": "woom ORIGINAL 4 (20-inch kids' bike)",
+    "L": 1320,
+    "W": 540,
+    "H": 770,
+    "shape": "rect",
+    "parts": {
+      "wheelbase": 840,
+      "tyreOuterDiameter": 480,
+      "handlebarWidth": 540,
+      "handlebarHeight": 770,
+      "tyre": "20 x 1.4 in (ETRTO 37-406)"
+    },
+    "src": [
+      "https://woom.com/en_BE/bikes/woom-4"
+    ],
+    "conf": "derived",
+    "note": "woom.com: wheelbase 840 mm, handlebar width 540 mm, cockpit/handlebar height 770 mm, tyres 20 x 1.4 in. W is official. Overall length is not published; L = wheelbase + tyre outer diameter (840 + 480, with 480 = 406 mm rim + 2 x 37 mm tyre). H = handlebar height."
+  },
+  {
+    "id": "bike29",
+    "cat": "bike",
+    "name": "CUBE Aim Pro 2026, size L (29-inch hardtail MTB, art. 1140200)",
+    "L": 1900,
+    "W": 720,
+    "H": null,
+    "shape": "rect",
+    "parts": {
+      "wheelbase": 1164,
+      "tyreOuterDiameter": 736,
+      "handlebarWidth": 720,
+      "frameSize": "L",
+      "tyre": "29 x 2.25 in (ETRTO 57-622)"
+    },
+    "src": [
+      "https://www.cube.eu/sk-en/cube-aim-pro-grey-n-black/1140200"
+    ],
+    "conf": "derived",
+    "note": "cube.eu geometry table: wheelbase 1164 mm for size L (29 in wheels on M/L/XL), handlebar width 720 mm (M/L/XL), tyres Impac Smartpac 2.25. W is official. Overall length is not published; L = wheelbase + tyre outer diameter (1164 + 736, with 736 = 622 mm rim + 2 x 57 mm tyre). Overall height is not published (H null)."
+  },
+  {
+    "id": "cargobike",
+    "cat": "bike",
+    "name": "Urban Arrow Family (cargo e-bike)",
+    "L": 2740,
+    "W": 700,
+    "H": 1100,
+    "shape": "rect",
+    "parts": {
+      "length": 2740,
+      "width": 700,
+      "height": 1100
+    },
+    "src": [
+      "https://www.urbanarrow.com/family-bikes/family"
+    ],
+    "conf": "official",
+    "note": "urbanarrow.com: \"The bike is 274 cm long, 70 cm wide, and 110 cm tall\", total weight 50 kg (FAQ on the official product page)."
+  },
+  {
+    "id": "intex183",
+    "cat": "pool",
+    "name": "Intex Easy Set 183 x 51 cm (6 ft x 20 in; 28101NP / 28101EH)",
+    "L": 1830,
+    "W": 1830,
+    "H": 510,
+    "shape": "circle",
+    "parts": {
+      "nominalDiameter": 1830,
+      "height": 510,
+      "outerFootprint": null,
+      "clearanceRecommended": 1220,
+      "waterCapacityL": 878
+    },
+    "src": [
+      "https://intexcorp.com/above-ground-pools/6ft-x-20in-easy-set-inflatable-pool/",
+      "https://www.intexdevelopment.com/support/downloadmnl?filename=086PO_R0_2606_EN.pdf"
+    ],
+    "conf": "official",
+    "note": "Intex owner's manual (Easy Set pool, 6'-18' models) lists this size as 6' x 20\" (183 cm x 51 cm); intexcorp.com gives water capacity 232 gallons (80 %). Intex publishes no separate outer footprint: the nominal diameter is the approximate set-up size (the wall bulges to about that width when filled, the inflatable top ring is narrower). The manual asks for flat, level ground and at least 1.22 m (4 ft) of clear space all around the pool from climbable objects. "
+  },
+  {
+    "id": "intex244",
+    "cat": "pool",
+    "name": "Intex Easy Set 244 x 61 cm (8 ft x 24 in; 28106NP / 28106EH)",
+    "L": 2440,
+    "W": 2440,
+    "H": 610,
+    "shape": "circle",
+    "parts": {
+      "nominalDiameter": 2440,
+      "height": 610,
+      "outerFootprint": null,
+      "clearanceRecommended": 1220,
+      "waterDepth": 457,
+      "waterCapacityL": 1942
+    },
+    "src": [
+      "https://intexcorp.com/above-ground-pools/8ft-x-24in-easy-set-inflatable-pool/",
+      "https://www.intexdevelopment.com/support/downloadmnl?filename=086PO_R0_2606_EN.pdf"
+    ],
+    "conf": "official",
+    "note": "Intex owner's manual (Easy Set pool, 6'-18' models) lists this size as 8' x 24\" (244 cm x 61 cm); intexcorp.com gives approximate set-up size 8 ft x 24 in, water depth 18 in, water capacity 513 gallons (80 %). Intex publishes no separate outer footprint: the nominal diameter is the approximate set-up size (the wall bulges to about that width when filled, the inflatable top ring is narrower). The manual asks for flat, level ground and at least 1.22 m (4 ft) of clear space all around the pool from climbable objects. A taller 244 x 76 cm variant also exists (same diameter)."
+  },
+  {
+    "id": "intex305",
+    "cat": "pool",
+    "name": "Intex Easy Set 305 x 76 cm (10 ft x 30 in; 28120NP / 28120EH)",
+    "L": 3050,
+    "W": 3050,
+    "H": 760,
+    "shape": "circle",
+    "parts": {
+      "nominalDiameter": 3050,
+      "height": 760,
+      "outerFootprint": null,
+      "clearanceRecommended": 1220,
+      "waterCapacityL": 3853
+    },
+    "src": [
+      "https://intexcorp.com/above-ground-pools/10ft-x-30in-easy-set-inflatable-pool/",
+      "https://www.intexdevelopment.com/support/downloadmnl?filename=086PO_R0_2606_EN.pdf"
+    ],
+    "conf": "official",
+    "note": "Intex owner's manual (Easy Set pool, 6'-18' models) lists this size as 10' x 30\" (305 cm x 76 cm); intexcorp.com gives approximate set-up size 10 ft x 30 in, water capacity 1,018 gallons (80 %). Intex publishes no separate outer footprint: the nominal diameter is the approximate set-up size (the wall bulges to about that width when filled, the inflatable top ring is narrower). The manual asks for flat, level ground and at least 1.22 m (4 ft) of clear space all around the pool from climbable objects. A lower 305 x 61 cm variant (28116NP) has the same diameter. One Italian retailer quotes an assembled footprint of about 322 x 322 cm for this pool (single unverified source, not used)."
+  },
+  {
+    "id": "lounger",
+    "cat": "relax",
+    "name": "Lafuma Mobilier Siesta L folding padded sun lounger (LFM5262)",
+    "L": 2120,
+    "W": 710,
+    "H": 520,
+    "shape": "rect",
+    "parts": {
+      "flatL": 2120,
+      "backrestUpL": 1920,
+      "width": 710,
+      "flatH": 520,
+      "backrestUpH": 900,
+      "seatHeight": 350,
+      "foldedL": 860,
+      "foldedW": 710,
+      "foldedD": 170
+    },
+    "src": [
+      "https://www.lafuma-mobilier.fr/lit-de-soleil-pliant-matelasse-siesta-l-gris-ombre-tube-titane-lfm5262-9929.html"
+    ],
+    "conf": "official",
+    "note": "lafuma-mobilier.fr dimension table (open): height 52 > 90 cm, width 71 cm, depth 192 > 212 cm; folded 86 x 71 x 17 cm; seat height 35 cm. L x W = fully flat (212 x 71 cm); with the backrest raised it is 192 cm long and 90 cm high."
+  },
+  {
+    "id": "loungers2",
+    "cat": "relax",
+    "name": "Two Lafuma Siesta L loungers side by side with a Lafuma Vogue Perfo low table between them",
+    "L": 2120,
+    "W": 1990,
+    "H": 520,
+    "shape": "rect",
+    "parts": {
+      "loungerL": 2120,
+      "loungerW": 710,
+      "loungers": 2,
+      "tableW": 570,
+      "tableD": 570,
+      "tableH": 320,
+      "gap": 0,
+      "products": {
+        "lounger": "Lafuma Mobilier Siesta L (LFM5262): 212 x 71 cm flat",
+        "table": "Lafuma Mobilier Vogue Perfo low table (LFM5053): 57 x 57 x 32 cm"
+      }
+    },
+    "src": [
+      "https://www.lafuma-mobilier.fr/lit-de-soleil-pliant-matelasse-siesta-l-gris-ombre-tube-titane-lfm5262-9929.html",
+      "https://www.lafuma-mobilier.fr/table-basse-plateau-micro-perfore-vogue-perfo-table-basse-vert-moss-tube-moss-lfm5053-9874.html"
+    ],
+    "conf": "derived",
+    "note": "DERIVED (not a published figure): W = 710 + 570 + 710 with the table touching both loungers (gap 0); L = lounger length flat. Lounger and table sizes are official Lafuma figures."
+  },
+  {
+    "id": "hammock",
+    "cat": "relax",
+    "name": "AMAZONAS Summer Set: Aruba rod hammock (L) with Sumo RockStone frame (AZ-4220000; frame AZ-4027000)",
+    "L": 3300,
+    "W": 1050,
+    "H": 1100,
+    "shape": "rect",
+    "parts": {
+      "standLmin": 2700,
+      "standLmax": 3300,
+      "standW": 1050,
+      "standH": 1100,
+      "spreaderBarLength": 800,
+      "matchingHammockLength": [
+        2700,
+        3200
+      ]
+    },
+    "src": [
+      "https://www.amazonas-online.com/en/sets/hammock-frame/summer-set-l-size-aruba-rod-hammock-with-sumo-rockstone-frame",
+      "https://www.amazonas-online.com/en/frames/sumo-rockstone-hammock-frame"
+    ],
+    "conf": "official",
+    "note": "amazonas-online.com (manufacturer shop): dimensions of the frame ca. 270-330 x 105 x 110 cm (length adjustable), wooden spreader bar ca. 80 cm. L = longest setting; use standLmin for the shortest. The hammock hangs inside the stand outline."
+  }
+]

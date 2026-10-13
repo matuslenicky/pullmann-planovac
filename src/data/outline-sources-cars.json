@@ -1,0 +1,16 @@
+[
+  {
+    "id": "touran",
+    "url": "https://openclipart.org/detail/338016/volkswagen-touran-2018",
+    "license": "CC0 1.0 (public domain dedication, as stated on the Openclipart item page)",
+    "type": "SVG vector, top view (colour illustration, stated scale 1:20)",
+    "note": "Openclipart item 338016 'Car Birds Eye View' by mrehmann (uploaded 2022); file name vw-touran-blue.svg, page slug volkswagen-touran-2018 (= Touran 5T). Described by the author as 'A car in top view, made for drawing plans. Scale is 1:20'. Not downloaded or inspected, so outline accuracy and level of detail are unverified. Direct SVG: https://openclipart.org/download/338016/vw-touran-blue.svg"
+  },
+  {
+    "id": null,
+    "url": "https://commons.wikimedia.org/wiki/File:Car_Overhead.svg",
+    "license": "CC BY-SA 3.0 (attribution: Inkwina; share-alike)",
+    "type": "SVG vector, generic car top view (not a specific model)",
+    "note": "Generic fallback only, not one of the 21 models. Openclipart also has several generic CC0 top-view cars (e.g. https://openclipart.org/detail/176104/car-top-view), none for the other 20 models (the only other model-specific hit there was a BMW Z4). The bounded Wikimedia Commons searches found no top-view vector for any of the 21 models (only logos, wordmarks and side-profile drawings); SVG Repo could not be queried (HTTP 429)."
+  }
+]

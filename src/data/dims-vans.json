@@ -1,0 +1,526 @@
+[
+  {
+    "id": "caddy",
+    "cat": "van",
+    "name": "VW Caddy 5 Cargo (short wheelbase)",
+    "years": "2020–",
+    "L": 4500,
+    "W": 1855,
+    "Wm": 2100,
+    "H": 1819,
+    "wb": 2755,
+    "fo": 890,
+    "ro": 855,
+    "feat": [
+      "sliding-door-right",
+      "rear-wing-doors"
+    ],
+    "src": [
+      "https://professional.auto-motor-und-sport.de/static-download/news/8135901/Volkswagen-Nutzfahrzeuge-Der-Caddy-Cargo-Preisliste.pdf"
+    ],
+    "conf": "official",
+    "note": "VW Nutzfahrzeuge price list and technical data \"Der neue Caddy Cargo\" (model year 2021), dimension drawing: 890 + 2755 + 855 = 4500; width 1855, 2100 with mirrors. H 1819 is the Cargo body (1853 with roof rails, 1856 with antenna base; VW states heights can vary by about 50 mm with equipment). The passenger Caddy shares length, width and wheelbase; third-party listings give its height as about 1797. Maxi for reference: L 4853, wb 2970, rear overhang 993."
+  },
+  {
+    "id": "transporter",
+    "cat": "van",
+    "name": "VW Transporter T6.1 panel van (short wheelbase 3000)",
+    "years": "2019–2024",
+    "L": 4904,
+    "W": 1904,
+    "Wm": 2297,
+    "H": 1990,
+    "wb": 3000,
+    "fo": 908,
+    "ro": 996,
+    "feat": [
+      "sliding-door-right",
+      "tailgate"
+    ],
+    "src": [
+      "https://www.borgmann-krefeld.de/fileadmin/volkswagen-nutzfahrzeuge/vw-borgmann-krefeld-katalog-vw-transporter-6.1.pdf"
+    ],
+    "conf": "official",
+    "note": "VW \"Transporter 6.1\" catalogue (dealer-hosted PDF), panel van page: length 4904, wheelbase 3000, front overhang 908, width 1904 / 2297 with mirrors, height 1990 (normal roof). INCONSISTENCY: the catalogue drawing prints the rear overhang as 993, which sums to 4901, not 4904. ro is therefore derived here as L - wb - fo = 996 so the three add up to the published length. Long wheelbase for reference: L 5304, wb 3400."
+  },
+  {
+    "id": "sprinter",
+    "cat": "van",
+    "name": "Mercedes-Benz Sprinter panel van, long (A3, wheelbase 4325, high roof, RWD)",
+    "years": "2018–",
+    "L": 6967,
+    "W": 2020,
+    "Wm": 2345,
+    "H": 2616,
+    "wb": 4325,
+    "fo": 1021,
+    "ro": 1621,
+    "feat": [
+      "sliding-door-right",
+      "rear-wing-doors",
+      "high-roof"
+    ],
+    "src": [
+      "https://www.schade.de/fileadmin/docs/SCHADE/Neuwagen/Nfz/MB/Sprinter-Preisliste-0320.pdf",
+      "https://www.selectcarleasing.co.uk/van-leasing/mercedes/sprinter/large-van/315cdi-l3-rwd-35t-h2-pro-van-9g-tronic",
+      "https://autokatalog.pl/mercedes/sprinter/vs30/dane-techniczne",
+      "https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/mercedes-benz/sprinter/907-910/332798/",
+      "https://web.tremonia.com/wp-content/uploads/2026/08/Produktbroschuere_DE.pdf"
+    ],
+    "conf": "two-sources",
+    "note": "Length 6967 and wheelbase 4325 are OFFICIAL (Mercedes-Benz Sprinter price list valid from 2 September 2019, vehicle length A3). Width 2020 / 2345 with mirrors and overhangs 1021 / 1621 come from UK CAP data (selectcarleasing) and autokatalog.pl, which agree and sum exactly to 6967; the 1021 front overhang is also printed for all Sprinter-based models in the Tremonia Mobility brochure. H 2616 is the ADAC (manufacturer-supplied) high-roof figure; other sources give 2620-2663 depending on GVW (CAP: 2646). INCONSISTENCY: the same ADAC entry lists body width 1993 and wheelbase 3665 for this long version; both look like values carried over from other variants and were not used. Twin-rear-wheel 5 t versions are wider over the rear arches."
+  },
+  {
+    "id": "transitbus",
+    "cat": "minibus",
+    "name": "Ford Transit Minibus 460 L4 H3 \"Jumbo\" (RWD, twin rear wheels)",
+    "years": "2014– (data MY2025.5)",
+    "L": 6704,
+    "W": 2126,
+    "Wm": 2474,
+    "H": 2757,
+    "wb": 3750,
+    "fo": 1023,
+    "ro": 1931,
+    "seats": 18,
+    "feat": [
+      "sliding-door-right",
+      "rear-wing-doors",
+      "high-roof",
+      "twin-rear-wheels"
+    ],
+    "src": [
+      "https://www.ford.co.uk/content/dam/guxeu/uk/documents/brochures/cars/BRO-transit_m2_bus_25.5MY.pdf",
+      "https://www.selectcarleasing.co.uk/van-leasing/ford/transit/minibus/460-l4-minibus-rwd-20-ecoblue-165ps-h3-17-seater-leader-auto-nav"
+    ],
+    "conf": "official",
+    "note": "Ford UK Transit Minibus brochure MY2025.5 (March 2025), L4 H3 column: 1023 + 3750 + 1931 = 6704. W 2126 is the Ford \"without mirrors\" figure for the L4, which has dual rear wheels with arch extensions; the body itself is 2059 as on L2/L3. Height is published as a range 2668-2757 (laden to unladen); 2757 used. seats = 17+1 including driver (15- to 18-seat layouts exist). The side sliding door is on the right on left-hand-drive European vehicles (the UK source describes RHD vehicles, door on the left)."
+  },
+  {
+    "id": "sprintertransfer",
+    "cat": "minibus",
+    "name": "Mercedes-Benz Sprinter Transfer 45 (built by Tremonia Mobility)",
+    "years": "2018– (data 2022 and 2026)",
+    "L": 7367,
+    "W": 2020,
+    "Wm": 2345,
+    "H": 2860,
+    "wb": 4325,
+    "fo": 1021,
+    "ro": 2021,
+    "seats": 23,
+    "feat": [
+      "sliding-door-right",
+      "high-roof",
+      "twin-rear-wheels"
+    ],
+    "src": [
+      "https://web.tremonia.com/wp-content/uploads/2026/08/Produktbroschuere_DE.pdf",
+      "https://www.kemas.com/files/site/Produktblatt_Sprinter_Transfer_45.pdf"
+    ],
+    "conf": "official",
+    "note": "Tremonia Mobility product brochure (08/2026) and 2022 product sheet: length 7367, width 2020, wheelbase 4325, front overhang 1021, height incl. air conditioning 2860 (the 2022 sheet says 2920). INCONSISTENCY: the brochure prints the rear overhang as 2015, which sums to 7361; ro is derived here as L - wb - fo = 2021. Wm 2345 is the base Sprinter mirror span, not restated for the minibus. seats = up to 22 passengers + driver (16/18/19/22-seat layouts). Entry by right-hand sliding door or outward-swinging door. 5.0-5.5 t rear axle with twin tyres: the rear arch flares may exceed the 2020 body width (third-party databases list 2175 for twin-wheel Sprinters; not confirmed by a manufacturer document)."
+  },
+  {
+    "id": "sprintercity",
+    "cat": "minibus",
+    "name": "Mercedes-Benz Sprinter City 75 (built by Tremonia Mobility)",
+    "years": "2018– (data 2022 and 2026)",
+    "L": 8486,
+    "W": 2080,
+    "Wm": null,
+    "H": 2930,
+    "wb": 5095,
+    "fo": 1021,
+    "ro": 2370,
+    "seats": 20,
+    "feat": [
+      "low-floor",
+      "double-door-right-centre",
+      "single-door-right-rear",
+      "twin-rear-wheels",
+      "body-wider-at-rear"
+    ],
+    "src": [
+      "https://web.tremonia.com/wp-content/uploads/2026/08/Produktbroschuere_DE.pdf",
+      "https://www.kemas.com/files/site/Produktblatt_Sprinter_City_75.pdf",
+      "https://mbpassion.de/2018/09/iaa2018-die-neuen-mercedes-benz-minibusse-zeigen-sich/",
+      "https://mbpassion.de/2019/04/mercedes-benz-sprinter-city-75-ist-minibus-of-the-year-2019/"
+    ],
+    "conf": "official",
+    "note": "Real City 75 data found, no substitution. Two-axle low-entry midibus with one high-load rear axle (not a tandem). Length 8486 and width 2020 front / 2080 rear from the 2022 Tremonia product sheet (8486 also in Daimler 2019 press captions); wheelbase 5095 from the Daimler 2018 launch text (product sheet and brochure round it to 5100); overhangs 1021 / 2370 from the 08/2026 Tremonia brochure, and 1021 + 5095 + 2370 = 8486. INCONSISTENCIES: the 2026 brochure prints length 8468 (apparently transposed digits); height is 2930 incl. air conditioning in the 2026 brochure, 2920 in the 2022 sheet, 2860 in Daimler 2019 press data. W is the rear body width; the Sprinter cab section is 2020. Mirror width is not published. seats = 12 fixed + up to 7 in the low-floor zone + driver; capacity up to 38 passengers including standees."
+  },
+  {
+    "id": "california",
+    "cat": "campervan",
+    "name": "VW California 6.1 Ocean",
+    "years": "2019–2024",
+    "L": 4904,
+    "W": 1904,
+    "Wm": 2297,
+    "H": 1990,
+    "wb": 3000,
+    "fo": 908,
+    "ro": 996,
+    "base": "VW Transporter T6.1 (short wheelbase)",
+    "berths": 4,
+    "feat": [
+      "pop-top",
+      "sliding-door-right",
+      "tailgate",
+      "awning"
+    ],
+    "src": [
+      "https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/vw-nutzfahrzeuge/transporter/6generation-facelift/303609",
+      "https://www.camping-car.com/fiches-techniques/29572-volkswagen-california-ocean-t61-20-tdi-150-ch-bvm6-2022/",
+      "https://www.borgmann-krefeld.de/fileadmin/volkswagen-nutzfahrzeuge/vw-borgmann-krefeld-katalog-vw-transporter-6.1.pdf"
+    ],
+    "conf": "two-sources",
+    "note": "ADAC Autokatalog (manufacturer-supplied data) for the T6.1 California Ocean: 4904 x 1904, 2297 with mirrors, height 1990, wheelbase 3000; camping-car.com agrees (4.9 x 1.9 x 1.99 m, wheelbase 3000, 2-4 berths). The body is dimensionally identical to the official Transporter 6.1 catalogue, from which the 908 front overhang is taken; ro derived as for the Transporter (the catalogue prints 993). H 1990 is with the pop-top closed. Berths: 2 below + 2 in the pop-top. The awning (right side, above the sliding door) is optional equipment."
+  },
+  {
+    "id": "summit600",
+    "cat": "campervan",
+    "name": "Pössl Summit 600 Plus (listed by Pössl as \"Summit 600\" in the current range)",
+    "years": "ca. 2018– (data MY2027)",
+    "L": 5998,
+    "W": 2050,
+    "Wm": 2508,
+    "H": 2580,
+    "wb": 4035,
+    "fo": 948,
+    "ro": 1015,
+    "base": "Citroën Jumper / Fiat Ducato panel van, 5998 mm, wheelbase 4035",
+    "berths": 2,
+    "feat": [
+      "sliding-door-right",
+      "rear-wing-doors",
+      "transverse-rear-bed",
+      "awning"
+    ],
+    "src": [
+      "https://www.poessl-group.de/de/marken/poessl/summit/summit-600",
+      "https://www.poessl-group.de/de/marken/poessl/summit",
+      "https://www.camping-car.com/fiches-techniques/36126-possl-summit-600-plus-french-edition-citroen-jumper-22-140-ch-2026/",
+      "https://www.carwow.de/fiat/ducato-kastenwagen/technische-daten"
+    ],
+    "conf": "official",
+    "note": "poessl-group.de (MY27) lists the model as \"Summit 600\" with the Plus specification (rear bed 1960 x 1600/1470, page images named summit600plus): length 5998, width 2050, height 2580, wheelbase 4035. camping-car.com lists the 2026 \"Summit 600 Plus\" at 5.99 x 2.05 x 2.58 m, wheelbase 4035. Overhangs are those of the unchanged base van: front 948 (Ducato/Jumper: 5413 - 3450 - rear overhang 1015, manufacturer data quoted by carwow.de), rear = L - wb - fo = 1015. Wm 2508 is the base van with standard mirrors (2690 with long-arm mirrors); the converter does not publish it. The 1.96 m transverse bed implies bed-extension bulges in the rear side walls; any protrusion beyond the published 2050 is not stated. Berths 2 (+1 optional). Awning is optional. The start year is approximate (not verified)."
+  },
+  {
+    "id": "boxstar630",
+    "cat": "campervan",
+    "name": "Knaus BoxStar 630 ME Freeway",
+    "years": "until 2023 (data sheets exist for model years 2014–2023)",
+    "L": 6360,
+    "W": 2050,
+    "Wm": 2508,
+    "H": 2820,
+    "wb": 4035,
+    "fo": 948,
+    "ro": 1377,
+    "base": "Fiat Ducato extra-long high-roof panel van (6363 mm, wheelbase 4035)",
+    "berths": 4,
+    "feat": [
+      "sliding-door-right",
+      "rear-wing-doors",
+      "high-roof",
+      "single-beds-rear",
+      "awning"
+    ],
+    "src": [
+      "https://www.camping-car.com/fiches-techniques/30679-knaus-boxstar-630-me-freeway-fiat-ducato-22-140-ch-2023/",
+      "https://www.caraworld.de/360-grad-virtuelle-touren/knaus/campervan-2024/boxlife-pro.630-freeway-60-years.html",
+      "https://www.knaus.com/de-de/camper-vans-kastenwagen/boxlife-platinum-selection/630-me",
+      "https://www.carwow.de/fiat/ducato-kastenwagen/technische-daten"
+    ],
+    "conf": "two-sources",
+    "note": "The BoxStar name was dropped after model year 2023 (renamed BoxLife Pro 630 Freeway, now BoxLife 630 ME). camping-car.com data sheet for the 2023 BoxStar 630 ME Freeway: 6.36 x 2.05 x 2.82 m, wheelbase 4035, 4 berths; caraworld listing for the 2024 BoxLife Pro 630 Freeway: 636 / 205 / 282 cm, wheelbase 403 cm. The current official Knaus page for the successor BoxLife 630 ME gives the same 636 / 205 / 282 cm and wheelbase 403 cm. H 2820 is the high-roof body (the lower BoxTime 630 ME is 2580). Overhangs from the base van: front 948 (see summit600), rear = L - wb - fo = 1377 (the Ducato itself is 6363 long, rear overhang 1380). Wm 2508 is the base van value, not published by Knaus. Berths: two rear single beds plus front lift bed; sources say 3-4, Knaus lists 2 standard and up to 5 on the successor. Awning is optional."
+  },
+  {
+    "id": "sunlightt58",
+    "cat": "motorhome",
+    "name": "Sunlight T 58",
+    "years": "current (data MY2026/27; listed since at least 2018)",
+    "L": 5960,
+    "W": 2320,
+    "Wm": null,
+    "H": 2900,
+    "wb": 3450,
+    "fo": 948,
+    "ro": 1562,
+    "base": "Citroën Jumper chassis-cab",
+    "layout": "semi-integrated",
+    "berths": 2,
+    "feat": [
+      "habitation-door-right",
+      "french-bed-rear"
+    ],
+    "src": [
+      "https://www.sunlight.de/en-int/models/motorhomes/low-profiles-motorhomes/t-58/",
+      "https://www.carwow.de/fiat/ducato-kastenwagen/technische-daten"
+    ],
+    "conf": "official",
+    "note": "sunlight.de: length / width / height 596 / 232 / 290 cm, wheelbase 345 cm (Jumper 3450 mm, published in the motorhome data itself), 4 seats, berths \"2 + 2\" (the +2 is an optional pull-down bed). Rear French bed 200 x 135-115 with an exterior locker (door 65 x 65, right side); no full-width rear garage. Front overhang 948 is the unchanged Jumper/Ducato cab (5413 - 3450 - 1015, manufacturer data quoted by carwow.de); rear = L - wb - fo = 1562. Mirror width is not published for the coachbuilt body (the base cab with long-arm mirrors spans 2690). Some listings of earlier model years give 594 cm length."
+  },
+  {
+    "id": "caradoa464",
+    "cat": "motorhome",
+    "name": "Carado A 464 (current A464 PRO)",
+    "years": "current (data MY2026/27)",
+    "L": 7260,
+    "W": 2320,
+    "Wm": null,
+    "H": 3140,
+    "wb": 4035,
+    "fo": 948,
+    "ro": 2277,
+    "base": "Citroën Jumper chassis-cab",
+    "layout": "alcove",
+    "berths": 6,
+    "feat": [
+      "alcove-overhang",
+      "rear-garage",
+      "transverse-rear-bed",
+      "habitation-door-right"
+    ],
+    "src": [
+      "https://carado.com/de/de/wohnmobile/alkoven/a464-citroen",
+      "https://www.carwow.de/fiat/ducato-kastenwagen/technische-daten"
+    ],
+    "conf": "official",
+    "note": "carado.com: length / width / height 726 / 232 / 314 cm, wheelbase 404 cm (Jumper 4035 mm, published in the motorhome data itself), 5 belted seats, 6 berths (alcove, rear transverse bed 210 x 150, dinette). Garage doors: right 105 x 120, left 105 x 80. Front overhang 948 is the unchanged Jumper/Ducato cab (see sunlightt58), assuming the alcove does not project beyond the front bumper; rear = L - wb - fo = 2277. Mirror width is not published."
+  },
+  {
+    "id": "hymerbml890",
+    "cat": "motorhome",
+    "name": "Hymer B-Klasse MasterLine I 890",
+    "years": "2020–2025",
+    "L": 8990,
+    "W": 2350,
+    "Wm": null,
+    "H": 2960,
+    "wb": 4800,
+    "fo": null,
+    "ro": null,
+    "base": "Mercedes-Benz Sprinter front-wheel-drive cab unit with Hymer SLC chassis",
+    "layout": "integrated",
+    "berths": 4,
+    "feat": [
+      "tandem-axle",
+      "queen-bed",
+      "habitation-door-right"
+    ],
+    "src": [
+      "https://www.hymer.com/gb/en/new-layout-b-ml-i-890/p/103701",
+      "https://www.camping-car.com/fiches-techniques/30594-hymer-b-ml-i-890-mercedes-sprinter-20-150-ch-2023/",
+      "https://www.caraworld.de/print/cw28557906-de-DE1-expose.pdf",
+      "https://www.caraworld.de/print/cw27408186-de-DE1-expose.pdf",
+      "https://www.hymer.com/de/de/wohnmobile/hymer-b-klasse-masterline",
+      "https://www.promobil.de/neuheiten/hymer-b-klasse-880-masterline-2020/"
+    ],
+    "conf": "two-sources",
+    "note": "No longer in the current Hymer range (hymer.com now lists only B-ML I 780 and I 880). The Hymer launch text gives 8.99 m length, 2.35 m width, tandem axle on SLC chassis (official for L and W). camping-car.com 2023 data sheet: 8.99 x 2.35 x 2.96 m, wheelbase 4800, 5500 kg; caraworld listings: 899 x 235 cm, height 295, wheelbase 480 cm. The current sister model I 880 is officially 899 / 235 / 298 cm with wheelbase 4800. INCONSISTENCY: the promobil 2020 launch article says 8.89 m. Overhangs are not published, and the integrated front end is Hymer bodywork (the Sprinter cab value 1021 does not apply), so fo and ro are null. Which of the two rear axles the 4800 wheelbase is measured to is not stated. Berths 4 (5 optional)."
+  },
+  {
+    "id": "troll530",
+    "cat": "caravan",
+    "name": "Eriba Touring 530 (Troll 530)",
+    "years": "current generation (launched 2022/23; data MY2027)",
+    "Ltotal": 5990,
+    "Lbody": 4710,
+    "W": 2100,
+    "H": 2270,
+    "axles": 1,
+    "berths": 3,
+    "feat": [
+      "pop-top",
+      "door-right",
+      "single-axle"
+    ],
+    "src": [
+      "https://www.eriba.com/de/de/modelle/wohnwagen/eriba-touring"
+    ],
+    "conf": "official",
+    "note": "eriba.com lists the model as \"Touring 530\" (dealers still use the Troll name): length / width / height 599 / 210 / 227 cm, body length outside 471 cm, single axle, pop-up roof, 3 berths, 1300 kg. H is with the roof closed. The earlier generation sold as Touring Troll 530 was not researched and may differ slightly."
+  },
+  {
+    "id": "hobby495",
+    "cat": "caravan",
+    "name": "Hobby De Luxe 495 UL",
+    "years": "current (data MY2027)",
+    "Ltotal": 7117,
+    "Lbody": 5947,
+    "W": 2300,
+    "H": 2638,
+    "axles": 1,
+    "berths": 4,
+    "feat": [
+      "door-right",
+      "single-axle",
+      "single-beds",
+      "round-lounge"
+    ],
+    "src": [
+      "https://www.hobby-caravan.de/wohnwagen/de-luxe/495-ul/",
+      "https://data.hobby-caravan.de/api/vehicle-model-types/1988/vehicle-technical-values"
+    ],
+    "conf": "official",
+    "note": "Hobby data service behind the hobby-caravan.de model page (MY2027): overall length 7117, body length 5947, overall width 2300, overall height 2638, 1 axle, 4 berths, 1500 kg. Older model years may differ by a few millimetres."
+  },
+  {
+    "id": "hobby720",
+    "cat": "caravan",
+    "name": "Hobby Prestige 720 KWFU",
+    "years": "current (data MY2027)",
+    "Ltotal": 9031,
+    "Lbody": 7868,
+    "W": 2500,
+    "H": 2640,
+    "axles": 2,
+    "berths": 6,
+    "feat": [
+      "tandem-axle",
+      "door-right",
+      "bunk-beds",
+      "french-bed",
+      "round-lounge"
+    ],
+    "src": [
+      "https://www.hobby-caravan.de/wohnwagen/prestige/720-kwfu/",
+      "https://data.hobby-caravan.de/api/vehicle-model-types/2018/vehicle-technical-values"
+    ],
+    "conf": "official",
+    "note": "Hobby data service behind the hobby-caravan.de model page (MY2027): overall length 9031, body length 7868, overall width 2500, overall height 2640, 2 axles, berths 4 adults + 2 children, 2500 kg."
+  },
+  {
+    "id": "handy7",
+    "cat": "trailer",
+    "name": "Agados Handy-7 (750 kg, unbraked)",
+    "years": "current (2026 data)",
+    "Ltotal": 3060,
+    "Wtotal": 1700,
+    "boxL": 2050,
+    "boxW": 1250,
+    "boxH": 350,
+    "axles": 1,
+    "feat": [
+      "wheels-outside",
+      "unbraked",
+      "v-drawbar"
+    ],
+    "src": [
+      "https://agados.cz/en/handy-7"
+    ],
+    "conf": "official",
+    "note": "agados.cz: total weight 750 kg, payload 610 kg, loading platform 2050 x 1250 x 350, overall dimensions 3060 x 1700 x 895, 13-inch wheels beside the box, sheet-metal side boards, V-drawbar."
+  },
+  {
+    "id": "trailermid",
+    "cat": "trailer",
+    "name": "Humbaur HA 132513 KV (1300 kg, braked, single axle)",
+    "years": "current (2026 listings)",
+    "Ltotal": 3798,
+    "Wtotal": 1805,
+    "boxL": 2510,
+    "boxW": 1310,
+    "boxH": 350,
+    "axles": 1,
+    "feat": [
+      "wheels-outside",
+      "braked",
+      "v-drawbar"
+    ],
+    "src": [
+      "https://www.landwirt.com/fr/detail/humbaur-ha-132513-kv-einachsanhaenger-7216537",
+      "https://www.truckscout24.de/tsp/ts-227-43-147",
+      "https://www.humbaur.com/de/anhaenger/pkw-anhaenger/tieflader/tandem-tieflader"
+    ],
+    "conf": "two-sources",
+    "note": "Chosen model: Humbaur HA 132513. Two independent dealer listings agree: inner 2510 x 1310 x 350, overall 3798 x 1805 x 899-901, 1300 kg, 14-inch wheels, drawbar about 1196 (landwirt.com, KV variant with front flap; truckscout24, FS variant, same footprint). Other listings quote 3794-3797 x 1800-1806. humbaur.com confirms the 2510 x 1310 box for the ..2513 size (shown for the tandem sibling HA 202513 KV) but shows overall dimensions only inside its JavaScript configurator, which could not be read. Agados VZ-26 (box 2500 x 1300 x 350) was considered, but Agados does not publish its overall dimensions."
+  },
+  {
+    "id": "trailertandem",
+    "cat": "trailer",
+    "name": "Humbaur HA 203015 KV (2000 kg, braked, tandem axle)",
+    "years": "current (2026 data)",
+    "Ltotal": 4460,
+    "Wtotal": 2004,
+    "boxL": 3030,
+    "boxW": 1500,
+    "boxH": 350,
+    "axles": 2,
+    "feat": [
+      "wheels-outside",
+      "tandem-axle",
+      "braked",
+      "v-drawbar"
+    ],
+    "src": [
+      "https://www.humbaur.com/de/anhaenger/pkw-anhaenger/tieflader/tandem-tieflader",
+      "https://landwirt.com/pl/uzywane,3831293,Humbaur-HA203015KV.html"
+    ],
+    "conf": "single",
+    "note": "Chosen model: Humbaur HA 203015 KV. Official (humbaur.com): braked tandem, 2000 kg, payload 1633 kg, inner length 3030, inner width 1500. Overall 4460 x 2004 x 905 and side height 350 come from ONE dealer listing (landwirt.com, Altmann GmbH) that was read only as a search-engine excerpt; the listing page itself now returns 404. Its payload figure (1633 kg) matches the official one, and the HA 253015 KV is listed with the same 4460 x 2004 footprint. Treat Ltotal/Wtotal as good to a few centimetres."
+  },
+  {
+    "id": "vespa",
+    "cat": "moto",
+    "name": "Vespa GTS 300 (2023 generation)",
+    "years": "2023–",
+    "L": 1980,
+    "W": 765,
+    "H": 1170,
+    "wb": 1380,
+    "feat": [
+      "scooter"
+    ],
+    "src": [
+      "https://bikereview.com.au/video-review-2023-vespa-gts-300-range/",
+      "https://www.1000ps.com/en-gb/comparison/206922/vespa-gts-300-super-sport-2023-vs-vespa-gtv-300-2023"
+    ],
+    "conf": "two-sources",
+    "note": "BikeReview (quoting the 2023 launch specification) and 1000ps agree on length 1980, width 765, wheelbase 1380; H 1170 is from 1000ps only. W is published simply as \"width\"; 765 corresponds to the handlebar, so mirrors are not included (inference, the sources do not say). The pre-2023 GTS 300 is listed at 1950 x 755, wheelbase 1375. vespa.com specification pages are JavaScript-rendered and could not be read, so there is no official confirmation."
+  },
+  {
+    "id": "r1250gs",
+    "cat": "moto",
+    "name": "BMW R 1250 GS",
+    "years": "2018–2023",
+    "L": 2207,
+    "W": 953,
+    "H": 1430,
+    "wb": 1514,
+    "feat": [
+      "boxer-engine",
+      "windscreen"
+    ],
+    "src": [
+      "https://www.bmw-motorrad.com.my/en/models/adventure/r1250gs/technicaldata.html",
+      "https://www.motorradonline.de/enduro/bmw-r-1250-gs-im-top-test-high-end-allrounder/technische-daten/"
+    ],
+    "conf": "official",
+    "note": "BMW Motorrad specification table (Malaysian BMW site): length over mudguard 2207, width 952.5 (rounded to 953 here), height over windshield 1430, wheelbase 1514. The BMW width figure is the MIRROR width (labelled \"over mirrors\" on other regional BMW pages according to search excerpts; the page read directly just says \"Wide\"). motorradonline.de test data agree (2207 / 953 / 1430, wheelbase 1514). Some databases quote wheelbase 1525 for early model years. Panniers and top case are optional and not included."
+  },
+  {
+    "id": "goldwing",
+    "cat": "moto",
+    "name": "Honda GL1800 Gold Wing Tour",
+    "years": "2018– (dimensions as published for the current model)",
+    "L": 2615,
+    "W": 905,
+    "H": 1430,
+    "wb": 1695,
+    "feat": [
+      "top-case",
+      "panniers",
+      "windscreen",
+      "flat-six-engine"
+    ],
+    "src": [
+      "https://www.honda.co.uk/motorcycles/range/touring/gl1800-gold-wing-tour/specifications-and-price.html"
+    ],
+    "conf": "official",
+    "note": "honda.co.uk specification for the GL1800 Gold Wing Tour: 2615 x 905 x 1430, wheelbase 1695, seat height 745, kerb weight 393 kg. Honda publishes a single overall width and does not state whether it is handlebar or mirror width. Third-party data (1000ps, search excerpt) list the 2018-2020 Tour at 2575 length and the manual-gearbox version at 925 width. The non-Tour Gold Wing (no top case) is 2475 x 905 x 1340."
+  }
+]

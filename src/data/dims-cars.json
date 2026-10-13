@@ -1,0 +1,610 @@
+[
+  {
+    "id": "fiat500",
+    "cat": "small",
+    "name": "Fiat 500 (312)",
+    "years": "2007–2024",
+    "L": 3546,
+    "W": 1627,
+    "Wm": 1893,
+    "H": 1488,
+    "wb": 2300,
+    "fo": 703,
+    "ro": 543,
+    "trackF": 1414,
+    "trackR": 1408,
+    "tyre": "185/55 R15",
+    "feat": [
+      "3-door",
+      "hatchback"
+    ],
+    "src": [
+      "https://www.auto-data.net/en/fiat-500-312-1.2-8v-69hp-16748",
+      "https://www.auto-data.net/en/fiat-500-312-facelift-2015-1.2-69hp-22036",
+      "https://www.largus.fr/fiche-technique/Fiat/500/I/2012/Berline+3+Portes/09+8v+TwinAir+85ch+S&S+Dualogic-1060716.html",
+      "https://autotijd.be/en/dimensions/fiat/500-2016-2024",
+      "https://media.stellantisnorthamerica.com/view-spec.do?id=10287"
+    ],
+    "conf": "two-sources",
+    "note": "Values are the pre-facelift body (2007–2015). The 2015–2024 facelift is L 3571 (+25 mm in the bumpers; W/H/wb unchanged, tracks 1413/1407) and its overhang split is not published. L/W/H/wb/tracks: auto-data.net, autotijd and l'argus agree; L/W/wb also match the official FCA US 2012 spec sheet for the US-market 500 (3546.7/1627/2300). fo/ro: single source (l'argus 2012 fiche, 703+2300+543=3546). Wm 1893: autotijd + auto-data.net (facelift pages). Roof type varies by trim (Lounge trims had a fixed glass roof; from general knowledge, not checked against a source here), so no roof tag is set."
+  },
+  {
+    "id": "yaris",
+    "cat": "small",
+    "name": "Toyota Yaris (XP210)",
+    "years": "2020–",
+    "L": 3940,
+    "W": 1745,
+    "Wm": null,
+    "H": 1500,
+    "wb": 2560,
+    "fo": 790,
+    "ro": 590,
+    "trackF": 1518,
+    "trackR": 1514,
+    "tyre": "195/55 R16",
+    "feat": [
+      "5-door",
+      "hatchback"
+    ],
+    "src": [
+      "https://media.toyota.co.uk/wp-content/uploads/sites/5/pdf/250331-Yaris-Tech-Specs.pdf",
+      "https://media.toyota.co.uk/wp-content/uploads/sites/5/pdf/210713M-Yaris-Tech-Spec.pdf",
+      "https://autotijd.be/en/dimensions/toyota/yaris-2020-2023"
+    ],
+    "conf": "official",
+    "note": "All values incl. overhangs from Toyota GB media tech-spec sheets (2021 and 2025 sheets agree; European body, not the narrower 1695 mm Japanese Yaris). Tracks 1518/1514 are the 2021 sheet (16/17-inch wheels); the 2025 sheet gives ranges 1521–1531 / 1518–1528. Width incl. mirrors is not published by Toyota."
+  },
+  {
+    "id": "fabia",
+    "cat": "small",
+    "name": "Škoda Fabia IV",
+    "years": "2021–",
+    "L": 4108,
+    "W": 1780,
+    "Wm": 1954,
+    "H": 1459,
+    "wb": 2564,
+    "fo": 809,
+    "ro": 735,
+    "trackF": 1525,
+    "trackR": 1509,
+    "tyre": "185/65 R15",
+    "feat": [
+      "5-door",
+      "hatchback"
+    ],
+    "src": [
+      "https://cdn.skoda-storyboard.com/2021/06/TD-2-FABIA-petrol-en.pdf",
+      "https://autotijd.be/en/dimensions/skoda/fabia",
+      "https://www.auto-data.net/en/skoda-fabia-iv-1.0-tsi-110hp-43755",
+      "https://www.largus.fr/fiche-technique/Skoda/Fabia/IV/2022/Berline+5+Portes/10+MPI+65ch+Active-2530309.html"
+    ],
+    "conf": "official",
+    "note": "L/W/H/wb/tracks: Škoda technical-data PDF. fo/ro and Wm are not in Škoda's sheet; autotijd, auto-data.net and l'argus all give 809/735 and 1954 (two-sources level)."
+  },
+  {
+    "id": "golf",
+    "cat": "hatch",
+    "name": "VW Golf 8 (5-door)",
+    "years": "2019–",
+    "L": 4284,
+    "W": 1789,
+    "Wm": 2073,
+    "H": 1456,
+    "wb": 2636,
+    "fo": 872,
+    "ro": 776,
+    "trackF": 1533,
+    "trackR": 1504,
+    "tyre": "205/55 R16",
+    "feat": [
+      "5-door",
+      "hatchback"
+    ],
+    "src": [
+      "https://web.archive.org/web/20230511021638/https://www.volkswagen-newsroom.com/en/the-new-golf-international-vehicle-presentation-5609/the-technical-data-of-the-new-golf-5626",
+      "https://www.volkswagen.co.uk/en/new/golf/golf-dimensions.html",
+      "https://autotijd.be/en/dimensions/volkswagen/golf/15-tsi-130-hp-manual-2478",
+      "https://autotijd.be/en/dimensions/volkswagen/golf",
+      "https://www.auto-data.net/en/volkswagen-golf-viii-1.0-tsi-110hp-40804"
+    ],
+    "conf": "official",
+    "note": "L/W/H/wb: VW press kit 2019 (archived newsroom page). INCONSISTENT between VW sources: VW's later data (VW UK dimensions page, aggregators) quote wb 2619/2620 and H 1491/1483 for the same body. fo/ro: single source (autotijd version page) and they only add up with wb 2636 (872+2636+776=4284), which is why the press-kit wheelbase is used. Tracks: auto-data.net + l'argus (1533/1504). Wm 2073: autotijd (single). 2024 facelift: L 4282."
+  },
+  {
+    "id": "ceed",
+    "cat": "hatch",
+    "name": "Kia Ceed (CD) 5-door",
+    "years": "2018–",
+    "L": 4310,
+    "W": 1800,
+    "Wm": 2055,
+    "H": 1447,
+    "wb": 2650,
+    "fo": 880,
+    "ro": 780,
+    "trackF": 1573,
+    "trackR": 1581,
+    "tyre": "205/55 R16",
+    "feat": [
+      "5-door",
+      "hatchback"
+    ],
+    "src": [
+      "https://press.kia.com/content/dam/kiapress/IE/pressreleases/Ceed-Launch-September-2018/Ceed-press-release.pdf",
+      "https://www.auto-data.net/en/kia-ceed-iii-1.0-t-gdi-100hp-54511",
+      "https://autotijd.be/en/dimensions/kia/ceed-2018-2021"
+    ],
+    "conf": "official",
+    "note": "All values incl. overhangs from the Kia 2018 launch press release. Official tracks are quoted on 15-inch wheels; on 16-inch (205/55 R16) aggregators give 1565/1573. Wm 2055: auto-data.net (single source for the hatchback; cars-data.com gives the same figure for the Sportswagon). The 2021 facelift is a few mm longer (l'argus lists 4.32 m)."
+  },
+  {
+    "id": "scala",
+    "cat": "hatch",
+    "name": "Škoda Scala",
+    "years": "2019–",
+    "L": 4362,
+    "W": 1793,
+    "Wm": 1988,
+    "H": 1471,
+    "wb": 2649,
+    "fo": 843,
+    "ro": 870,
+    "trackF": 1531,
+    "trackR": 1516,
+    "tyre": "195/65 R15",
+    "feat": [
+      "5-door",
+      "hatchback"
+    ],
+    "src": [
+      "https://cdn.skoda-storyboard.com/2024/01/TD-Scala-en_8e7b3fcc.pdf",
+      "https://autotijd.be/en/dimensions/skoda/scala",
+      "https://www.auto-data.net/en/skoda-scala-1.0-tsi-110hp-49128",
+      "https://www.largus.fr/fiche-technique/Skoda/Scala/I/2021/Berline+5+Portes/10+TGI+G-Tec+90ch+Active-2573398.html"
+    ],
+    "conf": "official",
+    "note": "L/W/H/wb/tracks: Škoda technical-data PDF (same for the 2019 launch car and the 2023 facelift). fo/ro and Wm: autotijd, auto-data.net and l'argus agree (two-sources level). 205/55 R16 is the other common tyre size."
+  },
+  {
+    "id": "octavia",
+    "cat": "sedan",
+    "name": "Škoda Octavia IV liftback",
+    "years": "2020–",
+    "L": 4698,
+    "W": 1829,
+    "Wm": 2003,
+    "H": 1470,
+    "wb": 2686,
+    "fo": 914,
+    "ro": 1098,
+    "trackF": 1543,
+    "trackR": 1535,
+    "tyre": "205/60 R16",
+    "feat": [
+      "5-door",
+      "liftback"
+    ],
+    "src": [
+      "https://cdn.skoda-storyboard.com/2025/02/Octavia_EN_ed9ab7ae.pdf",
+      "https://cdn.skoda-storyboard.com/2020/11/TD-OCTAVIA-en.pdf",
+      "https://autotijd.be/en/dimensions/skoda/octavia",
+      "https://www.largus.fr/fiche-technique/Skoda/Octavia/IV/2025/Berline+5+Portes/15+TSI+ACT+116ch+Clever-2948854.html",
+      "https://www.largus.fr/fiche-technique/Skoda/Octavia/IV/2021/Berline+5+Portes/10+TSI+110ch+Active+Euro6d-AP-2357425.html",
+      "https://www.auto-data.net/en/skoda-octavia-iv-1.0-tsi-evo-110hp-38005"
+    ],
+    "conf": "official",
+    "note": "Values are the 2024 facelift (Škoda technical data 2025). Pre-facelift 2020–2024: L 4689, same W/H/wb/tracks, fo 910 / ro 1094 per aggregators (sums to 4690, 1 mm rounding). fo/ro and Wm are not in Škoda's sheet: autotijd + l'argus agree (two-sources level)."
+  },
+  {
+    "id": "model3",
+    "cat": "sedan",
+    "name": "Tesla Model 3 (Highland)",
+    "years": "2023–",
+    "L": 4720,
+    "W": 1850,
+    "Wm": 2089,
+    "H": 1440,
+    "wb": 2875,
+    "fo": 868,
+    "ro": 977,
+    "trackF": 1584,
+    "trackR": 1584,
+    "tyre": "235/45 R18",
+    "feat": [
+      "4-door",
+      "sedan",
+      "glass-roof-fixed"
+    ],
+    "src": [
+      "https://web.archive.org/web/20241114042131/https://www.tesla.com/ownersmanual/model3/en_eu/GUID-56562137-FC31-4110-A13C-9A9FC6657BF0.html",
+      "https://www.largus.fr/fiche-technique/Tesla/Model+3/I/2024/Berline+5+Portes/Long-Range+Dual+Motor+AWD-2787165.html",
+      "https://autotijd.be/en/dimensions/tesla/model-3"
+    ],
+    "conf": "official",
+    "note": "Tesla Model 3 Owner's Manual (EU edition), Rear-Wheel Drive / Long Range, read from an archived copy because tesla.com blocks scripted access. Width with mirrors folded 1933. Performance variant: L 4724, H 1431, fo 872, ro 978, tracks 1582/1560. Tyre size from l'argus (18-inch standard wheel)."
+  },
+  {
+    "id": "superb",
+    "cat": "sedan",
+    "name": "Škoda Superb IV liftback",
+    "years": "2023–",
+    "L": 4912,
+    "W": 1849,
+    "Wm": 2090,
+    "H": 1481,
+    "wb": 2841,
+    "fo": 950,
+    "ro": 1121,
+    "trackF": 1580,
+    "trackR": 1565,
+    "tyre": "235/45 R18",
+    "feat": [
+      "5-door",
+      "liftback"
+    ],
+    "src": [
+      "https://cdn.skoda-storyboard.com/2024/03/TD-Superb-en_87b42ad4.pdf",
+      "https://autotijd.be/en/dimensions/skoda/superb",
+      "https://www.largus.fr/fiche-technique/Skoda/Superb/IV/2024/Berline+4+Portes/15+TSI+ACT+150+mHEV+Laurin+&+Klement+DSG7-2849928.html"
+    ],
+    "conf": "official",
+    "note": "L/W/H/wb/tracks: Škoda technical-data PDF. fo/ro: autotijd + l'argus agree (two-sources level). Wm 2090: single source (autotijd). Tyre is the size l'argus lists for the L&K trim."
+  },
+  {
+    "id": "ceedsw",
+    "cat": "kombi",
+    "name": "Kia Ceed Sportswagon (CD)",
+    "years": "2018–",
+    "L": 4600,
+    "W": 1800,
+    "Wm": 2055,
+    "H": 1465,
+    "wb": 2650,
+    "fo": 880,
+    "ro": 1070,
+    "trackF": 1573,
+    "trackR": 1581,
+    "tyre": "205/55 R16",
+    "feat": [
+      "5-door",
+      "estate",
+      "roof-rails"
+    ],
+    "src": [
+      "https://press.kia.com/content/dam/kiapress/IE/pressreleases/Ceed-Launch-September-2018/Ceed-press-release.pdf",
+      "https://www.auto-data.net/en/kia-ceed-iii-sportswagon-1.0-t-gdi-100hp-54513",
+      "https://autotijd.be/en/dimensions/kia/ceed-sw-2018-2021"
+    ],
+    "conf": "official",
+    "note": "All values incl. overhangs from the Kia 2018 launch press release. Official tracks are quoted on 15-inch wheels. Wm 2055: auto-data.net + cars-data.com. cars-data.com wrongly lists rear overhang 780 for the SW (the hatchback value). autotijd lists L 4600–4605 across model years. Roof rails: listed as standard equipment (l'argus equipment list, base trim)."
+  },
+  {
+    "id": "octaviacombi",
+    "cat": "kombi",
+    "name": "Škoda Octavia Combi IV",
+    "years": "2020–",
+    "L": 4698,
+    "W": 1829,
+    "Wm": 2003,
+    "H": 1468,
+    "wb": 2686,
+    "fo": 914,
+    "ro": 1098,
+    "trackF": 1543,
+    "trackR": 1534,
+    "tyre": "205/60 R16",
+    "feat": [
+      "5-door",
+      "estate",
+      "roof-rails"
+    ],
+    "src": [
+      "https://cdn.skoda-storyboard.com/2025/02/Octavia_EN_ed9ab7ae.pdf",
+      "https://cdn.skoda-storyboard.com/2020/11/TD-OCTAVIA-en.pdf",
+      "https://autotijd.be/en/dimensions/skoda/octavia-combi",
+      "https://www.largus.fr/fiche-technique/Skoda/Octavia+Combi/IV/2025/Break+5+Portes/15+TSI+ACT+116ch+Clever-2948859.html",
+      "https://www.largus.fr/fiche-technique/Skoda/Octavia+Combi/IV/2021/Break+5+Portes/10+TSI+110ch+Active+Euro6d-AP-2357450.html",
+      "https://www.auto-data.net/en/skoda-octavia-iv-combi-1.0-tsi-evo-110hp-38003"
+    ],
+    "conf": "official",
+    "note": "Values are the 2024 facelift (Škoda technical data 2025). Pre-facelift 2020–2024: L 4689, rear track 1535, fo 910 / ro 1094 per aggregators (sums to 4690, 1 mm rounding). fo/ro and Wm: autotijd + l'argus agree (two-sources level). Roof rails: in l'argus equipment lists for the 2025 trims (not listed for 2021 trims)."
+  },
+  {
+    "id": "passat",
+    "cat": "kombi",
+    "name": "VW Passat Variant B9",
+    "years": "2024–",
+    "L": 4917,
+    "W": 1849,
+    "Wm": 2090,
+    "H": 1497,
+    "wb": 2841,
+    "fo": 957,
+    "ro": 1119,
+    "trackF": 1577,
+    "trackR": 1560,
+    "tyre": "215/60 R16",
+    "feat": [
+      "5-door",
+      "estate",
+      "roof-rails"
+    ],
+    "src": [
+      "https://www.volkswagen-newsroom.com/en/publications/more/the-all-new-passat-2665/download",
+      "https://www.auto-data.net/en/volkswagen-passat-variant-b9-1.5-etsi-150hp-mild-hybrid-dsg-50500",
+      "https://autotijd.be/en/dimensions/volkswagen/passat-variant",
+      "https://www.largus.fr/fiche-technique/Volkswagen/Passat+Sw/IX/2024/Break+5+Portes/15+eHybrid+204ch+DSG6-2848132.html"
+    ],
+    "conf": "official",
+    "note": "L/W/H/wb and both overhangs from the VW press pack (International Media Drive 2024; side-view drawing 957 | 2,841 | 1,119). One paragraph of the same press pack says width 1,852; 1,849 is used (summary text and all aggregators). Wm and tracks: autotijd, auto-data.net and l'argus agree. This generation is estate-only."
+  },
+  {
+    "id": "duster",
+    "cat": "suv",
+    "name": "Dacia Duster III",
+    "years": "2024–",
+    "L": 4343,
+    "W": 1813,
+    "Wm": 2069,
+    "H": 1656,
+    "wb": 2657,
+    "fo": 857,
+    "ro": 829,
+    "trackF": 1574,
+    "trackR": 1547,
+    "tyre": "215/65 R16",
+    "feat": [
+      "5-door",
+      "suv",
+      "roof-rails"
+    ],
+    "src": [
+      "https://cdn.group.renault.com/dac/gb/transversal-assets/brochures/model-brochures/New-Duster-eBrochure.pdf.asset.pdf/030fd1cd27.pdf",
+      "https://www.dacia.co.uk/hybrid-and-electric-range/duster-cargo-p1310/dimensions.html",
+      "https://autotijd.be/en/dimensions/dacia/duster",
+      "https://www.largus.fr/fiche-technique/Dacia/Duster/III/2024/SUV+5+Portes/10+ECO-G+100ch+Essential-2829491.html"
+    ],
+    "conf": "official",
+    "note": "Dacia UK brochure dimension page (4x2 values) plus the Dacia UK Duster Cargo page. Official fo 857 + wb 2657 + ro 828 = 4342, 1 mm short of L, so ro is set to 829 to close the rounding gap. 4x4: H 1661, wb 2658, ro 827. H 1656 is with roof bars (1616 without). Width with mirrors folded 1921. Tracks as printed in the brochure drawing; other Dacia/aggregator figures differ slightly (front 1578, rear 1556). Higher trims run 17- and 18-inch wheels."
+  },
+  {
+    "id": "kodiaq",
+    "cat": "suv",
+    "name": "Škoda Kodiaq II",
+    "years": "2024–",
+    "L": 4758,
+    "W": 1864,
+    "Wm": 2133,
+    "H": 1659,
+    "wb": 2791,
+    "fo": 927,
+    "ro": 1040,
+    "trackF": 1586,
+    "trackR": 1575,
+    "tyre": "215/65 R17",
+    "feat": [
+      "5-door",
+      "suv",
+      "roof-rails"
+    ],
+    "src": [
+      "https://cdn.skoda-storyboard.com/2025/02/Kodiaq_EN_fd56751c.pdf",
+      "https://autotijd.be/en/dimensions/skoda/kodiaq",
+      "https://www.auto-data.net/en/skoda-kodiaq-ii-1.5-tsi-150hp-mild-hybrid-dsg-49888",
+      "https://www.largus.fr/fiche-technique/Skoda/Kodiaq/II/2024/SUV+5+Portes/15+TSI+150ch+ACT+Hybrid+Selection+DSG7+5+places-2843723.html"
+    ],
+    "conf": "official",
+    "note": "L/W/H/wb/tracks: Škoda technical data 2025 (5-seat; 7-seat is H 1658, rear track 1576). fo/ro: autotijd, auto-data.net and l'argus all give 927/1041, which sums to 4759; ro is reduced by 1 mm to 1040 so fo+wb+ro equals L. Wm 2133 (mirrors folded 1924): autotijd + auto-data.net."
+  },
+  {
+    "id": "x5",
+    "cat": "suv",
+    "name": "BMW X5 (G05)",
+    "years": "2018–",
+    "L": 4922,
+    "W": 2004,
+    "Wm": 2218,
+    "H": 1745,
+    "wb": 2975,
+    "fo": 874,
+    "ro": 1073,
+    "trackF": 1666,
+    "trackR": 1685,
+    "tyre": "265/50 R19",
+    "feat": [
+      "5-door",
+      "suv",
+      "roof-rails"
+    ],
+    "src": [
+      "https://www.press.bmwgroup.com/global/article/attachment/T0281455EN/416380",
+      "https://press.bmwgroup.com/canada/article/attachment/T0295055EN/441820",
+      "https://www.auto-data.net/en/bmw-x5-g05-30d-265hp-xdrive-steptronic-7-seat-38944",
+      "https://autotijd.be/en/dimensions/bmw/x5/xdrive40i-340-hp-awd-2538",
+      "https://www.largus.fr/fiche-technique/Bmw/X5/IV+G05/2019/SUV+5+Portes/M50d+xDrive+400ch-1988228.html"
+    ],
+    "conf": "official",
+    "note": "Values are the pre-LCI car 2018–2023 (BMW Media Information 6/2018, xDrive30d/40i). Rear overhang 1073 and Wm 2218 are from the BMW Canada product guide (the North American car is 4936 long with front overhang 888); European fo = 4922-2975-1073 = 874, confirmed by auto-data.net, l'argus and autotijd. LCI 2023–: L 4935, H 1765, fo 887 (autotijd). Base tyre on 30d/40i was 255/55 R18. Roof rails are standard in the BMW Canada guide (assumed the same for Europe)."
+  },
+  {
+    "id": "touran",
+    "cat": "mpv",
+    "name": "VW Touran (5T)",
+    "years": "2015–",
+    "L": 4527,
+    "W": 1829,
+    "Wm": 2087,
+    "H": 1674,
+    "wb": 2786,
+    "fo": null,
+    "ro": null,
+    "trackF": 1561,
+    "trackR": 1534,
+    "tyre": "215/55 R17",
+    "feat": [
+      "5-door",
+      "mpv",
+      "roof-rails"
+    ],
+    "src": [
+      "https://www.volkswagen.co.uk/en/new/touran/touran-dimensions.html",
+      "https://autotijd.be/en/dimensions/volkswagen/touran",
+      "https://www.auto-data.net/en/volkswagen-touran-ii-1.5-tsi-act-150hp-36159",
+      "https://cars-data.com/en/volkswagen/touran/5t/1-4-tsi-highline-83496--83496/specs",
+      "https://www.largus.fr/fiche-technique/Volkswagen/Touran/III/2020/Monospace+5+Portes/15+TSI+EV+150ch+Carat+5+places-2159698.html"
+    ],
+    "conf": "official",
+    "note": "L/W/H/wb: VW UK official dimensions page. Overhangs are NOT published by VW or by any aggregator checked (autotijd, auto-data.net, cars-data, l'argus), so fo/ro are null. Launch-era data (2015) quote wb 2791, H 1659 and tracks 1569/1542 for the same body. Wm and tracks: autotijd + auto-data.net. Roof rails: shown on VW's own dimension picture and in the l'argus equipment list (possibly not on base trims)."
+  },
+  {
+    "id": "jogger",
+    "cat": "mpv",
+    "name": "Dacia Jogger",
+    "years": "2021–",
+    "L": 4547,
+    "W": 1784,
+    "Wm": 2007,
+    "H": 1691,
+    "wb": 2897,
+    "fo": 830,
+    "ro": 820,
+    "trackF": 1520,
+    "trackR": 1509,
+    "tyre": "205/60 R16",
+    "feat": [
+      "5-door",
+      "mpv",
+      "roof-rails"
+    ],
+    "src": [
+      "https://media.dacia.com/dacia-jogger-technical-specifications/",
+      "https://media.dacia.com/download?n=Fiche+technique+Jogger_0223&picid=84433",
+      "https://cdn.group.renault.com/dac/gb/transversal-assets/brochures/model-brochures/Jogger-eBrochure.pdf.asset.pdf/4e81a4215a.pdf",
+      "https://www.auto-data.net/en/dacia-jogger-1.0-tce-110hp-44452",
+      "https://www.largus.fr/fiche-technique/Dacia/Jogger/I+RJI/2023/Break+5+Portes/10+ECO-G+100ch+Essential+5+places-2655524.html"
+    ],
+    "conf": "official",
+    "note": "Official Dacia 'Fiche technique Jogger 02/2023' dimension drawing (pre-facelift 2021–2025; 5- and 7-seat identical outside). The drawing gives height 1674/1691 depending on roof bars (auto-data.net and launch reports give 1632 without bars). Width with mirrors folded 1848. 2025 facelift per the current Dacia UK brochure: L 4550, wb 2898, Wm 2012."
+  },
+  {
+    "id": "sharan",
+    "cat": "mpv",
+    "name": "VW Sharan II (7N)",
+    "years": "2010–2022",
+    "L": 4854,
+    "W": 1904,
+    "Wm": 2081,
+    "H": 1720,
+    "wb": 2920,
+    "fo": null,
+    "ro": null,
+    "trackF": 1571,
+    "trackR": 1617,
+    "tyre": "205/60 R16",
+    "feat": [
+      "5-door",
+      "mpv",
+      "sliding-doors",
+      "roof-rails"
+    ],
+    "src": [
+      "https://www.volkswagen-newsroom.com/en/press-releases/sharan-launches-with-new-engines-and-extensive-networking-features-1801",
+      "https://www.auto-data.net/en/volkswagen-sharan-ii-facelift-2015-1.4-tsi-150hp-22680",
+      "https://autotijd.be/en/dimensions/volkswagen/sharan-2015-2021",
+      "https://cars-data.com/en/volkswagen/sharan/2015/2-0-tdi-150hp-comfortline-83227--83227/specs",
+      "https://www.largus.fr/fiche-technique/Volkswagen/Sharan/II/2019/Monospace+5+Portes/14+TSI+150ch+BlueMotion+Technology+Carat+DSG6+Euro6d-T-2115899.html"
+    ],
+    "conf": "official",
+    "note": "L/W/Wm: VW press release 2015 (which also gives H 1713 without roof rails; 1720 with rails per autotijd/auto-data.net, cars-data says 1740). wb 2920 (2919 in 2010 data) and tracks: auto-data.net, cars-data and l'argus agree (two-sources level; autotijd differs with 1557/1603). Overhangs are NOT published by VW or any aggregator checked, so fo/ro are null. Rear doors are sliding."
+  },
+  {
+    "id": "hilux",
+    "cat": "pickup",
+    "name": "Toyota Hilux double cab (AN120/130)",
+    "years": "2016–",
+    "L": 5325,
+    "W": 1855,
+    "Wm": null,
+    "H": 1815,
+    "wb": 3085,
+    "fo": 985,
+    "ro": 1255,
+    "trackF": 1540,
+    "trackR": 1550,
+    "tyre": "265/65 R17",
+    "feat": [
+      "4-door",
+      "double-cab",
+      "bed-length:1525",
+      "bed-width:1540"
+    ],
+    "src": [
+      "https://media.toyota.co.uk/wp-content/uploads/sites/5/pdf/240528-Hilux-Tech-Specs.pdf",
+      "https://media.toyota.co.uk/wp-content/uploads/sites/5/pdf/220217M-Hilux-Tech-Spec.pdf",
+      "https://www.auto-data.net/en/toyota-hilux-double-cab-viii-2.4-d-4d-150hp-24028",
+      "https://www.largus.fr/fiche-technique/Toyota/Hilux/VIII/2021/Pick-Up+4+Portes/24+D-4D+150ch+Double+Cabine+LeCap+4WD+MY20-2206809.html"
+    ],
+    "conf": "official",
+    "note": "Toyota GB media tech-spec sheets 2022 and 2024 (double cab; Invincible X is W 1900 / H 1865). INCONSISTENT with older data: 2016–2020 figures (auto-data.net, l'argus) give L 5330–5335 with fo 1000 / ro 1250. Deck 1525 long x 1540 max wide x 480 deep. Width incl. mirrors is not published by Toyota."
+  },
+  {
+    "id": "ranger",
+    "cat": "pickup",
+    "name": "Ford Ranger double cab (P703)",
+    "years": "2022–",
+    "L": 5370,
+    "W": 1918,
+    "Wm": 2208,
+    "H": 1884,
+    "wb": 3270,
+    "fo": 865,
+    "ro": 1235,
+    "trackF": 1620,
+    "trackR": 1620,
+    "tyre": "255/65 R18",
+    "feat": [
+      "4-door",
+      "double-cab",
+      "bed-length:1564",
+      "bed-width:1520"
+    ],
+    "src": [
+      "https://www.carsales.com.au/research/ford/ranger/2023/platinum",
+      "https://vanreviewer.co.uk/ford/ranger/dimensions/9929/",
+      "https://www.largus.fr/fiche-technique/Ford/Ranger/IV+P703/2023/Pick-Up+4+Portes/20+EcoBlue+170ch+Stop&Start+Double+Cabine+Limited+4x4+BVA6-2698891.html",
+      "https://www.auto-data.net/en/ford-ranger-iv-double-cab-2.0-ecoblue-170hp-4x4-55716"
+    ],
+    "conf": "two-sources",
+    "note": "No official Ford spec sheet for the P703 could be retrieved (the ford.co.uk PDFs reachable were for the previous model). L, wb, front overhang and tracks agree across carsales/RedBook (AU), vanreviewer (UK), l'argus (FR) and auto-data.net. The published rear overhang is 1215, but 865+3270+1215 = 5350 (l'argus lists L 5.35 m; presumably the body without the rear step bumper); ro is set to 1235 (derived) so the sum equals the overall length 5370 incl. rear bumper. W 1918 is single-source (carsales); width with mirrors folded 2015. Bed size is UNVERIFIED: length 1564 (l'argus) vs 1464 (RedBook) vs 1638 (vanreviewer); width 1520 (RedBook), 1217–1224 between wheel arches."
+  },
+  {
+    "id": "ram1500",
+    "cat": "pickup",
+    "name": "RAM 1500 Crew Cab 5'7\" box (DT)",
+    "years": "2019–",
+    "L": 5916,
+    "W": 2084,
+    "Wm": null,
+    "H": 1971,
+    "wb": 3672,
+    "fo": null,
+    "ro": null,
+    "trackF": 1741,
+    "trackR": 1729,
+    "tyre": "275/55 R20",
+    "feat": [
+      "4-door",
+      "double-cab",
+      "bed-length:1711",
+      "bed-width:1687"
+    ],
+    "src": [
+      "https://media.stellantisnorthamerica.com/view-spec.do?id=21942",
+      "https://www.auto-data.net/en/ram-1500-crew-cab-dt-3.6-pentastar-v6-etorque-305hp-4wd-automatic-33119"
+    ],
+    "conf": "official",
+    "note": "Official Stellantis North America '2021 Ram 1500 Specifications' (Crew Cab, 5 ft 7 in box, 4x4; the 4x2 is H 1968). North American market model; cars in Europe are imports with the same body. Overhangs and width incl. mirrors are not in the spec sheet and no other source was found, so fo/ro/Wm are null. Box: 1711 long at floor with tailgate closed, 1687 wide, 1295 between wheelhouses, 543 deep."
+  }
+]
