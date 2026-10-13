@@ -15,11 +15,11 @@ function toast(msg){ const t=$('#toast'); t.hidden=false; t.textContent=msg; cle
 
 /* ---------- Parcel types (real data from campingpiestany.sk; M is "cca 75–80 m²" on the camp site, planned here as 7 × 11 m) ---------- */
 const TYPES = {
-  M:  {name:'Parcela M',  w:7,   h:11, area:77, price:13.5, elec:true,  water:false, grey:false, desc:'cca 75–80 m² podľa webu kempu, plán počíta so 7 × 11 m. Elektrická prípojka.'},
-  L:  {name:'Parcela L',  w:7.5, h:12, area:90, price:18.5, elec:true,  water:true,  grey:true,  desc:'7,5 × 12 m, elektrina, pitná voda, výpust šedej vody'},
-  XL: {name:'Parcela XL', w:10,  h:12, area:120,price:23.5, elec:true,  water:true,  grey:true,  desc:'10 × 12 m, elektrina, pitná voda, výpust šedej vody'},
-  V:  {name:'Voľné státie', w:10, h:5, area:50, price:12.0, elec:true,  water:false, grey:false, zone:true, desc:'max. 50 m² na posádku, konkrétne miesto pridelí recepcia'},
-  S:  {name:'Voľné státie pre stany', w:10, h:5, area:50, price:12.0, elec:'ask', water:false, grey:false, zone:true, desc:'stanová plocha podľa mapy kempu, max. 50 m² na posádku, miesto pridelí recepcia'}
+  M:  {name:'Parcela M',  w:7,   h:11, area:77, price:13.5, elec:true,  water:false, grey:false, desc:'Web kempu uvádza približne 75 až 80 m², plán počíta so 7 × 11 m.'},
+  L:  {name:'Parcela L',  w:7.5, h:12, area:90, price:18.5, elec:true,  water:true,  grey:true,  desc:''},
+  XL: {name:'Parcela XL', w:10,  h:12, area:120,price:23.5, elec:true,  water:true,  grey:true,  desc:''},
+  V:  {name:'Voľné státie', w:10, h:5, area:50, price:12.0, elec:true,  water:false, grey:false, zone:true, desc:'Konkrétne miesto pridelí recepcia.'},
+  S:  {name:'Voľné státie pre stany', w:10, h:5, area:50, price:12.0, elec:'ask', water:false, grey:false, zone:true, desc:'Stanová plocha. Konkrétne miesto pridelí recepcia.'}
 };
 const VSHAPE = {a:{w:10,h:5}, b:{w:8,h:6.25}, c:{w:7.07,h:7.07}};
 const PARK = {car:4, van:6, motorhome:6, moto:3};   // parking of a further vehicle per night (price list 2026)
@@ -69,7 +69,7 @@ const SET_DEF = {snap:0.25, clear:0, road:'bottom', labels:'auto', hook:true, bl
   const st=(S.set && typeof S.set==='object') ? S.set : {}, ff=(S.f && typeof S.f==='object') ? S.f : {};
   S.set={snap:pick(st.snap,[0,0.25,0.5,1],SET_DEF.snap), clear:pick(st.clear,[0,0.5,1],SET_DEF.clear), road:pick(st.road,['bottom','top','left','right'],SET_DEF.road), labels:pick(st.labels,['auto','names','numbers','none'],SET_DEF.labels),
     hook:st.hook!==false, block:st.block===true && st.hook!==false, shape:own(VSHAPE,st.shape) ? st.shape : SET_DEF.shape};
-  S.f={type:pick(ff.type,['all'].concat(Object.keys(TYPES)),'all'), fit:ff.fit!==false, water:ff.water===true, free:ff.free===true};
+  S.f={type:pick(ff.type,['all'].concat(Object.keys(TYPES)),'all')};
   S.view={z:1, cx:null, cy:null};
   S.adults=int(S.adults,1,8,2); S.kids=int(S.kids,0,6,0); S.babies=int(S.babies,0,6,0); S.dogs=int(S.dogs,0,6,0);
   let first=true;
@@ -184,15 +184,14 @@ function buildMap(){
   const plots = PARCELS.map(p=>'<g class="plot" data-id="'+p.id+'" data-type="'+p.type+'" tabindex="0" role="button" transform="rotate('+p.rot+' '+p.cx+' '+p.cy+')"><rect x="'+(p.cx-p.w/2)+'" y="'+(p.cy-p.h/2)+'" width="'+p.w+'" height="'+p.h+'"/><text x="'+p.cx+'" y="'+p.cy+'" style="font-size:'+Math.min(22,Math.round(p.w*0.42))+'px" transform="rotate('+(-p.rot)+' '+p.cx+' '+p.cy+')">'+p.id+'</text></g>').join('');
   const zones = ZONES.map(z=>'<g class="plot zone" data-id="'+z.id+'" data-type="'+z.type+'" tabindex="0" role="button"><path d="M'+z.pts.split(' ').join('L')+'Z"/><text x="'+z.lx+'" y="'+(z.ly-11)+'" style="font-size:'+(z.fs||19)+'px">'+esc(z.name)+'</text><text x="'+z.lx+'" y="'+(z.ly+13)+'" class="mapsub zcount" style="font-size:'+(z.fs?11:14)+'px"></text></g>').join('');
   $('#mapbox').innerHTML = '<svg viewBox="380 236 1200 1030" role="group" aria-label="Mapa kempu Pullmann s parcelami">'
-    +'<defs><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#3a7355"/><line x1="0" y1="0" x2="0" y2="10" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/></pattern></defs>'
+    +'<defs><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="hz" width="10" height="10"/><line class="hl" x1="0" y1="0" x2="0" y2="10"/></pattern></defs>'
     +'<path class="water" d="M380,236 L520,236 L395,660 L380,700Z"/><text class="maplabel" x="400" y="520" font-size="30" transform="rotate(-72 400 520)">Váh</text>'
     +'<polygon class="outline" points="640,255 1470,290 1548,1150 1180,1232 1050,1190 900,1150 710,1140 640,1000 400,715"/>'
     +'<path class="road" d="M1160,1060 C1050,1030 760,1040 650,1000"/><path class="road" d="M1130,560 C1000,620 870,640 600,760"/><path class="road" d="M940,350 L560,470"/>'
     +'<path class="road" d="M1200,1225 L1160,1060 L1130,560 C1120,460 1040,360 940,350 C1050,330 1200,340 1290,400 C1380,470 1392,620 1376,800 C1366,890 1290,960 1230,990 C1200,1010 1175,1030 1160,1060"/>'
-    +'<path class="road2" d="M1200,1225 L1160,1060 L1130,560 C1120,460 1040,360 940,350 C1050,330 1200,340 1290,400 C1380,470 1392,620 1376,800 C1366,890 1290,960 1230,990 C1200,1010 1175,1030 1160,1060"/>'
     +'<text class="maplabel mapgold" x="1235" y="1258" font-size="22">▲ Vstup</text>'
     +'<text class="maplabel" x="1535" y="300" font-size="15" transform="rotate(90 1535 300)" opacity=".7">Piešťany 1 km ◄ · ► Hlohovec</text>'
-    +'<text class="maplabel" x="430" y="1230" font-size="22" opacity=".9">Mapa kempu</text><text class="mapsub" x="430" y="1252" font-size="12">MIERKA PRIBLIŽNÁ · PODĽA OFICIÁLNEJ MAPY 2023</text>'
+    +'<text class="mapsub" x="430" y="1250" font-size="13">mierka približná, podľa oficiálnej mapy kempu 2023</text>'
     +zones+plots+facs+'</svg>';
   const tip=$('#tip'), panel=$('#sec-map'); let tipT;
   const placeTip = (x,y) => { const r=panel.getBoundingClientRect(); if(x+250>r.width) x-=264; if(y+130>r.height) y-=124; tip.style.left=Math.max(4,x)+'px'; tip.style.top=Math.max(4,y)+'px'; };
@@ -223,13 +222,13 @@ function updateMapState(){
   const fits=fitsAll(), hard=hasHard(); let freeCount=0, okCount=0;
   $('#mapbox').querySelectorAll('.plot').forEach(g=>{
     const id=g.dataset.id, k=g.dataset.type, z=zoneOf(id), free=placeFree(id);
-    const pass = passFilter(k) && (!S.f.fit || !hard || fits[k]);
-    g.classList.toggle('busy', free<=0); g.classList.toggle('sel', S.parcel===id); g.classList.toggle('dim', !pass); g.classList.toggle('hide', S.f.free && free<=0);
+    const pass = passFilter(k) && (!hard || fits[k]);
+    g.classList.toggle('busy', free<=0); g.classList.toggle('sel', S.parcel===id); g.classList.toggle('dim', !pass);
     g.setAttribute('aria-label', placeLabel(id)+', '+(z ? (free>0 ? 'voľných miest: '+free+' z '+z.cap : 'bez voľného miesta') : (free>0?'voľná':'obsadená'))+(pass?'':', nevyhovuje filtru')+(S.parcel===id?', vybrané miesto':''));
     if(z) g.querySelector('.zcount').textContent = free+' / '+z.cap+' voľných';
     if(free>0){ freeCount++; if(pass) okCount++; }
   });
-  $('#mapTag').textContent = 'Krok 2 · voľných '+freeCount+', vyhovuje '+okCount;
+  $('#mapTag').textContent = 'voľných '+freeCount+', vyhovuje '+okCount;
   if(!$('#listview').hidden) renderList(fits);
 }
 function firstFree(k){ return TYPES[k].zone ? (ZONES.find(z=>z.type===k && zoneFree(z)>0)||{}).id : (PARCELS.find(p=>p.type===k && isFree(p.id))||{}).id; }
@@ -239,27 +238,33 @@ function renderList(fits){
     const free = t.zone ? zs.reduce((s,z)=>s+zoneFree(z),0) : ps.filter(p=>isFree(p.id)).length;
     const total = t.zone ? zs.reduce((s,z)=>s+z.cap,0) : ps.length;
     const first = firstFree(k), fit = !hard || fits[k];
-    const hk = (t.elec?ICO.elec:'')+(t.water?ICO.water:'')+(t.grey?ICO.grey:'');
-    return '<tr class="'+(fit?'':'nofit')+'"'+(passFilter(k)?'':' hidden')+'><td><b>'+esc(t.name)+'</b><br><span class="small muted">'+esc(hookText(t))+'</span></td><td class="n">'+sizeText(t)+'</td><td><span class="hk" title="'+esc(hookText(t))+'">'+hk+'</span></td><td class="n">'+fmt(t.price)+'</td><td class="n">'+(n>0?fmt(t.price*n):'–')+'</td><td class="n">'+free+' / '+total+'</td><td>'
+    return '<tr class="'+(fit?'':'nofit')+'"'+(passFilter(k)?'':' hidden')+'><td><b>'+esc(t.name)+'</b><br><span class="small muted">'+sizeText(t)+' · '+esc(hookText(t))+'</span></td><td class="n">'+fmt(t.price)+'</td><td class="n stay">'+(n>0?fmt(t.price*n):'–')+'</td><td class="n">'+free+' / '+total+'</td><td>'
       +(hard?(fit?'<span class="fitok">zmestíte sa</span> ':'<span class="fitno">nezmestíte sa</span> '):'')+'<button class="btn sm" type="button" data-pick="'+(first||'')+'"'+(first&&fit?'':' disabled')+'>Vybrať</button></td></tr>'; }).join('');
-  $('#listview').innerHTML = '<table><thead><tr><th>Typ miesta</th><th>Rozmer</th><th>Prípojky</th><th>Za noc</th><th>Za pobyt</th><th>Voľných</th><th></th></tr></thead><tbody>'+rows+'</tbody></table><p class="note" style="margin-top:8px">Cena za miesto bez osôb a elektriny. Tlačidlo Vybrať zvolí prvé voľné miesto daného typu, konkrétnu parcelu si vyberiete v mape.</p>';
+  $('#listview').innerHTML = '<table><thead><tr><th>Typ miesta</th><th class="n">Za noc</th><th class="n stay">Za pobyt</th><th class="n">Voľných</th><th></th></tr></thead><tbody>'+rows+'</tbody></table><p class="note" style="margin-top:8px">Cena za miesto bez osôb a elektriny. Tlačidlo Vybrať zvolí prvé voľné miesto daného typu, konkrétnu parcelu si vyberiete v mape.</p>';
   $('#listview').querySelectorAll('[data-pick]').forEach(b=>b.addEventListener('click',()=>{ if(b.dataset.pick) selectParcel(b.dataset.pick); }));
 }
 function recommend(){
   if(!S.items.length){ toast('Najprv vyberte v kroku 1, s čím prídete. Potom vám odporučíme najlacnejšie voľné miesto.'); $('#qCat').focus(); return; }
   if(nights()<=0 || !inSeason()){ toast('Najprv zvoľte termín v sezóne 2026.'); $('#dIn').focus(); return; }
   const fits=fitsAll(), hard=S.items.filter(o=>lay(o)==='solid'), tents=hard.length>0 && hard.every(o=>kind(o).indexOf('tent')===0);
-  const order=(tents?['S','V','M','L','XL']:['V','M','L','XL']).filter(k=>fits[k] && (!S.f.water || TYPES[k].water));
+  const order=(tents?['S','V','M','L','XL']:['V','M','L','XL']).filter(k=>fits[k]);
   for(const k of order){ const id=firstFree(k); if(id){ selectParcel(id); toast('Odporúčame: '+placeLabel(id)+'. Je to najlacnejšie voľné miesto, kam sa zmestíte.'); return; } }
   toast('V tomto termíne nie je voľné miesto, kam sa zmestíte. Skúste iný termín alebo menej výbavy.');
 }
 function initMapControls(){
   $('#fType').querySelectorAll('button').forEach(b=>{ b.classList.toggle('on', b.dataset.f===S.f.type); b.setAttribute('aria-pressed', String(b.dataset.f===S.f.type));
     b.addEventListener('click',()=>{ S.f.type=b.dataset.f; $('#fType').querySelectorAll('button').forEach(x=>{ x.classList.toggle('on', x===b); x.setAttribute('aria-pressed', String(x===b)); }); updateMapState(); persist(); }); });
-  $('#fFit').checked=!!S.f.fit; $('#fWater').checked=!!S.f.water; $('#fFree').checked=!!S.f.free;
-  [['fFit','fit'],['fWater','water'],['fFree','free']].forEach(a=>$('#'+a[0]).addEventListener('change',e=>{ S.f[a[1]]=e.target.checked; updateMapState(); persist(); }));
-  $('#viewToggle').addEventListener('click',()=>{ const lv=$('#listview'); lv.hidden=!lv.hidden; $('#mapbox').hidden=!lv.hidden; $('#viewToggle').textContent = lv.hidden?'Zoznam':'Mapa'; $('#viewToggle').setAttribute('aria-pressed', String(!lv.hidden)); $('#tip').hidden=true; if(!lv.hidden) renderList(); });
+  $('#viewToggle').addEventListener('click',()=>{ const lv=$('#listview'); lv.hidden=!lv.hidden; $('#mapbox').hidden=!lv.hidden; $('#viewToggle').textContent = lv.hidden?'Zoznam':'Mapa'; $('#viewToggle').setAttribute('aria-pressed', String(!lv.hidden)); $('#tip').hidden=true; $('#mapHint').hidden=!lv.hidden; if(!lv.hidden) renderList(); else centerMap(); });
   $('#recBtn').addEventListener('click', recommend);
+}
+
+/* on a phone the map is wider than the screen: bring the chosen pitch, or all of them, to the middle */
+function centerMap(){
+  const box=$('#mapbox'); if(box.hidden || box.scrollWidth<=box.clientWidth+1) return;
+  const one=S.parcel && box.querySelector('.plot.sel'); let l=Infinity, r=-Infinity;
+  (one?[one]:[...box.querySelectorAll('.plot')]).forEach(g=>{ const b=g.getBoundingClientRect(); if(!b.width) return; l=Math.min(l,b.left); r=Math.max(r,b.right); });
+  if(l>r) return;
+  const bb=box.getBoundingClientRect(); box.scrollLeft += (l+r)/2 - (bb.left+bb.width/2);
 }
 
 /* ---------- Parcel selection ---------- */
@@ -273,7 +278,7 @@ const curType = () => { const i=parcelInfo(); return i ? i.type : TYPES.M; };
 function selectParcel(id){
   S.parcel=id; S.sel=null; S.sent=null; $('#confirm').hidden=true; $('#bookForm').hidden=false;
   const t=curType(), bad=badMap(t); if(S.items.some(o=>bad[o.uid])) autoLayout();
-  updateMapState(); renderParcel(); renderPlan(); renderPrice(); persist();
+  updateMapState(); renderParcel(); renderPlan(); renderPrice(); persist(); centerMap();
   try{ history.replaceState(null,'','#'+id); }catch(e){}
   $('#tip').hidden=true;
   openPlanner();
@@ -281,13 +286,13 @@ function selectParcel(id){
 function deselectParcel(){ if(plannerOpen) closePlanner(false); S.parcel=null; S.sel=null; try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} renderParcel(); renderPlan(); renderPrice(); persist(); }
 function renderParcel(){
   const i=parcelInfo();
-  if(!i){ $('#pTitle').textContent='Vyberte parcelu'; $('#pDims').textContent='–'; $('#pDesc').textContent='Kliknite na parcelu alebo zónu v mape.'; $('#pChips').innerHTML=''; $('#pTag').textContent='Krok 2'; $('#fElec').disabled=false; return; }
+  if(!i){ $('#pTitle').textContent='Vyberte parcelu'; $('#pDims').hidden=true; $('#pDesc').hidden=false; $('#pDesc').textContent='Kliknite na parcelu alebo zónu v mape.'; $('#pChips').innerHTML=''; $('#pTag').textContent=''; $('#fElec').disabled=false; return; }
   const t=i.type;
   $('#pTitle').textContent=i.label; $('#pTag').textContent=fmt(t.price)+' / noc';
-  $('#pDims').innerHTML = t.zone ? 'max. '+m2(t.area) : sizeText(t)+' <span class="muted" style="font-size:18px;font-weight:500">· '+m2(t.area)+'</span>';
-  $('#pDesc').textContent=t.desc;
+  $('#pDims').innerHTML = t.zone ? 'max. '+m2(t.area)+' <span class="muted" style="font-size:18px;font-weight:500">na posádku</span>' : sizeText(t)+' <span class="muted" style="font-size:18px;font-weight:500">· '+m2(t.area)+'</span>';
+  $('#pDims').hidden=false; $('#pDesc').textContent=t.desc; $('#pDesc').hidden=!t.desc;
   $('#pChips').innerHTML = '<span class="chip '+(t.elec===true?'on':t.elec?'':'off')+'">'+ICO.elec+(t.elec===true?' elektrina 230 V':t.elec?' elektrina po dohode s recepciou':' elektrina')+'</span>'
-    +'<span class="chip '+(t.water?'on':'off')+'">'+ICO.water+' pitná voda</span><span class="chip '+(t.grey?'on':'off')+'">'+ICO.grey+' výpust šedej vody</span>';
+    +(t.water?'<span class="chip on">'+ICO.water+' pitná voda</span>':'<span class="chip off">bez pitnej vody</span>')+(t.grey?'<span class="chip on">'+ICO.grey+' výpust šedej vody</span>':'<span class="chip off">bez výpustu</span>');
   $('#fElec').disabled=!t.elec; if(!t.elec) $('#fElec').checked=false;
 }
 
@@ -539,8 +544,8 @@ function initQuick(){
 
 /* step 3: add vehicles and gear in the planner */
 const PK = {tab:'veh', cat:{veh:'suv', gear:'tent23'}, mid:null, hit:false};
-const NOTE = {veh:'Tri modely sú v rovnakej mierke, vodorovné čiary sú po 1 m. Šírka je bez zrkadiel, karavan a prívesný vozík vrátane oja. Iný model? Vyberte najbližší, upravte dĺžku a šírku a do poľa Hľadať napíšte jeho názov.',
-  gear:'Karty sú v rovnakej mierke, čiary po 1 m. Markíza a predstan sa samy priložia k pravej strane vozidla, strešný stan na strechu auta. Stôl, gril či lehátka môžu stáť pod prístreškom.'};
+const NOTE = {veh:'Tri modely sú v rovnakej mierke, čiary sú po 1 m. Máte iný model? Vyberte najbližší a upravte dĺžku a šírku.',
+  gear:'Markíza a predstan sa samy priložia k pravej strane vozidla, strešný stan na strechu auta.'};
 function renderPicker(keepDims){
   const ids=TABIDS[PK.tab], cat=CATBY[PK.cat[PK.tab]];
   $('#vCat').innerHTML=catOptions(ids); $('#vCat').value=cat.id;
@@ -594,7 +599,7 @@ function openPlanner(){
   const i=parcelInfo(); if(!i) return;
   lastFocus=document.activeElement;
   const t=i.type; $('#plTitle').textContent=i.label;
-  $('#plMeta').textContent = (t.zone ? sizeText(t)+' · tvar plochy je ilustračný' : sizeText(t)+' · '+m2(t.area))+' · '+hookText(t)+' · '+fmt(t.price)+' / noc';
+  $('#plMeta').textContent = (t.zone ? sizeText(t) : sizeText(t)+' · '+m2(t.area))+' · '+hookText(t)+' · '+fmt(t.price)+' / noc';
   $('#sShapeWrap').hidden=!t.zone;
   $('#planner').hidden=false; plannerOpen=true; document.body.style.overflow='hidden'; $('.wrap').inert=true; $('#sticky').inert=true; S.view={z:1,cx:null,cy:null};
   renderPicker(); renderPlan(); setTimeout(()=>{ $('#plClose').focus(); }, 50);
@@ -744,6 +749,9 @@ function boot(){
   let hid=''; try{ hid=decodeURIComponent((location.hash||'').slice(1)); }catch(e){}   // a malformed hash must not stop the page
   if(hid && (PARCELS.some(p=>p.id===hid) || ZONES.some(z=>z.id===hid)) && placeFree(hid)>0) S.parcel=hid;
   if(S.parcel && placeFree(S.parcel)<=0) S.parcel=null;
+  /* ?embed=1: the page sits inside the camp's own site, which brings its own header and footer */
+  if(/[?&]embed(=1)?(&|$)/.test(location.search)) document.documentElement.classList.add('embed');
   renderDates(); initMapControls(); buildMap(); initQuick(); initPicker(); renderParcel(); renderPlan(); renderPrice();
+  centerMap(); requestAnimationFrame(centerMap);
 }
 if(hot && hot.ready) hot.ready(boot); else boot();

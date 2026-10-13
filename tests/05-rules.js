@@ -23,9 +23,7 @@ module.exports = async ({ev,shot,nav,viewport,sleep,click,send,base}) => {
   await click('#qClear'); console.log('cleared', await st(), await ev(`JSON.stringify({cat:${q('#qCat')}.value, cardsHidden:${q('#qCards')}.hidden})`));
   // filters
   await click('#fType [data-f="L"]'); console.log('filter L', await ev(`JSON.stringify({dim:document.querySelectorAll('.plot.dim').length, total:document.querySelectorAll('.plot').length, tag:${q('#mapTag')}.textContent})`));
-  await click('#fType [data-f="all"]'); await ev(`(()=>{const c=${q('#fWater')}; c.checked=true; c.dispatchEvent(new Event('change',{bubbles:true})); const d=${q('#fFree')}; d.checked=true; d.dispatchEvent(new Event('change',{bubbles:true}));})()`);
-  console.log('water+hide busy', await ev(`JSON.stringify({dim:document.querySelectorAll('.plot.dim').length, hidden:document.querySelectorAll('.plot.hide').length, tag:${q('#mapTag')}.textContent})`));
-  await ev(`(()=>{const c=${q('#fWater')}; c.checked=false; c.dispatchEvent(new Event('change',{bubbles:true})); const d=${q('#fFree')}; d.checked=false; d.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+  await click('#fType [data-f="all"]'); console.log('filter all', await ev(`JSON.stringify({dim:document.querySelectorAll('.plot.dim').length, gone:['#fFit','#fWater','#fFree'].filter(s=>document.querySelector(s)).length, tag:${q('#mapTag')}.textContent})`));
   // select a free M parcel, then find a date where it becomes busy
   console.log('date→busy', await ev(`(()=>{const g=[...document.querySelectorAll('.plot[data-type="M"]')].find(g=>!g.classList.contains('busy')); g.dispatchEvent(new MouseEvent('click',{bubbles:true})); document.body.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
     const id=g.dataset.id, dIn=document.querySelector('#dIn'); const S0=JSON.parse(localStorage.getItem('pullmann-plan-v3'));

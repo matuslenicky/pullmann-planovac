@@ -1,7 +1,8 @@
 <div class="wrap">
   <p class="demo" role="note"><b>Ukážka návrhu.</b> Toto nie je oficiálna stránka kempu. Obsadenosť je vymyslená a rezervácia sa nikam neodosiela.</p>
-  <div class="band">
-    <header class="top">
+
+  <header class="site">
+    <div class="in">
       <a class="brand" href="https://www.campingpiestany.sk/" target="_blank" rel="noopener" aria-label="Camping Pullmann Piešťany">
         <img src="{{LOGO}}" alt="Pullmann Camping Piešťany" width="400" height="182">
       </a>
@@ -9,146 +10,146 @@
         <a href="https://www.campingpiestany.sk/" target="_blank" rel="noopener">Domov</a>
         <a href="https://www.campingpiestany.sk/?page_id=67" target="_blank" rel="noopener">Camping</a>
         <a href="https://www.campingpiestany.sk/?page_id=115" target="_blank" rel="noopener">Cenník</a>
-        <a class="cur" href="#planovac">Plánovač parcely</a>
+        <a class="cur" href="#planovac" aria-current="page">Plánovač parcely</a>
         <a href="https://www.campingpiestany.sk/?page_id=1710" target="_blank" rel="noopener">Rezervácie</a>
       </nav>
-    </header>
-  </div>
+    </div>
+  </header>
 
-  <section class="hero" id="planovac" style="background-image:url('{{HERO}}')">
-    <div class="hero-in">
-      <div>
-        <div class="eyebrow">Online rezervácia parcely</div>
-        <h1>Plánovač parcely</h1>
-        <p class="lead">Vyberte termín a vozidlo, kliknite na parcelu v mape kempu a poskladajte si na nej auto, karavan, stan aj prístrešok v skutočných rozmeroch. Hneď vidíte, či sa zmestíte, kde máte elektrinu a vodu a koľko pobyt stojí.</p>
-      </div>
+  <main class="in">
+    <section class="intro" id="planovac">
+      <h1>Plánovač parcely</h1>
+      <p class="lead">Vyberte termín, povedzte, s čím prídete, a kliknite na parcelu v mape. Hneď uvidíte, či sa zmestíte a koľko pobyt stojí.</p>
       <ol class="steps" aria-label="Postup">
-        <li class="step" id="st1"><div class="n">KROK 1</div><div class="t">Termín a vozidlo</div></li>
-        <li class="step" id="st2"><div class="n">KROK 2</div><div class="t">Parcela v mape</div></li>
-        <li class="step" id="st3"><div class="n">KROK 3</div><div class="t">Rozloženie na parcele</div></li>
-        <li class="step" id="st4"><div class="n">KROK 4</div><div class="t">Rezervácia</div></li>
+        <li class="step" id="st1"><span class="n">1</span><span class="t">Termín a posádka</span></li>
+        <li class="step" id="st2"><span class="n">2</span><span class="t">Parcela v mape</span></li>
+        <li class="step" id="st3"><span class="n">3</span><span class="t">Rozloženie na parcele</span></li>
+        <li class="step" id="st4"><span class="n">4</span><span class="t">Rezervácia</span></li>
       </ol>
-    </div>
-  </section>
+    </section>
 
-  <div class="grid">
-    <!-- LEFT COLUMN -->
-    <div class="col">
-      <section class="panel" id="sec-date">
-        <div class="ph"><h2>Termín, posádka a vozidlo</h2><span class="tag">Krok 1</span></div>
-        <div class="pb row">
-          <div class="row c2">
-            <label><span>Príchod (od 13:00)</span><input type="date" id="dIn"></label>
-            <label><span>Odchod (do 12:00)</span><input type="date" id="dOut"></label>
+    <div class="grid">
+      <!-- LEFT: what the guest fills in -->
+      <div class="col">
+        <section class="panel" id="sec-date">
+          <div class="ph"><h2>1. Termín a posádka</h2></div>
+          <div class="pb">
+            <div class="row c2 dates">
+              <label><span>Príchod (od 13:00)</span><input type="date" id="dIn"></label>
+              <label><span>Odchod (do 12:00)</span><input type="date" id="dOut"></label>
+            </div>
+            <div class="row c4">
+              <label><span>Dospelí</span><div class="num"><button type="button" data-dec="adults" aria-label="Menej dospelých">−</button><output id="adults">2</output><button type="button" data-inc="adults" aria-label="Viac dospelých">+</button></div></label>
+              <label><span>Deti 3–12 r.</span><div class="num"><button type="button" data-dec="kids" aria-label="Menej detí">−</button><output id="kids">0</output><button type="button" data-inc="kids" aria-label="Viac detí">+</button></div></label>
+              <label><span>Deti do 3 r.</span><div class="num"><button type="button" data-dec="babies" aria-label="Menej detí do 3 rokov">−</button><output id="babies">0</output><button type="button" data-inc="babies" aria-label="Viac detí do 3 rokov">+</button></div></label>
+              <label><span>Psy</span><div class="num"><button type="button" data-dec="dogs" aria-label="Menej psov">−</button><output id="dogs">0</output><button type="button" data-inc="dogs" aria-label="Viac psov">+</button></div></label>
+            </div>
+            <p class="small muted" id="dateInfo" aria-live="polite"></p>
+            <h3 class="sub">S čím prídete</h3>
+            <div class="row c2">
+              <label><span>Kategória</span><select id="qCat"></select></label>
+              <label><span>Hľadať model</span><input id="qSearch" placeholder="Kodiaq, karavan, SUV…" autocomplete="off" enterkeyhint="search"></label>
+            </div>
+            <div class="cards" id="qCards" role="group" aria-label="Tri modely na porovnanie" hidden></div>
+            <div class="pl-dims" id="qDims" hidden>
+              <label><span>Dĺžka (m)</span><input id="qL" type="number" step="0.01" min="0.2" max="20" inputmode="decimal"></label>
+              <label><span>Šírka (m)</span><input id="qW" type="number" step="0.01" min="0.2" max="10" inputmode="decimal"></label>
+              <button class="btn" id="qClear" type="button">Bez vozidla</button>
+            </div>
+            <p class="small muted" id="qInfo" aria-live="polite"></p>
           </div>
-          <div class="row c4">
-            <label><span>Dospelí</span><div class="num"><button type="button" data-dec="adults" aria-label="Menej dospelých">−</button><output id="adults">2</output><button type="button" data-inc="adults" aria-label="Viac dospelých">+</button></div></label>
-            <label><span>Deti 3–12 r.</span><div class="num"><button type="button" data-dec="kids" aria-label="Menej detí">−</button><output id="kids">0</output><button type="button" data-inc="kids" aria-label="Viac detí">+</button></div></label>
-            <label><span>Deti do 3 r.</span><div class="num"><button type="button" data-dec="babies" aria-label="Menej detí do 3 rokov">−</button><output id="babies">0</output><button type="button" data-inc="babies" aria-label="Viac detí do 3 rokov">+</button></div></label>
-            <label><span>Psy</span><div class="num"><button type="button" data-dec="dogs" aria-label="Menej psov">−</button><output id="dogs">0</output><button type="button" data-inc="dogs" aria-label="Viac psov">+</button></div></label>
-          </div>
-          <p class="small muted" id="dateInfo" aria-live="polite"></p>
-          <div class="row c2">
-            <label><span>S čím prídete</span><select id="qCat"></select></label>
-            <label><span>Hľadať model</span><input id="qSearch" placeholder="Kodiaq, karavan, SUV…" autocomplete="off" enterkeyhint="search"></label>
-          </div>
-          <div class="cards" id="qCards" role="group" aria-label="Tri modely na porovnanie" hidden></div>
-          <div class="pl-dims" id="qDims" hidden>
-            <label><span>Dĺžka (m)</span><input id="qL" type="number" step="0.01" min="0.2" max="20" inputmode="decimal"></label>
-            <label><span>Šírka (m)</span><input id="qW" type="number" step="0.01" min="0.2" max="10" inputmode="decimal"></label>
-            <button class="btn" id="qClear" type="button">Bez vozidla</button>
-          </div>
-          <p class="small muted" id="qInfo" aria-live="polite"></p>
-        </div>
-      </section>
+        </section>
 
-      <section class="panel" id="sec-map">
-        <div class="ph"><h2>Mapa kempu</h2><span class="tag" id="mapTag">Krok 2 · kliknite na parcelu</span></div>
-        <div class="mapbar">
-          <div class="fchips" id="fType" role="group" aria-label="Typ miesta"><button type="button" data-f="all" class="on">Všetky</button><button type="button" data-f="M">M</button><button type="button" data-f="L">L</button><button type="button" data-f="XL">XL</button><button type="button" data-f="V">Voľné státie</button><button type="button" data-f="S">Stany</button></div>
-          <label class="toggle sm"><input type="checkbox" id="fFit" checked> len kam sa zmestím</label>
-          <label class="toggle sm"><input type="checkbox" id="fWater"> s vodou a výpustom</label>
-          <label class="toggle sm"><input type="checkbox" id="fFree"> skryť obsadené</label>
-          <span class="mapbtns"><button class="btn sm gold" id="recBtn" type="button">Odporučiť miesto</button><button class="btn sm" id="viewToggle" type="button" aria-pressed="false">Zoznam</button></span>
-        </div>
-        <div class="mapbox" id="mapbox"></div>
-        <div class="listview" id="listview" hidden></div>
-        <div class="tip" id="tip" hidden role="tooltip"></div>
-        <div class="legend">
-          <span><i class="free"></i>voľná v termíne</span>
-          <span><i class="busy"></i>obsadená</span>
-          <span><i class="sel"></i>vybraná</span>
-          <span><i class="dim"></i>nevyhovuje filtru alebo sa nezmestíte</span>
-          <span><i class="zone"></i>voľné státie a stanová plocha (miesto prideľuje recepcia)</span>
-        </div>
-        <p class="mapnote"><span class="mobhint">Na mobile mapu posúvajte do strán. </span>Obsadenosť v mape je ukážková, generovaná pre zvolený termín. Po napojení na rezervačný systém kempu sa tu zobrazí skutočný stav. Parcely M majú elektrinu, L a XL elektrinu, pitnú vodu aj výpust šedej vody.</p>
-      </section>
-    </div>
+        <section class="panel" id="sec-map">
+          <div class="ph"><h2>2. Mapa kempu</h2><span class="tag" id="mapTag">kliknite na parcelu</span></div>
+          <div class="mapbar">
+            <div class="fchips" id="fType" role="group" aria-label="Typ miesta"><button type="button" data-f="all" class="on">Všetky</button><button type="button" data-f="M">M</button><button type="button" data-f="L">L</button><button type="button" data-f="XL">XL</button><button type="button" data-f="V">Voľné státie</button><button type="button" data-f="S">Stany</button></div>
+            <span class="mapbtns"><button class="btn sm primary" id="recBtn" type="button">Odporučiť miesto</button><button class="btn sm" id="viewToggle" type="button" aria-pressed="false">Zoznam</button></span>
+          </div>
+          <p class="mapnote mobhint" id="mapHint">Mapu posúvajte prstom do strán.</p>
+          <div class="mapbox" id="mapbox"></div>
+          <div class="listview" id="listview" hidden></div>
+          <div class="tip" id="tip" hidden role="tooltip"></div>
+          <div class="legend">
+            <span><i class="free"></i>voľná</span>
+            <span><i class="busy"></i>obsadená</span>
+            <span><i class="sel"></i>vybraná</span>
+            <span><i class="dim"></i>nezmestíte sa alebo mimo filtra</span>
+          </div>
+          <p class="mapnote">Obsadenosť je ukážková. Miesto vo voľnom státí a na stanovej lúke prideľuje recepcia.</p>
+        </section>
+      </div>
 
-    <!-- RIGHT COLUMN -->
-    <div class="col">
-      <section class="panel" id="sec-parcel">
-        <div class="ph"><h2 id="pTitle">Vyberte parcelu</h2><span class="tag" id="pTag">Krok 2</span></div>
-        <div class="pb">
+      <!-- RIGHT: the chosen place and the booking -->
+      <div class="col">
+        <section class="panel box" id="sec-parcel">
+          <div class="ph"><h2 id="pTitle">Vyberte parcelu</h2><span class="tag" id="pTag"></span></div>
           <div class="pdet">
             <div>
-              <div class="big" id="pDims">–</div>
+              <div class="big" id="pDims" hidden></div>
               <div class="muted small" id="pDesc">Kliknite na parcelu alebo zónu v mape.</div>
             </div>
             <div class="chips" id="pChips"></div>
           </div>
           <div class="summ" id="summ" aria-live="polite"></div>
-          <button class="btn primary wide" id="openPlanner" type="button" hidden>Otvoriť plánovač parcely na celú obrazovku</button>
-        </div>
-      </section>
+          <button class="btn primary wide" id="openPlanner" type="button" hidden>Otvoriť plánovač parcely</button>
+        </section>
 
-      <section class="panel" id="sec-book">
-        <div class="ph"><h2>Rezervácia</h2><span class="tag">Krok 4 · cenník platný od 1. 3. 2026</span></div>
-        <div class="pb row">
-          <div class="bsum" id="bsum"></div>
-          <table id="price"></table>
-          <p class="note">Ceny za noc vrátane 5 % DPH. Hlavná sezóna pre osoby 19. 6. – 1. 9. Elektrina 5 € / noc do 6 kWh, ďalšia kWh 0,60 €. Pri pobyte nad 7 nocí zľava 10 %. Daň z ubytovania 0,50 € / dospelá osoba / noc. Kempové miesto platí pre 1 posádku: obytné auto, auto a príves alebo stan a auto. Sólo cestovateľ s jedným stanom a bicyklom alebo motorkou má balíček 15 € / 17 € za noc. Výpočet je predbežný, konečnú cenu potvrdí recepcia.</p>
-          <form id="bookForm" novalidate>
-            <div class="row c2">
-              <label><span>Meno a priezvisko</span><input id="fName" autocomplete="name" required></label>
-              <label><span>Telefón</span><input id="fPhone" type="tel" autocomplete="tel" required></label>
-            </div>
-            <div class="row" style="margin-top:12px">
-              <label><span>E-mail</span><input id="fMail" type="email" autocomplete="email" required></label>
-              <label><span>Poznámka (ŠPZ, požiadavky, čas príchodu)</span><input id="fNote"></label>
-              <label class="toggle"><input type="checkbox" id="fElec" checked> Chcem pripojenie na elektrinu (5 € / noc)</label>
-              <label class="toggle"><input type="checkbox" id="fEarly"> Skorý príchod alebo neskorý odchod do 4 h (10 €, parcela XL 15 €, po dohode)</label>
-              <label class="toggle"><input type="checkbox" id="fRules" required> Súhlasím s ubytovacím poriadkom (nočný kľud 23:00–07:00)</label>
-              <p class="err" id="fErr" role="alert" hidden></p>
-              <button class="btn primary wide" type="submit" id="sendBtn">Odoslať nezáväznú rezerváciu</button>
-              <p class="note">Rezervácia sa stáva záväznou až po spätnom e-mailovom potvrdení recepcie. Miesto držíme v deň príchodu do 18:00. Zmeny hláste najneskôr 3 dni pred nástupom. Potrebujete poradiť? Recepcia od 8:00: <a class="mono" href="tel:+421911201089">+421 911 201 089</a>.</p>
-            </div>
-          </form>
-          <div id="confirm" hidden></div>
-        </div>
-      </section>
+        <section class="panel box" id="sec-book">
+          <div class="ph"><h2>4. Rezervácia</h2><span class="tag">cenník 2026</span></div>
+          <div class="pb">
+            <div class="bsum" id="bsum"></div>
+            <table id="price"></table>
+            <details class="more">
+              <summary>Podmienky a cenník</summary>
+              <p class="note">Ceny za noc vrátane 5 % DPH. Hlavná sezóna pre osoby 19. 6. – 1. 9. Elektrina 5 € / noc do 6 kWh, ďalšia kWh 0,60 €. Pri pobyte nad 7 nocí zľava 10 %. Daň z ubytovania 0,50 € / dospelá osoba / noc. Kempové miesto platí pre 1 posádku: obytné auto, auto a príves alebo stan a auto. Sólo cestovateľ s jedným stanom a bicyklom alebo motorkou má balíček 15 € / 17 € za noc. Cenník platí od 1. 3. 2026. Výpočet je predbežný, konečnú cenu potvrdí recepcia.</p>
+            </details>
+            <form id="bookForm" novalidate>
+              <div class="pb">
+                <div class="row c2">
+                  <label><span>Meno a priezvisko</span><input id="fName" autocomplete="name" required></label>
+                  <label><span>Telefón</span><input id="fPhone" type="tel" autocomplete="tel" required></label>
+                </div>
+                <label><span>E-mail</span><input id="fMail" type="email" autocomplete="email" required></label>
+                <label><span>Poznámka (ŠPZ, požiadavky, čas príchodu)</span><input id="fNote"></label>
+                <div>
+                  <label class="toggle"><input type="checkbox" id="fElec" checked> Pripojenie na elektrinu (5 € / noc)</label>
+                  <label class="toggle"><input type="checkbox" id="fEarly"> Skorý príchod alebo neskorý odchod do 4 h (10 €, XL 15 €, po dohode)</label>
+                  <label class="toggle"><input type="checkbox" id="fRules" required> Súhlasím s ubytovacím poriadkom (nočný kľud 23:00–07:00)</label>
+                </div>
+                <p class="err" id="fErr" role="alert" hidden></p>
+                <button class="btn primary wide" type="submit" id="sendBtn">Odoslať nezáväznú rezerváciu</button>
+                <p class="note">Rezervácia je záväzná až po e-mailovom potvrdení recepcie. Miesto držíme v deň príchodu do 18:00. Zmeny hláste najneskôr 3 dni vopred. Recepcia od 8:00: <a class="mono" href="tel:+421911201089">+421 911 201 089</a>.</p>
+              </div>
+            </form>
+            <div id="confirm" hidden></div>
+          </div>
+        </section>
+      </div>
     </div>
-  </div>
+  </main>
 
-  <footer>
-    <span>Camping Pullmann · Cesta Janka Alexyho, Piešťany – Banka</span>
-    <span>Recepcia od 8:00: <a class="mono" href="tel:+421911201089">+421 911 201 089</a></span>
-    <span><a href="mailto:info@campingpiestany.sk">info@campingpiestany.sk</a></span>
-    <span>Sezóna 2026: 2. 4. – 15. 11.</span>
+  <footer class="site-foot">
+    <div class="in">
+      <span>Camping Pullmann · Cesta Janka Alexyho, Piešťany – Banka</span>
+      <span>Recepcia od 8:00: <a class="mono" href="tel:+421911201089">+421 911 201 089</a></span>
+      <span><a href="mailto:info@campingpiestany.sk">info@campingpiestany.sk</a></span>
+      <span>Sezóna 2026: 2. 4. – 15. 11.</span>
+    </div>
   </footer>
 </div>
 
 <div class="planner" id="planner" hidden role="dialog" aria-modal="true" aria-labelledby="plTitle">
   <div class="pl-head">
-    <div class="pl-title"><div class="eyebrow">Pôdorys parcely<span class="k3"> · krok 3</span></div><h2 id="plTitle">Parcela</h2><div class="pl-meta" id="plMeta"></div></div>
-    <div class="pl-actions"><button class="btn gold" id="plDone" type="button">Hotovo, pokračovať</button><button class="btn icon" id="plClose" type="button" aria-label="Zavrieť plánovač">✕</button></div>
+    <div class="pl-title"><div class="eyebrow">3. Rozloženie<span class="k3"> na parcele</span></div><h2 id="plTitle">Parcela</h2><div class="pl-meta" id="plMeta"></div></div>
+    <div class="pl-actions"><button class="btn light" id="plDone" type="button">Hotovo, pokračovať</button><button class="btn icon" id="plClose" type="button" aria-label="Zavrieť plánovač">✕</button></div>
   </div>
   <div class="pl-body">
     <div class="pl-stage">
       <div class="plan" id="plan"></div>
       <div class="obtools" id="obtools" hidden><button type="button" data-act="rot" title="Otočiť o 90° (R)" aria-label="Otočiť o 90 stupňov">⟳</button><button type="button" data-act="dup" title="Duplikovať" aria-label="Duplikovať">⧉</button><button type="button" data-act="del" title="Zmazať (Delete)" aria-label="Zmazať">✕</button></div>
       <div class="zoom"><button type="button" id="zIn" aria-label="Priblížiť">+</button><button type="button" id="zOut" aria-label="Oddialiť">−</button><button type="button" id="zReset" aria-label="Zobraziť celú parcelu">⤢</button></div>
-      <div class="pl-hint" id="plHint">Klik na objekt zobrazí nástroje · ťahajte myšou alebo prstom · šípky posúvajú · R otočí · Delete zmaže</div>
+      <div class="pl-hint" id="plHint">Objekt ťahajte myšou alebo prstom. Klik naň zobrazí otočenie, kópiu a zmazanie.</div>
     </div>
     <aside class="pl-side">
       <div class="pl-sec">

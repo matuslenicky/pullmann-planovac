@@ -6,6 +6,17 @@ Návrh novej sekcie pre web kempu Camping Pullmann v Piešťanoch: hosť si vybe
 
 Živá ukážka: https://matuslenicky.github.io/pullmann-planovac/
 
+## Vzhľad a pripojenie k webu kempu
+
+Stránka je navrhnutá ako doplnková služba k webu campingpiestany.sk, nie ako samostatný web. Preberá jeho vzhľad: sivú hlavičku s logom, biele pozadie, zelené verzálkové nadpisy, zelenú pätičku a systémové písmo. Nenačítava nič z internetu, všetko je v jednom súbore. Modrý výkres s mriežkou je len v plánovači jednej parcely.
+
+Pripojiť sa dá dvoma spôsobmi:
+
+- ako podstránka: `index.html` sa nahrá na web kempu a pridá sa do menu,
+- vložením do existujúcej stránky: adresa s `?embed=1` skryje vlastnú hlavičku a pätičku, takže sa dá dať do rámu (`iframe`) pod menu kempu.
+
+Pred ostrým nasadením treba doplniť skutočnú obsadenosť a odosielanie rezervácie a odstrániť pásik „Ukážka návrhu".
+
 ## Čo je v repozitári
 
 | Cesta | Čo to je |
@@ -39,4 +50,4 @@ node tests/run.js    # spustí vlastný Chrome, prejde 9 scenárov a Chrome zase
 
 ## Práva
 
-Logo a fotografia v hlavičke patria kempu Camping Pullmann a sú tu len ako súčasť návrhu. Bez súhlasu kempu ich ďalej nepoužívajte.
+Logo v hlavičke patrí kempu Camping Pullmann a je tu len ako súčasť návrhu. Bez súhlasu kempu ho ďalej nepoužívajte.
