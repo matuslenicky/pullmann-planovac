@@ -64,7 +64,7 @@ body{margin:0; color:var(--fg); font-family:var(--sans); font-size:16px; line-he
 .in{max-width:var(--max); margin-inline:auto}
 h1,h2,h3{margin:0; font-weight:500; text-transform:uppercase; text-wrap:balance; line-height:1.2}
 h1{font-size:clamp(26px,3.4vw,34px); letter-spacing:.02em; color:var(--green-text)}
-h2{font-size:19px; letter-spacing:.03em; color:var(--green-text)}
+h2{font-size:20px; letter-spacing:.03em; color:var(--green-text)}
 h3{font-size:14px; font-weight:700; letter-spacing:.05em; color:var(--fg)}
 p{margin:0}
 a{color:var(--green-text)}
@@ -73,11 +73,19 @@ a{color:var(--green-text)}
 .small{font-size:14px}
 .note{font-size:13px; color:var(--faint); line-height:1.45}
 button{font:inherit; color:inherit; cursor:pointer}
-input,select{font:inherit; color:var(--fg); background:var(--field); border:1px solid var(--line-strong); border-radius:var(--radius); padding:8px 10px; min-height:44px; width:100%}
+button,a,input,select,summary,label{touch-action:manipulation}
+input,select{font:inherit; font-size:16px; color:var(--fg); background:var(--field); border:1px solid var(--line-strong); border-radius:var(--radius); padding:8px 10px; min-height:44px; width:100%}
 select{appearance:auto; cursor:pointer}
 input[type=date],input[type=number]{font-variant-numeric:tabular-nums}
 input::placeholder{color:var(--faint); opacity:1}
 input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--green-text); outline-offset:2px}
+.site a:focus-visible,.site-foot a:focus-visible,.toast button:focus-visible{outline-color:#fff}
+input[aria-invalid="true"]{border-color:var(--bad); box-shadow:inset 0 0 0 1px var(--bad)}
+.req{color:var(--bad)}
+.skip{position:absolute; left:-9999px; top:8px; z-index:100; min-height:44px; display:inline-flex; align-items:center; padding:8px 14px; background:var(--paper); color:var(--green-text); border:2px solid var(--green-text); border-radius:var(--radius)}
+.skip:focus{left:var(--gutter)}
+.embed .skip{display:none}
+.intro:focus{outline:none}
 label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25; color:var(--muted)}
 
 /* ---------- Notice, header and footer (as on the camp's site) ---------- */
@@ -87,7 +95,7 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .brand{display:flex; align-items:center; min-height:40px}
 .brand img{height:60px; width:auto; display:block}
 .site nav{display:flex; gap:2px 22px; flex-wrap:wrap}
-.site nav a{color:#fff; font-size:13px; font-weight:700; letter-spacing:.02em; text-transform:uppercase; text-decoration:none; padding-block:12px 10px; border-bottom:2px solid transparent}
+.site nav a{color:#fff; font-size:13px; font-weight:700; letter-spacing:.02em; text-transform:uppercase; text-decoration:none; padding-block:13px 11px; border-bottom:2px solid transparent}
 .site nav a.cur{border-bottom-color:var(--gold)}
 @media (hover:hover){ .site nav a:hover{border-bottom-color:rgba(255,255,255,.7)} }
 @media (max-width:700px){
@@ -99,7 +107,7 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .site-foot{background:var(--green); color:#fff; margin-inline:calc(-1 * var(--gutter)); padding-inline:var(--gutter); font-size:14px}
 .site-foot .in{display:flex; gap:8px 32px; flex-wrap:wrap; padding-block:26px}
 .site-foot a{color:#fff}
-@media (max-width:1000px){ .site-foot .in{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))} .site-foot a{display:inline-block; padding-block:10px} }
+@media (max-width:1000px){ .site-foot .in{row-gap:0; padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))} .site-foot a{display:inline-block; padding-block:12px} }
 
 /* inside the camp's own site (?embed=1) the host page brings the header and the footer */
 .embed .site,.embed .site-foot{display:none}
@@ -108,7 +116,7 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 
 /* ---------- Intro and steps ---------- */
 .intro{padding-block:34px 0}
-.lead{margin-top:10px; max-width:68ch; font-size:17px}
+.lead{margin-top:10px; max-width:68ch; font-size:18px}
 .steps{list-style:none; margin:18px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:8px 26px; font-size:14px; color:var(--muted)}
 .step{display:flex; align-items:center; gap:8px}
 .step .n{width:24px; height:24px; flex:none; border-radius:50%; border:1px solid var(--line-strong); display:grid; place-items:center; font-size:12px; font-weight:700; font-variant-numeric:tabular-nums}
@@ -137,21 +145,28 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .num button{background:transparent; border:0; min-height:44px; font-size:18px; color:var(--green-text)}
 @media (hover:hover){ .num button:hover{background:var(--green-soft)} }
 .num output{display:grid; place-items:center; font-size:16px; color:var(--fg); font-variant-numeric:tabular-nums}
-.toggle{display:flex; align-items:center; gap:10px; min-height:40px; padding-block:6px; cursor:pointer; color:var(--fg); font-size:15px; line-height:1.3}
+.toggle{display:flex; align-items:center; gap:10px; min-height:44px; padding-block:6px; cursor:pointer; color:var(--fg); font-size:16px; line-height:1.3}
 .toggle input{width:18px; height:18px; min-height:0; margin:0; flex:none; accent-color:var(--green)}
-.btn{border:1px solid var(--line-strong); background:var(--paper); color:var(--fg); padding:9px 16px; border-radius:var(--radius); min-height:44px; font-size:15px; display:inline-flex; align-items:center; justify-content:center; gap:8px; text-decoration:none}
+.btn{border:1px solid var(--line-strong); background:var(--paper); color:var(--fg); padding:9px 16px; border-radius:var(--radius); min-height:44px; font-size:16px; display:inline-flex; align-items:center; justify-content:center; gap:8px; text-decoration:none}
 @media (hover:hover){ .btn:hover{background:var(--green-soft)} }
 .btn.primary{background:var(--green); color:#fff; border-color:var(--green)}
 @media (hover:hover){ .btn.primary:hover{background:var(--green-deep); border-color:var(--green-deep)} }
+.btn.accent{border-color:var(--green); color:var(--green-text)}
 .btn.light{background:#fff; color:#344946; border-color:#fff}
 @media (hover:hover){ .btn.light:hover{background:#ecefee} }
-.btn.icon{min-width:44px; padding:0; background:transparent; color:#fff; border-color:rgba(255,255,255,.45)}
+.btn.icon{min-width:44px; padding:0; display:inline-grid; place-items:center; background:transparent; color:#fff; border-color:rgba(255,255,255,.45)}
 @media (hover:hover){ .btn.icon:hover{background:rgba(255,255,255,.14)} }
 .btn[disabled]{opacity:.5; cursor:not-allowed}
-.btn.sm{min-height:40px; padding:6px 12px; font-size:14px}
+.btn.sm{min-height:44px; padding:6px 12px; font-size:14px}
 .btn.wide{width:100%; min-height:48px; font-size:16px}
 .btnrow{display:flex; gap:8px; flex-wrap:wrap}
-.err{color:var(--bad); font-size:14px}
+.err{color:var(--bad); font-size:14px} .err.end{text-align:right}
+.pb > .err{margin-top:-8px}
+.ico{width:20px; height:20px; display:block; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; pointer-events:none}
+/* every control answers a press, and changes of state are eased, not snapped */
+.btn,.fchips button,.card,.tab,.num button,.placed .pr,.placed .pr button,.zoom button,.obtools button,input,select{transition:background-color .15s ease-out,border-color .15s ease-out,color .15s ease-out,box-shadow .15s ease-out}
+.btn:active,.fchips button:active,.tab:active,.num button:active,.card:active,.placed .pr button:active,.zoom button:active,.obtools button:active,.toast button:active{filter:brightness(.93)}
+.btn[disabled]:active{filter:none}
 
 /* ---------- Three models of a category, drawn nose-up at one common scale ---------- */
 .cards{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px}
@@ -169,27 +184,30 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .card .cg{fill:none; stroke:var(--line); stroke-width:1px; vector-effect:non-scaling-stroke}
 #sec-date .card svg{height:150px}
 .pl-dims{display:grid; grid-template-columns:1fr 1fr auto; gap:8px; align-items:end}
-@media (max-width:600px){ .card{padding-inline:4px} .card .dm{font-size:11px; letter-spacing:-.02em} }
+@media (max-width:600px){ .card{padding-inline:4px} .card .dm{letter-spacing:-.01em} }
 
 /* ---------- Map of the camp ---------- */
 #sec-map{position:relative}
 .mapbar{display:flex; gap:10px 12px; flex-wrap:wrap; align-items:center; justify-content:space-between; margin-bottom:12px}
-.fchips{display:flex; gap:6px; flex-wrap:wrap}
-.fchips button{border:1px solid var(--line-strong); background:var(--paper); min-height:40px; min-width:40px; padding:6px 12px; border-radius:var(--radius); font-size:14px; color:var(--fg)}
+.fchips{display:flex; gap:8px; flex-wrap:wrap}
+.fchips button{border:1px solid var(--line-strong); background:var(--paper); min-height:44px; min-width:44px; padding:6px 12px; border-radius:var(--radius); font-size:14px; color:var(--fg)}
 @media (hover:hover){ .fchips button:hover{background:var(--green-soft)} }
 .fchips button.on{background:var(--green); color:#fff; border-color:var(--green)}
 .mapbtns{display:flex; gap:8px; flex-wrap:wrap}
-@media (max-width:430px){ .fchips{gap:5px} .fchips button{padding-inline:8px; font-size:13px} }   /* all six types on one line */
+@media (max-width:430px){   /* a phone: six types as a tidy 3 × 2 grid, the two buttons share a row */
+  .fchips{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); width:100%}
+  .mapbtns{width:100%} .mapbtns .btn{flex:1}
+}
 .mapbox{position:relative; overflow-x:auto; background:var(--m-ground); border:1px solid var(--line); border-radius:var(--radius)}
 .mapbox svg{display:block; width:100%; height:auto; max-width:100%; touch-action:manipulation}
-@media (max-width:700px){ .mapbox svg{min-width:820px; max-width:none} }
+@media (max-width:700px){ .mapbox svg{min-width:910px; max-width:none} }   /* wide enough for every pitch to be a 44 px touch target */
 .outline{fill:var(--m-camp); stroke:var(--m-camp-line); stroke-width:2}
 .water{fill:var(--m-water); stroke:none}
 .road{fill:none; stroke:var(--m-road); stroke-width:12; stroke-linecap:round; stroke-linejoin:round}
 .maplabel{fill:var(--m-ink); font-weight:500; text-transform:uppercase; letter-spacing:.06em}
 .mapsub{fill:var(--m-ink); letter-spacing:.04em}
 .mapgold{fill:var(--green-text); font-weight:700}
-.fac text{fill:var(--m-ink); font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; pointer-events:none; paint-order:stroke; stroke:var(--m-camp); stroke-width:3px; stroke-linejoin:round}
+.fac text{fill:var(--m-ink); font-size:19px; pointer-events:none; paint-order:stroke; stroke:var(--m-camp); stroke-width:4px; stroke-linejoin:round}
 .fac circle{fill:var(--m-ink); stroke:var(--m-camp); stroke-width:1.5}
 .fac line{stroke:var(--m-ink); stroke-width:1; opacity:.6}
 .hz{fill:var(--m-zone)} .hl{stroke:var(--m-zone-hatch); stroke-width:1.6}
@@ -198,18 +216,20 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .plot text{fill:var(--m-free-ink); font-weight:700; font-size:22px; pointer-events:none; text-anchor:middle; dominant-baseline:central}
 .plot.zone path,.plot.zone rect{fill:url(#hatch)}
 .plot.zone text{font-size:19px}
-.plot.zone .zcount{font-weight:400; letter-spacing:.02em}
+.plot.zone .zcount{font-weight:400; font-size:19px}
+.plot .bx{display:none; pointer-events:none}
 @media (hover:hover){ .plot:hover rect,.plot:hover path{stroke:var(--m-sel); stroke-width:2.6} }
 .plot.busy{cursor:not-allowed}
 .plot.busy rect,.plot.busy path{fill:var(--m-busy); stroke:var(--m-busy-line)}
-.plot.busy text{fill:var(--m-busy-ink)}
+.plot.busy text{fill:var(--m-busy-ink); paint-order:stroke; stroke:var(--m-busy); stroke-width:5px; stroke-linejoin:round}
+.plot.busy .bx{display:block; stroke:var(--m-busy-ink); stroke-opacity:.75; stroke-width:1.5}   /* taken: crossed out, not only tinted */
 .plot.dim rect,.plot.dim path{fill:var(--m-dim); stroke:var(--m-dim-line)}
 .plot.dim text{fill:var(--m-dim-ink)}
 .plot.sel rect,.plot.sel path{fill:var(--m-sel); stroke:var(--m-sel); stroke-width:2.6}
 .plot.sel text{fill:var(--m-sel-ink)}
 .legend{display:flex; gap:6px 18px; flex-wrap:wrap; margin-top:10px; font-size:13px; color:var(--muted)}
 .legend i{display:inline-block; width:14px; height:14px; border:1px solid var(--m-free-line); vertical-align:-2px; margin-right:6px; border-radius:2px; background:var(--m-free)}
-.legend i.busy{background:var(--m-busy); border-color:var(--m-busy-line)}
+.legend i.busy{background:linear-gradient(to top right,transparent calc(50% - .8px),var(--m-busy-ink) calc(50% - .8px),var(--m-busy-ink) calc(50% + .8px),transparent calc(50% + .8px)),var(--m-busy); border-color:var(--m-busy-line)}
 .legend i.sel{background:var(--m-sel); border-color:var(--m-sel)}
 .legend i.dim{background:var(--m-dim); border-color:var(--m-dim-line)}
 .mapnote{font-size:13px; color:var(--faint); margin-top:6px}
@@ -246,7 +266,7 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .summ .list span{border:1px solid var(--line-strong); background:var(--paper); border-radius:var(--radius); padding:3px 9px; font-size:13px}
 .summ .list span.bad{border-color:var(--bad); color:var(--bad); background:var(--bad-soft)}
 #openPlanner{margin-top:14px}
-.verdict{display:flex; align-items:center; gap:10px; padding:10px 12px; background:var(--ok-soft); color:var(--ok); font-weight:700; font-size:15px; line-height:1.35; border-radius:var(--radius)}
+.verdict{display:flex; align-items:center; gap:10px; padding:10px 12px; background:var(--ok-soft); color:var(--ok); font-weight:700; font-size:16px; line-height:1.35; border-radius:var(--radius)}
 .verdict.bad{background:var(--bad-soft); color:var(--bad)}
 .verdict.warn{background:var(--warn-soft); color:var(--warn)}
 .verdict svg{width:18px; height:18px; flex:none}
@@ -255,11 +275,11 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .bsum div:last-child{grid-column:1/-1}
 .bsum small{display:block; font-size:12px; color:var(--muted)}
 .bsum b{font-weight:700; overflow-wrap:anywhere}
-table{width:100%; border-collapse:collapse; font-size:15px}
+table{width:100%; border-collapse:collapse; font-size:16px}
 #price td{padding:8px 0; vertical-align:top; border-bottom:1px solid var(--line)}
 #price td:last-child{text-align:right; white-space:nowrap; padding-left:12px; font-variant-numeric:tabular-nums}
 #price tr.total td{border-bottom:0; font-size:20px; font-weight:700; padding-top:12px; color:var(--green-text)}
-details.more summary{cursor:pointer; font-size:14px; color:var(--green-text); min-height:40px; display:flex; align-items:center; gap:8px; list-style:none}
+details.more summary{cursor:pointer; font-size:14px; color:var(--green-text); min-height:44px; display:flex; align-items:center; gap:8px; list-style:none}
 details.more summary::-webkit-details-marker{display:none}
 details.more summary::before{content:"+"; width:18px; text-align:center; font-weight:700}
 details.more[open] summary::before{content:"−"}
@@ -274,10 +294,14 @@ pre.sum{font-family:Consolas,"Courier New",monospace; font-size:12px; white-spac
 .sticky b{font-size:20px; color:var(--green-text); font-variant-numeric:tabular-nums}
 .sticky .s1 small{display:block; font-size:12px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 @media (max-width:1000px){ .sticky{display:flex} }
-.toast{position:fixed; left:50%; bottom:calc(84px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); z-index:80; width:max-content; max-width:min(92vw,520px); background:var(--head-2); color:#fff; border:1px solid rgba(255,255,255,.16); border-radius:var(--radius); padding:10px 14px; font-size:15px; line-height:1.35; box-shadow:var(--shadow); text-align:center; text-wrap:balance}
+.toast{position:fixed; left:50%; bottom:calc(84px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); z-index:80; width:max-content; max-width:min(92vw,520px); background:var(--head-2); color:#fff; border:1px solid rgba(255,255,255,.28); border-radius:var(--radius); padding:10px 14px; font-size:16px; line-height:1.35; box-shadow:var(--shadow); text-align:center; text-wrap:balance; display:flex; align-items:center; justify-content:center; gap:12px; animation:toastIn .18s ease-out}
+.planner:not([hidden]) ~ .toast{bottom:calc(16px + env(safe-area-inset-bottom,0px))}   /* no price bar inside the planner */
+.toast button{flex:none; min-height:44px; padding:6px 12px; background:transparent; color:#fff; border:1px solid rgba(255,255,255,.55); border-radius:var(--radius); font-size:14px; font-weight:700; white-space:nowrap}
+@keyframes toastIn{from{opacity:0; transform:translate(-50%,8px)} to{opacity:1; transform:translate(-50%,0)}}
+@keyframes plIn{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
 
 /* ---------- Full-screen parcel planner ---------- */
-.planner{position:fixed; inset:0; z-index:50; background:var(--bg); display:grid; grid-template-rows:auto minmax(0,1fr); padding-top:env(safe-area-inset-top,0px)}
+.planner{position:fixed; inset:0; z-index:50; background:var(--bg); display:grid; grid-template-rows:auto minmax(0,1fr); padding-top:env(safe-area-inset-top,0px); animation:plIn .2s ease-out}
 .pl-head{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:10px var(--gutter); background:var(--head-2); color:#fff}
 .pl-head h2{color:#fff; font-size:clamp(17px,2vw,20px)}
 .pl-title{min-width:0; display:grid; gap:2px}
@@ -291,11 +315,11 @@ pre.sum{font-family:Consolas,"Courier New",monospace; font-size:12px; white-spac
 .pl-sec{padding:16px 18px; border-bottom:1px solid var(--line); display:grid; gap:10px}
 .pl-sec h3{color:var(--green-text)}
 .tabs{display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--line-strong); border-radius:var(--radius); overflow:hidden; background:var(--paper)}
-.tab{border:0; background:transparent; min-height:42px; font-size:15px; color:var(--muted)}
+.tab{border:0; background:transparent; min-height:44px; font-size:16px; color:var(--muted)}
 .tab.on{background:var(--green); color:#fff}
 .sechead{display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap}
-.sechead .mini{display:flex; gap:6px}
-details.settings summary{list-style:none; cursor:pointer; display:flex; align-items:baseline; align-content:center; gap:10px; flex-wrap:wrap; min-height:40px}
+.sechead .mini{display:flex; gap:8px}
+details.settings summary{list-style:none; cursor:pointer; display:flex; align-items:baseline; align-content:center; gap:10px; flex-wrap:wrap; min-height:44px}
 details.settings summary::-webkit-details-marker{display:none}
 details.settings summary::before{content:"+"; color:var(--green-text); font-weight:700; width:14px; text-align:center}
 details.settings[open] summary::before{content:"−"}
@@ -311,20 +335,20 @@ details.settings[open] summary::before{content:"−"}
 .placed .pr b{font-weight:700; min-width:0; overflow-wrap:anywhere; line-height:1.2}
 .placed .pr .no{font-size:12px; color:var(--green-text); min-width:18px; font-variant-numeric:tabular-nums}
 .placed .pr .dm{color:var(--muted); font-size:12px; white-space:nowrap; font-variant-numeric:tabular-nums}
-.placed .pr button{border:1px solid var(--line-strong); background:var(--paper); min-width:40px; min-height:40px; border-radius:var(--radius); font-size:15px; color:var(--green-text)}
+.placed .pr button{border:1px solid var(--line-strong); background:var(--paper); min-width:44px; min-height:44px; border-radius:var(--radius); color:var(--green-text); display:grid; place-items:center; padding:0}
 @media (hover:hover){ .placed .pr button:hover{background:var(--green-soft)} }
 .empty{color:var(--faint); font-size:14px}
 .srclist p{font-size:13px; margin:0 0 8px; color:var(--muted); line-height:1.9}
 .srclist b{color:var(--fg)}
 .srclist a{padding-block:3px}
-.obtools{position:absolute; display:flex; gap:2px; background:var(--head-2); border:1px solid rgba(255,255,255,.28); border-radius:22px; padding:2px; box-shadow:var(--shadow); z-index:3; transform:translate(-50%,-100%)}
-.obtools button{border:0; background:transparent; color:#fff; min-width:40px; min-height:40px; border-radius:50%; font-size:17px}
+.obtools{position:absolute; display:flex; gap:4px; background:var(--head-2); border:1px solid rgba(255,255,255,.28); border-radius:26px; padding:3px; box-shadow:var(--shadow); z-index:3; transform:translate(-50%,-100%)}
+.obtools button{border:0; background:transparent; color:#fff; min-width:44px; min-height:44px; border-radius:50%; display:grid; place-items:center; padding:0}
 @media (hover:hover){ .obtools button:hover{background:rgba(255,255,255,.16)} }
 .obtools button[data-act="del"]{color:#ffb9b6}
-.zoom{position:absolute; right:12px; bottom:12px; display:grid; gap:4px; z-index:2}
-.zoom button{width:40px; height:40px; border-radius:var(--radius); border:1px solid rgba(255,255,255,.4); background:var(--bp-deep); color:#fff; font-size:18px}
+.zoom{position:absolute; right:12px; bottom:12px; display:grid; gap:8px; z-index:2}
+.zoom button{width:44px; height:44px; border-radius:var(--radius); border:1px solid rgba(255,255,255,.4); background:var(--bp-deep); color:#fff; display:grid; place-items:center; padding:0}
 @media (hover:hover){ .zoom button:hover{background:var(--head-2)} }
-.pl-hint{position:absolute; left:12px; bottom:12px; font-size:12px; line-height:1.5; color:#fff; background:var(--bp-deep); padding:6px 12px; border-radius:var(--radius); max-width:calc(100% - 84px); pointer-events:none}
+.pl-hint{position:absolute; left:12px; bottom:12px; font-size:12px; line-height:1.5; color:#fff; background:var(--bp-deep); padding:6px 12px; border-radius:var(--radius); max-width:calc(100% - 88px); pointer-events:none}
 @media (max-width:900px){
   .pl-head{display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:2px 12px; padding-inline:16px}
   .pl-title{display:contents}
@@ -333,7 +357,7 @@ details.settings[open] summary::before{content:"−"}
   .pl-actions{grid-column:2; grid-row:1 / span 2}
   .pl-meta{grid-column:1 / -1; grid-row:3; white-space:normal}
   .pl-title .k3{display:none}
-  .pl-body{grid-template-columns:1fr; grid-template-rows:minmax(0,44vh) minmax(0,1fr)}
+  .pl-body{grid-template-columns:1fr; grid-template-rows:minmax(0,44vh) minmax(0,1fr); grid-template-rows:minmax(0,44dvh) minmax(0,1fr)}
   .pl-side{border-left:0; border-top:1px solid var(--line)}
   .pl-dims{grid-template-columns:1fr 1fr} .pl-dims button{grid-column:1/-1}
   .pl-hint{display:none}
@@ -398,11 +422,12 @@ details.settings[open] summary::before{content:"−"}
 .card .ob .k{fill:var(--ink)}
 .card .ob .s{fill:rgba(217,188,115,.22); stroke:var(--gold-text)}
 
-@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important; animation:none!important; scroll-behavior:auto!important} }
 </style>
 </head>
 <body>
 <div class="wrap">
+  <a class="skip" href="#planovac">Preskočiť na obsah</a>
   <p class="demo" role="note"><b>Ukážka návrhu.</b> Toto nie je oficiálna stránka kempu. Obsadenosť je vymyslená a rezervácia sa nikam neodosiela.</p>
 
   <header class="site">
@@ -421,7 +446,7 @@ details.settings[open] summary::before{content:"−"}
   </header>
 
   <main class="in">
-    <section class="intro" id="planovac">
+    <section class="intro" id="planovac" tabindex="-1">
       <h1>Plánovač parcely</h1>
       <p class="lead">Vyberte termín, povedzte, s čím prídete, a kliknite na parcelu v mape. Hneď uvidíte, či sa zmestíte a koľko pobyt stojí.</p>
       <ol class="steps" aria-label="Postup">
@@ -452,7 +477,7 @@ details.settings[open] summary::before{content:"−"}
             <h3 class="sub">S čím prídete</h3>
             <div class="row c2">
               <label><span>Kategória</span><select id="qCat"></select></label>
-              <label><span>Hľadať model</span><input id="qSearch" placeholder="Kodiaq, karavan, SUV…" autocomplete="off" enterkeyhint="search"></label>
+              <label><span>Hľadať model</span><input id="qSearch" placeholder="napr. Kodiaq" autocomplete="off" enterkeyhint="search"></label>
             </div>
             <div class="cards" id="qCards" role="group" aria-label="Tri modely na porovnanie" hidden></div>
             <div class="pl-dims" id="qDims" hidden>
@@ -468,7 +493,7 @@ details.settings[open] summary::before{content:"−"}
           <div class="ph"><h2>2. Mapa kempu</h2><span class="tag" id="mapTag">kliknite na parcelu</span></div>
           <div class="mapbar">
             <div class="fchips" id="fType" role="group" aria-label="Typ miesta"><button type="button" data-f="all" class="on">Všetky</button><button type="button" data-f="M">M</button><button type="button" data-f="L">L</button><button type="button" data-f="XL">XL</button><button type="button" data-f="V">Voľné státie</button><button type="button" data-f="S">Stany</button></div>
-            <span class="mapbtns"><button class="btn sm primary" id="recBtn" type="button">Odporučiť miesto</button><button class="btn sm" id="viewToggle" type="button" aria-pressed="false">Zoznam</button></span>
+            <span class="mapbtns"><button class="btn sm accent" id="recBtn" type="button">Odporučiť miesto</button><button class="btn sm" id="viewToggle" type="button" aria-pressed="false">Zoznam</button></span>
           </div>
           <p class="mapnote mobhint" id="mapHint">Mapu posúvajte prstom do strán.</p>
           <div class="mapbox" id="mapbox"></div>
@@ -480,7 +505,7 @@ details.settings[open] summary::before{content:"−"}
             <span><i class="sel"></i>vybraná</span>
             <span><i class="dim"></i>nezmestíte sa alebo mimo filtra</span>
           </div>
-          <p class="mapnote">Obsadenosť je ukážková. Miesto vo voľnom státí a na stanovej lúke prideľuje recepcia.</p>
+          <p class="mapnote">Obsadenosť je ukážková. Miesto vo voľnom státí a na stanovej lúke prideľuje recepcia. Mierka mapy je približná, podľa oficiálnej mapy kempu z roku 2023.</p>
         </section>
       </div>
 
@@ -511,16 +536,17 @@ details.settings[open] summary::before{content:"−"}
             <form id="bookForm" novalidate>
               <div class="pb">
                 <div class="row c2">
-                  <label><span>Meno a priezvisko</span><input id="fName" autocomplete="name" required></label>
-                  <label><span>Telefón</span><input id="fPhone" type="tel" autocomplete="tel" required></label>
+                  <label><span>Meno a priezvisko<span class="req" aria-hidden="true"> *</span></span><input id="fName" autocomplete="name" required></label>
+                  <label><span>Telefón<span class="req" aria-hidden="true"> *</span></span><input id="fPhone" type="tel" autocomplete="tel" required></label>
                 </div>
-                <label><span>E-mail</span><input id="fMail" type="email" autocomplete="email" required></label>
+                <label><span>E-mail<span class="req" aria-hidden="true"> *</span></span><input id="fMail" type="email" autocomplete="email" required></label>
                 <label><span>Poznámka (ŠPZ, požiadavky, čas príchodu)</span><input id="fNote"></label>
                 <div>
                   <label class="toggle"><input type="checkbox" id="fElec" checked> Pripojenie na elektrinu (5 € / noc)</label>
                   <label class="toggle"><input type="checkbox" id="fEarly"> Skorý príchod alebo neskorý odchod do 4 h (10 €, XL 15 €, po dohode)</label>
-                  <label class="toggle"><input type="checkbox" id="fRules" required> Súhlasím s ubytovacím poriadkom (nočný kľud 23:00–07:00)</label>
+                  <label class="toggle"><input type="checkbox" id="fRules" required> <span>Súhlasím s ubytovacím poriadkom (nočný kľud 23:00–07:00)<span class="req" aria-hidden="true"> *</span></span></label>
                 </div>
+                <p class="note">Údaje označené <span class="req" aria-hidden="true">*</span> sú povinné.</p>
                 <p class="err" id="fErr" role="alert" hidden></p>
                 <button class="btn primary wide" type="submit" id="sendBtn">Odoslať nezáväznú rezerváciu</button>
                 <p class="note">Rezervácia je záväzná až po e-mailovom potvrdení recepcie. Miesto držíme v deň príchodu do 18:00. Zmeny hláste najneskôr 3 dni vopred. Recepcia od 8:00: <a class="mono" href="tel:+421911201089">+421 911 201 089</a>.</p>
@@ -546,13 +572,13 @@ details.settings[open] summary::before{content:"−"}
 <div class="planner" id="planner" hidden role="dialog" aria-modal="true" aria-labelledby="plTitle">
   <div class="pl-head">
     <div class="pl-title"><div class="eyebrow">3. Rozloženie<span class="k3"> na parcele</span></div><h2 id="plTitle">Parcela</h2><div class="pl-meta" id="plMeta"></div></div>
-    <div class="pl-actions"><button class="btn light" id="plDone" type="button">Hotovo, pokračovať</button><button class="btn icon" id="plClose" type="button" aria-label="Zavrieť plánovač">✕</button></div>
+    <div class="pl-actions"><button class="btn light" id="plDone" type="button">Hotovo, pokračovať</button><button class="btn icon" id="plClose" type="button" aria-label="Zavrieť plánovač" data-ico="x"></button></div>
   </div>
   <div class="pl-body">
     <div class="pl-stage">
       <div class="plan" id="plan"></div>
-      <div class="obtools" id="obtools" hidden><button type="button" data-act="rot" title="Otočiť o 90° (R)" aria-label="Otočiť o 90 stupňov">⟳</button><button type="button" data-act="dup" title="Duplikovať" aria-label="Duplikovať">⧉</button><button type="button" data-act="del" title="Zmazať (Delete)" aria-label="Zmazať">✕</button></div>
-      <div class="zoom"><button type="button" id="zIn" aria-label="Priblížiť">+</button><button type="button" id="zOut" aria-label="Oddialiť">−</button><button type="button" id="zReset" aria-label="Zobraziť celú parcelu">⤢</button></div>
+      <div class="obtools" id="obtools" hidden><button type="button" data-act="rot" title="Otočiť o 90° (R)" aria-label="Otočiť o 90 stupňov" data-ico="rot"></button><button type="button" data-act="dup" title="Duplikovať" aria-label="Duplikovať" data-ico="dup"></button><button type="button" data-act="del" title="Zmazať (Delete)" aria-label="Zmazať" data-ico="x"></button></div>
+      <div class="zoom"><button type="button" id="zIn" aria-label="Priblížiť" data-ico="plus"></button><button type="button" id="zOut" aria-label="Oddialiť" data-ico="minus"></button><button type="button" id="zReset" aria-label="Zobraziť celú parcelu" data-ico="fit"></button></div>
       <div class="pl-hint" id="plHint">Objekt ťahajte myšou alebo prstom. Klik naň zobrazí otočenie, kópiu a zmazanie.</div>
     </div>
     <aside class="pl-side">
@@ -560,7 +586,7 @@ details.settings[open] summary::before{content:"−"}
         <div class="tabs" role="group" aria-label="Čo pridať"><button type="button" class="tab on" data-tab="veh" aria-pressed="true">Vozidlo</button><button type="button" class="tab" data-tab="gear" aria-pressed="false">Stan a výbava</button></div>
         <div class="row c2">
           <label><span>Kategória</span><select id="vCat"></select></label>
-          <label><span>Hľadať</span><input id="vSearch" placeholder="Kodiaq, karavan, gril…" autocomplete="off" enterkeyhint="search"></label>
+          <label><span>Hľadať</span><input id="vSearch" placeholder="napr. Kodiaq" autocomplete="off" enterkeyhint="search"></label>
         </div>
         <div class="cards" id="vCards" role="group" aria-label="Tri modely na porovnanie"></div>
         <div class="pl-dims">
@@ -1243,7 +1269,12 @@ const setText = (el,t) => { t=String(t); if(el.textContent!==t) el.textContent=t
 const setHtml = (el,h) => { if(el._h!==h){ el._h=h; el.innerHTML=h; } };
 const nightsWord = n => n===1?'noc':n<5?'noci':'nocí';
 let toastT;
-function toast(msg){ const t=$('#toast'); t.hidden=false; t.textContent=msg; clearTimeout(toastT); toastT=setTimeout(()=>{ t.hidden=true; }, 4200); }
+let undoFn=null;
+function toast(msg, act){
+  const t=$('#toast'); t.hidden=false; t.textContent=msg; undoFn=act ? act.fn : null;
+  if(act){ const b=document.createElement('button'); b.type='button'; b.textContent=act.label; b.addEventListener('click', ()=>{ const kb=document.activeElement===b; t.hidden=true; undoFn=null; act.fn(); if(kb && plannerOpen){ const n=$('#placedWrap .pr')||$('#plClose'); if(n) n.focus({preventScroll:true}); } }); t.appendChild(b); }
+  clearTimeout(toastT); toastT=setTimeout(()=>{ t.hidden=true; undoFn=null; }, act ? 7000 : 4200);
+}
 
 /* ---------- Parcel types (real data from campingpiestany.sk; M is "cca 75–80 m²" on the camp site, planned here as 7 × 11 m) ---------- */
 const TYPES = {
@@ -1272,7 +1303,7 @@ const ZONES = [
   {id:'VS2',type:'V',name:'Voľné státie 2',pts:'705,1000 1055,995 1062,1058 712,1062', lx:880, ly:1030, cap:6},
   {id:'VS3',type:'V',name:'Voľné státie 3',pts:'718,1070 1070,1066 1080,1128 740,1138', lx:900, ly:1100, cap:5},
   {id:'ST1',type:'S',name:'Stanová lúka',pts:'640,760 1000,735 1000,915 690,920', lx:820, ly:838, cap:14},
-  {id:'ST2',type:'S',name:'Stany',pts:'1318,890 1405,885 1410,1000 1325,1005', lx:1364, ly:945, cap:4, fs:15}
+  {id:'ST2',type:'S',name:'Stany',pts:'1318,890 1405,885 1410,1000 1325,1005', lx:1357, ly:945, cap:4, short:true}
 ];
 const FACIL = [ // [name, x, y, side L/R, leader length]
   ['Bazén 11 m',760,352],['Reštaurácia Na Panvici',560,470],['Kuchynka',958,425],['Ubytovňa',1005,528,'L'],
@@ -1400,6 +1431,17 @@ function passFilter(k){ const f=S.f, t=TYPES[k]; if(f.type!=='all' && f.type!==k
 
 /* ---------- Map (static SVG built once; availability, filters and selection only toggle classes) ---------- */
 let mapBuilt = false;
+/* line icons for the tool buttons: drawn, so they look the same on every phone */
+const UI = d => '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">'+d+'</svg>';
+const IC = {
+  rot:UI('<path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/>'),
+  dup:UI('<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/>'),
+  x:UI('<path d="M6 6l12 12M18 6 6 18"/>'),
+  fit:UI('<path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>'),
+  plus:UI('<path d="M12 5v14M5 12h14"/>'),
+  minus:UI('<path d="M5 12h14"/>')
+};
+document.querySelectorAll('[data-ico]').forEach(b=>{ b.innerHTML=IC[b.dataset.ico]||''; });
 const ICO = {
   elec:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9 1 3 9h4l-1 6 7-9H9z" fill="currentColor"/></svg>',
   water:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1c3 4 5 6.5 5 9a5 5 0 0 1-10 0c0-2.5 2-5 5-9z" fill="currentColor"/></svg>',
@@ -1413,8 +1455,8 @@ const hookText = t => [t.elec===true?'elektrina':t.elec?'elektrina po dohode':nu
 function placeLabel(id){ const z=zoneOf(id); if(z) return z.name; const p=PARCELS.find(p=>p.id===id); return p ? TYPES[p.type].name+' '+id.replace(/\D/g,'') : id; }
 function buildMap(){
   const facs = FACIL.map(f=>{ const s=f[3]==='L'?-1:1, l=f[4]||14; return '<g class="fac"><circle cx="'+f[1]+'" cy="'+f[2]+'" r="5"/><line x1="'+f[1]+'" y1="'+f[2]+'" x2="'+(f[1]+s*l)+'" y2="'+(f[2]-l)+'"/><text x="'+(f[1]+s*(l+3))+'" y="'+(f[2]-l-3)+'" text-anchor="'+(s<0?'end':'start')+'">'+esc(f[0])+'</text></g>'; }).join('');
-  const plots = PARCELS.map(p=>'<g class="plot" data-id="'+p.id+'" data-type="'+p.type+'" tabindex="0" role="button" transform="rotate('+p.rot+' '+p.cx+' '+p.cy+')"><rect x="'+(p.cx-p.w/2)+'" y="'+(p.cy-p.h/2)+'" width="'+p.w+'" height="'+p.h+'"/><text x="'+p.cx+'" y="'+p.cy+'" style="font-size:'+Math.min(22,Math.round(p.w*0.42))+'px" transform="rotate('+(-p.rot)+' '+p.cx+' '+p.cy+')">'+p.id+'</text></g>').join('');
-  const zones = ZONES.map(z=>'<g class="plot zone" data-id="'+z.id+'" data-type="'+z.type+'" tabindex="0" role="button"><path d="M'+z.pts.split(' ').join('L')+'Z"/><text x="'+z.lx+'" y="'+(z.ly-11)+'" style="font-size:'+(z.fs||19)+'px">'+esc(z.name)+'</text><text x="'+z.lx+'" y="'+(z.ly+13)+'" class="mapsub zcount" style="font-size:'+(z.fs?11:14)+'px"></text></g>').join('');
+  const plots = PARCELS.map(p=>'<g class="plot" data-id="'+p.id+'" data-type="'+p.type+'" tabindex="0" role="button" transform="rotate('+p.rot+' '+p.cx+' '+p.cy+')"><rect x="'+(p.cx-p.w/2)+'" y="'+(p.cy-p.h/2)+'" width="'+p.w+'" height="'+p.h+'"/><line class="bx" x1="'+(p.cx-p.w/2)+'" y1="'+(p.cy+p.h/2)+'" x2="'+(p.cx+p.w/2)+'" y2="'+(p.cy-p.h/2)+'"/><text x="'+p.cx+'" y="'+p.cy+'" style="font-size:'+Math.min(22,Math.round(p.w*0.42))+'px" transform="rotate('+(-p.rot)+' '+p.cx+' '+p.cy+')">'+p.id+'</text></g>').join('');
+  const zones = ZONES.map(z=>'<g class="plot zone" data-id="'+z.id+'" data-type="'+z.type+'" tabindex="0" role="button"><path d="M'+z.pts.split(' ').join('L')+'Z"/><text x="'+z.lx+'" y="'+(z.ly-10)+'">'+esc(z.name)+'</text><text x="'+z.lx+'" y="'+(z.ly+14)+'" class="mapsub zcount"></text></g>').join('');
   $('#mapbox').innerHTML = '<svg viewBox="380 236 1200 1030" role="group" aria-label="Mapa kempu Pullmann s parcelami">'
     +'<defs><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="hz" width="10" height="10"/><line class="hl" x1="0" y1="0" x2="0" y2="10"/></pattern></defs>'
     +'<path class="water" d="M380,236 L520,236 L395,660 L380,700Z"/><text class="maplabel" x="400" y="520" font-size="30" transform="rotate(-72 400 520)">Váh</text>'
@@ -1422,8 +1464,7 @@ function buildMap(){
     +'<path class="road" d="M1160,1060 C1050,1030 760,1040 650,1000"/><path class="road" d="M1130,560 C1000,620 870,640 600,760"/><path class="road" d="M940,350 L560,470"/>'
     +'<path class="road" d="M1200,1225 L1160,1060 L1130,560 C1120,460 1040,360 940,350 C1050,330 1200,340 1290,400 C1380,470 1392,620 1376,800 C1366,890 1290,960 1230,990 C1200,1010 1175,1030 1160,1060"/>'
     +'<text class="maplabel mapgold" x="1235" y="1258" font-size="22">▲ Vstup</text>'
-    +'<text class="maplabel" x="1535" y="300" font-size="15" transform="rotate(90 1535 300)" opacity=".7">Piešťany 1 km ◄ · ► Hlohovec</text>'
-    +'<text class="mapsub" x="430" y="1250" font-size="13">mierka približná, podľa oficiálnej mapy kempu 2023</text>'
+    +'<text class="maplabel" x="1535" y="300" font-size="19" transform="rotate(90 1535 300)">Piešťany 1 km ◄ · ► Hlohovec</text>'
     +zones+plots+facs+'</svg>';
   const tip=$('#tip'), panel=$('#sec-map'); let tipT;
   const placeTip = (x,y) => { const r=panel.getBoundingClientRect(); if(x+250>r.width) x-=264; if(y+130>r.height) y-=124; tip.style.left=Math.max(4,x)+'px'; tip.style.top=Math.max(4,y)+'px'; };
@@ -1457,7 +1498,7 @@ function updateMapState(){
     const pass = passFilter(k) && (!hard || fits[k]);
     g.classList.toggle('busy', free<=0); g.classList.toggle('sel', S.parcel===id); g.classList.toggle('dim', !pass);
     g.setAttribute('aria-label', placeLabel(id)+', '+(z ? (free>0 ? 'voľných miest: '+free+' z '+z.cap : 'bez voľného miesta') : (free>0?'voľná':'obsadená'))+(pass?'':', nevyhovuje filtru')+(S.parcel===id?', vybrané miesto':''));
-    if(z) g.querySelector('.zcount').textContent = free+' / '+z.cap+' voľných';
+    if(z) g.querySelector('.zcount').textContent = free+' / '+z.cap+(z.short?'':' voľných');
     if(free>0){ freeCount++; if(pass) okCount++; }
   });
   $('#mapTag').textContent = 'voľných '+freeCount+', vyhovuje '+okCount;
@@ -1585,6 +1626,25 @@ function changed(){ renderPlan(); renderPrice(); persist(); }
 function rotate(uid){ const o=byId(uid); if(!o) return; const B=box(o), cx=B.x+B.w/2, cy=B.y+B.h/2; o.rot=(o.rot+90)%360; const b=box(o); o.x=snapV(cx-b.w/2); o.y=snapV(cy-b.h/2); const t=curType(), c=S.set.clear||0; if(b.w<=t.w-2*c+0.001) o.x=Math.max(c, Math.min(t.w-c-b.w, o.x)); if(b.h<=t.h-2*c+0.001) o.y=Math.max(c, Math.min(t.h-c-b.h, o.y)); clampIn(o); S.items.filter(k=>k.host===uid).forEach(k=>attach(k,o)); S.sel=uid; changed(); }
 /* move an object together with the gear attached to it */
 function moveBy(o,dx,dy){ const x0=o.x, y0=o.y; o.x=snapV(o.x+dx); o.y=snapV(o.y+dy); clampIn(o); S.items.filter(k=>k.host===o.uid).forEach(k=>{ k.x=r2(k.x+o.x-x0); k.y=r2(k.y+o.y-y0); }); }
+/* deleting and emptying can be taken back. If something else was edited in the meantime, only what was removed returns and the newer edits stay. */
+function undoable(msg, fn){
+  const before=JSON.stringify(S.items); fn();
+  const after=JSON.stringify(S.items), left={}; S.items.forEach(o=>{ left[o.uid]=1; });
+  toast(msg, {label:'Vrátiť späť', fn:()=>{
+    const old=JSON.parse(before);
+    if(JSON.stringify(S.items)===after) S.items=old;
+    else {
+      const was={}; old.forEach(o=>{ was[o.uid]=o; });
+      const gone=old.filter(o=>!left[o.uid] && !byId(o.uid)), back=uid=>gone.some(g=>g.uid===uid);
+      S.items.forEach(k=>{ const w=was[k.uid]; if(w && w.host!=null && k.host==null && back(w.host) && k.x===w.x && k.y===w.y && k.rot===w.rot) k.host=w.host; });   // gear that has not moved hangs on its vehicle again
+      S.items=S.items.concat(gone);
+      gone.forEach(o=>{ if(o.host==null) return; const h=byId(o.host), kind=CATBY[mdl(o).cat].attach; if(h && !S.items.some(k=>k!==o && k.host===h.uid && CATBY[mdl(k).cat].attach===kind)) attach(o,h); else delete o.host; });
+      if(S.items.filter(o=>o.primary).length>1) gone.forEach(o=>{ delete o.primary; });
+    }
+    S.sel=null; changed();
+  }});
+}
+function delAsk(uid){ const o=byId(uid); if(!o) return; undoable('Odstránené: '+o.name+'.', ()=>del(uid)); }
 function del(uid){ S.items=S.items.filter(i=>i.uid!==uid); S.items.forEach(k=>{ if(k.host===uid) delete k.host; }); if(S.sel===uid) S.sel=null; changed(); }
 function dup(uid){ const o=byId(uid); if(!o) return; const n=addItem(mdl(o),o.L,o.W,o.name); if(n.host==null){ n.rot=o.rot; if(!place(n)){ n.x=snapV(o.x+0.5); n.y=snapV(o.y+0.5); clampIn(n); } } changed(); }
 
@@ -1710,18 +1770,18 @@ function renderPlaced(bad){
   const keep=row ? {i:[...wrap.querySelectorAll('.pr')].indexOf(row), k:act===row ? 'sel' : act.dataset.rot!==undefined ? 'rot' : 'del'} : null;
   const back=()=>{ if(!keep) return; const rows=wrap.querySelectorAll('.pr'), r=rows[Math.min(keep.i,rows.length-1)], n=r ? (keep.k==='sel' ? r : r.querySelector('[data-'+keep.k+']')) : $('#vAdd'); if(n) n.focus({preventScroll:true}); };
   if(!S.items.length){ $('#placedWrap').innerHTML='<p class="empty">Vyberte kategóriu, kliknite na jeden z troch modelov a stlačte Pridať.</p>'; back(); return; }
-  $('#placedWrap').innerHTML = '<div class="placed">'+S.items.map((o,i)=>'<div class="pr'+(bad[o.uid]?' bad':'')+(S.sel===o.uid?' sel':'')+'" data-sel="'+o.uid+'" role="button" tabindex="0" aria-label="Označiť '+esc(o.name)+'"><span class="no">'+(i+1)+'.</span><b>'+esc(o.name)+'</b><span class="dm">'+num(o.L)+' × '+num(o.W)+' m</span><button type="button" data-rot="'+o.uid+'" aria-label="Otočiť '+esc(o.name)+'">⟳</button><button type="button" data-del="'+o.uid+'" aria-label="Zmazať '+esc(o.name)+'">✕</button></div>').join('')+'</div>';
+  $('#placedWrap').innerHTML = '<div class="placed">'+S.items.map((o,i)=>'<div class="pr'+(bad[o.uid]?' bad':'')+(S.sel===o.uid?' sel':'')+'" data-sel="'+o.uid+'" role="button" tabindex="0" aria-label="Označiť '+esc(o.name)+'"><span class="no">'+(i+1)+'.</span><b>'+esc(o.name)+'</b><span class="dm">'+num(o.L)+' × '+num(o.W)+' m</span><button type="button" data-rot="'+o.uid+'" aria-label="Otočiť '+esc(o.name)+'">'+IC.rot+'</button><button type="button" data-del="'+o.uid+'" aria-label="Zmazať '+esc(o.name)+'">'+IC.x+'</button></div>').join('')+'</div>';
   $('#placedWrap').querySelectorAll('[data-rot]').forEach(b=>b.addEventListener('click',e=>{ e.stopPropagation(); rotate(+b.dataset.rot); }));
-  $('#placedWrap').querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',e=>{ e.stopPropagation(); del(+b.dataset.del); }));
+  $('#placedWrap').querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',e=>{ e.stopPropagation(); delAsk(+b.dataset.del); }));
   $('#placedWrap').querySelectorAll('[data-sel]').forEach(r=>{ const sel=()=>{ S.sel=+r.dataset.sel; renderPlan(); }; r.addEventListener('click',sel); r.addEventListener('keydown',e=>{ if(e.target===r && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); sel(); } }); });
   back();
 }
-$('#obtools').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b || S.sel==null) return; const a=b.dataset.act; if(a==='rot') rotate(S.sel); else if(a==='del'){ del(S.sel); const n=$('#placedWrap .pr')||$('#vAdd'); if(n) n.focus({preventScroll:true}); } else if(a==='dup') dup(S.sel); });
+$('#obtools').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b || S.sel==null) return; const a=b.dataset.act; if(a==='rot') rotate(S.sel); else if(a==='del'){ delAsk(S.sel); const n=$('#placedWrap .pr')||$('#vAdd'); if(n) n.focus({preventScroll:true}); } else if(a==='dup') dup(S.sel); });
 $('#zIn').addEventListener('click', ()=>{ S.view.z=Math.min(4,(S.view.z||1)*1.4); renderPlan(); });
 $('#zOut').addEventListener('click', ()=>{ S.view.z=Math.max(1,(S.view.z||1)/1.4); if(S.view.z<1.01){ S.view.z=1; S.view.cx=null; } renderPlan(); });
 $('#zReset').addEventListener('click', ()=>{ S.view={z:1,cx:null,cy:null}; renderPlan(); });
 let rsT; window.addEventListener('resize', ()=>{ clearTimeout(rsT); rsT=setTimeout(()=>{ if(plannerOpen) renderPlan(); },150); });
-$('#clearBtn').addEventListener('click',()=>{ if(!S.items.length) return; S.items=[]; S.sel=null; changed(); toast(curType().zone ? 'Plocha je prázdna.' : 'Parcela je prázdna.'); });
+$('#clearBtn').addEventListener('click',()=>{ if(!S.items.length) return; undoable(curType().zone ? 'Plocha je prázdna.' : 'Parcela je prázdna.', ()=>{ S.items=[]; S.sel=null; changed(); }); });
 $('#autoBtn').addEventListener('click',()=>{ if(!S.items.length) return; const ok=autoLayout(); changed(); if(!ok) toast('Všetko sa naraz nezmestí. Uberte výbavu alebo zvoľte väčšie miesto.'); });
 
 /* ---------- Pickers: a category and its three models drawn at one common scale ---------- */
@@ -1762,7 +1822,7 @@ function setPrimary(m){
   Q.hit=null; changed();
 }
 function initQuick(){
-  $('#qCat').innerHTML = catOptions(QUICKIDS, '<option value="">Bez vozidla (doplním v plánovači)</option>');
+  $('#qCat').innerHTML = catOptions(QUICKIDS, '<option value="">Zatiaľ bez vozidla</option>');
   $('#qCat').addEventListener('change', e=>{ Q.cat=e.target.value; Q.touched=true; Q.hit=null; if(!Q.cat && primary()) setPrimary(null); else renderQuick(); });
   $('#qCards').addEventListener('click', e=>{ const b=e.target.closest('.card'); if(!b) return; Q.touched=true; setPrimary(MODEL[b.dataset.mid]); const n=$('#qCards .card.on'); if(n) n.focus(); });
   $('#qSearch').addEventListener('input', e=>{ const f=findCat(e.target.value, QUICKIDS); if(f){ Q.cat=f.cat; Q.hit=f.mid||null; Q.touched=true; renderQuick(); } else if(Q.hit){ Q.hit=null; renderQuick(); } });
@@ -1809,7 +1869,7 @@ function addFromPicker(){
   else if(cat.attach && !hosted(it)) toast(cat.attach==='roof' ? 'Na parcele nie je auto s voľnou strechou, strešný stan preto leží samostatne. Pridajte auto a stan naň presuňte.' : 'Na parcele nie je vozidlo s voľnou pravou stranou, '+it.name+' preto stojí samostatne.');
 }
 function initPicker(){
-  $('.tabs').addEventListener('click', e=>{ const b=e.target.closest('.tab'); if(!b) return; PK.tab=b.dataset.tab; PK.mid=null; $('#vSearch').value=''; $('#vSearch').placeholder = PK.tab==='veh' ? 'Kodiaq, karavan, SUV…' : 'stan, markíza, gril…'; renderPicker(); });
+  $('.tabs').addEventListener('click', e=>{ const b=e.target.closest('.tab'); if(!b) return; PK.tab=b.dataset.tab; PK.mid=null; $('#vSearch').value=''; $('#vSearch').placeholder = PK.tab==='veh' ? 'napr. Kodiaq' : 'napr. markíza'; renderPicker(); });
   $('#vCat').addEventListener('change', e=>{ PK.cat[PK.tab]=e.target.value; PK.mid=null; renderPicker(); });
   $('#vCards').addEventListener('click', e=>{ const b=e.target.closest('.card'); if(!b) return; PK.mid=b.dataset.mid; renderPicker(); const n=$('#vCards .card.on'); if(n) n.focus(); });
   $('#vCards').addEventListener('dblclick', e=>{ if(e.target.closest('.card')) addFromPicker(); });
@@ -1827,16 +1887,38 @@ function initPicker(){
 }
 
 /* ---------- Full-screen planner ---------- */
+/* the Back button (and the back swipe on a phone) closes the planner instead of leaving the page */
+let histOpen=false, histWait=false, histT;
+function histPush(){
+  if(histOpen || histWait) return;
+  try{ history.scrollRestoration='manual'; history.pushState({planner:1},''); histOpen=true; }catch(e){}
+}
+function histPop(){
+  if(!histOpen) return;
+  histOpen=false; histWait=true; clearTimeout(histT); histT=setTimeout(()=>{ histWait=false; }, 700);
+  try{ history.back(); }catch(e){ histWait=false; }
+}
+window.addEventListener('popstate', ev=>{
+  if(histWait){   // our own step back after closing with a button
+    histWait=false;
+    try{ history.replaceState(null,'', S.parcel ? '#'+S.parcel : location.pathname+location.search); }catch(e){}
+    if(plannerOpen) histPush(); else try{ history.scrollRestoration='auto'; }catch(e){}
+    return;
+  }
+  if(plannerOpen){ histOpen=false; closePlanner(false, true); try{ history.scrollRestoration='auto'; }catch(e){} return; }
+  if(ev.state && ev.state.planner && S.parcel){ histOpen=true; openPlanner(); }   // Forward: back into the planner
+});
 function openPlanner(){
   const i=parcelInfo(); if(!i) return;
   lastFocus=document.activeElement;
   const t=i.type; $('#plTitle').textContent=i.label;
   $('#plMeta').textContent = (t.zone ? sizeText(t) : sizeText(t)+' · '+m2(t.area))+' · '+hookText(t)+' · '+fmt(t.price)+' / noc';
   $('#sShapeWrap').hidden=!t.zone;
-  $('#planner').hidden=false; plannerOpen=true; document.body.style.overflow='hidden'; $('.wrap').inert=true; $('#sticky').inert=true; S.view={z:1,cx:null,cy:null};
+  $('#planner').hidden=false; plannerOpen=true; histPush(); document.body.style.overflow='hidden'; $('.wrap').inert=true; $('#sticky').inert=true; S.view={z:1,cx:null,cy:null};
   renderPicker(); renderPlan(); setTimeout(()=>{ $('#plClose').focus(); }, 50);
 }
-function closePlanner(goBook){
+function closePlanner(goBook, fromBack){
+  if(!fromBack) histPop();
   $('#planner').hidden=true; plannerOpen=false; document.body.style.overflow=''; $('.wrap').inert=false; $('#sticky').inert=false; $('#obtools').hidden=true;
   drag=null; S.sel=null; renderPlan(); renderPrice(); persist();
   if(goBook){ $('#sec-book').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); setTimeout(()=>{ $('#fName').focus({preventScroll:true}); }, 500); }
@@ -1849,15 +1931,16 @@ document.addEventListener('keydown', e=>{
   if(!plannerOpen) return;
   if(e.key==='Escape'){ closePlanner(false); return; }
   if(e.key==='Tab'){ /* keep focus inside the dialog */
-    const f=[...$('#planner').querySelectorAll('button,select,input,summary,a[href],[tabindex="0"]')].filter(el=>!el.disabled && el.offsetParent!==null); if(!f.length) return;
+    const f=[...$('#planner').querySelectorAll('button,select,input,summary,a[href],[tabindex="0"]'), ...$('#toast').querySelectorAll('button')].filter(el=>!el.disabled && el.offsetParent!==null); if(!f.length) return;   // the undo button in the toast counts too
     const first=f[0], last=f[f.length-1];
     if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); } else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
     return; }
   const tag=(e.target.tagName||'').toLowerCase(); if(tag==='input'||tag==='select'||tag==='textarea') return;
+  if((e.ctrlKey||e.metaKey) && (e.key==='z'||e.key==='Z') && undoFn){ e.preventDefault(); const f=undoFn; undoFn=null; $('#toast').hidden=true; f(); return; }
   const o=byId(S.sel); if(!o) return;
   const step=e.shiftKey ? 1 : (S.set.snap||0.25); let used=true;
   if(e.key==='ArrowLeft') moveBy(o,-step,0); else if(e.key==='ArrowRight') moveBy(o,step,0); else if(e.key==='ArrowUp') moveBy(o,0,-step); else if(e.key==='ArrowDown') moveBy(o,0,step);
-  else if(e.key==='r'||e.key==='R'){ e.preventDefault(); rotate(o.uid); return; } else if(e.key==='Delete'||e.key==='Backspace'){ e.preventDefault(); del(o.uid); return; } else used=false;
+  else if(e.key==='r'||e.key==='R'){ e.preventDefault(); rotate(o.uid); return; } else if(e.key==='Delete'||e.key==='Backspace'){ e.preventDefault(); delAsk(o.uid); return; } else used=false;
   if(used){ e.preventDefault(); changed(); }
 });
 function renderSummary(bad){
@@ -1894,6 +1977,7 @@ function calc(){
 }
 function crewText(){ return S.adults+' dosp.'+(S.kids?', '+S.kids+' deti 3–12 r.':'')+(S.babies?', '+S.babies+' do 3 r.':'')+(S.dogs?', psy: '+S.dogs:''); }
 function renderPrice(){
+  if(!$('#bookForm [aria-invalid]')) $('#fErr').hidden=true;   // a general error (date, place, nothing to park) goes away once the cause changes
   const c=calc(), st=$('#stPrice'), si=$('#stInfo');
   $('#st2').classList.toggle('done', !!S.parcel); $('#st3').classList.toggle('done', !!S.parcel && S.items.length>0);
   const off = c && (!inSeason() || S.dIn<todayIso());
@@ -1932,6 +2016,22 @@ $('#fElec').addEventListener('change', renderPrice);
 $('#fEarly').addEventListener('change', renderPrice);
 
 /* ---------- Booking request (no backend yet: the summary goes out by e-mail) ---------- */
+/* an error about one field sits right under that field; problems with the date or the place stay above the button */
+function formError(msg, sel, quiet){
+  const err=$('#fErr'); $('#bookForm').querySelectorAll('[aria-invalid]').forEach(el=>{ el.removeAttribute('aria-invalid'); el.removeAttribute('aria-describedby'); });
+  if(!msg){ err.hidden=true; return; }
+  const el=sel ? $(sel) : null, own=el && el.closest('#bookForm'), at=own ? (el.closest('.row') || el.closest('label')) : null;
+  if(at) at.insertAdjacentElement('afterend', err); else $('#sendBtn').insertAdjacentElement('beforebegin', err);
+  err.classList.toggle('end', !!(at && at.classList.contains('c2') && el.closest('label')!==at.firstElementChild));   // the field in the right column: the text sits under it
+  err.textContent=msg; err.hidden=false;
+  if(own){ el.setAttribute('aria-invalid','true'); el.setAttribute('aria-describedby','fErr'); }
+  if(el && !quiet) el.focus();
+}
+$('#bookForm').addEventListener('input', e=>{ if(e.target.getAttribute('aria-invalid')) formError(''); });
+const phoneOk = v => v.replace(/\D/g,'').length>=7, mailOk = v => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
+[['#fPhone', phoneOk, 'Telefónne číslo je príliš krátke.'], ['#fMail', mailOk, 'E-mail nemá správny tvar, napríklad meno@domena.sk.']].forEach(a=>{
+  $(a[0]).addEventListener('blur', ()=>{ const v=$(a[0]).value.trim(); if(v && !a[1](v)) formError(a[2], a[0], true); });
+});
 $('#bookForm').addEventListener('submit', e=>{
   e.preventDefault();
   const c=calc(), err=$('#fErr'), name=$('#fName').value.trim(), phone=$('#fPhone').value.trim(), mail=$('#fMail').value.trim();
@@ -1942,12 +2042,12 @@ $('#bookForm').addEventListener('submit', e=>{
   else if(oneNightWeekend()){ problem='V hlavnej sezóne kemp neprijíma víkendové pobyty na 1 noc. Pridajte ďalšiu noc.'; focus='#dOut'; }
   else if(placeFree(S.parcel)<=0) problem='Vybrané miesto je v tomto termíne obsadené. Vyberte v mape iné.';
   else if(!name){ problem='Vyplňte meno a priezvisko.'; focus='#fName'; }
-  else if(phone.replace(/\D/g,'').length<7){ problem='Vyplňte telefónne číslo.'; focus='#fPhone'; }
-  else if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){ problem='Vyplňte platný e-mail.'; focus='#fMail'; }
+  else if(!phoneOk(phone)){ problem='Vyplňte telefónne číslo.'; focus='#fPhone'; }
+  else if(!mailOk(mail)){ problem='Vyplňte platný e-mail, napríklad meno@domena.sk.'; focus='#fMail'; }
   else if(!$('#fRules').checked){ problem='Potvrďte súhlas s ubytovacím poriadkom.'; focus='#fRules'; }
   else if(!S.items.length) problem='Pridajte aspoň jedno vozidlo alebo stan, aby recepcia vedela, čo pre vás pripraviť.';
-  if(problem){ err.textContent=problem; err.hidden=false; if(focus) $(focus).focus(); return; }
-  err.hidden=true;
+  if(problem){ formError(problem, focus); if(focus && !$(focus).closest('#bookForm')) toast(problem); return; }
+  formError('');
   const code='PL-'+S.dIn.replace(/-/g,'').slice(2)+'-'+String(Math.floor(hash(name+mail+S.dIn)*9000)+1000);
   const t=c.info.type, note=$('#fNote').value.trim(), r=verdict(t, badMap(t));
   const lines=[
@@ -1976,6 +2076,8 @@ $('#bookForm').addEventListener('submit', e=>{
   $('#editBtn').addEventListener('click', ()=>{ $('#confirm').hidden=true; $('#bookForm').hidden=false; $('#st4').classList.remove('done'); S.sent=null; persist(); $('#fName').focus(); });
 });
 
+$('.skip').addEventListener('click', e=>{ e.preventDefault(); const m=$('#planovac'); m.focus({preventScroll:true}); m.scrollIntoView(); });
+
 /* ---------- Boot ---------- */
 function boot(){
   let hid=''; try{ hid=decodeURIComponent((location.hash||'').slice(1)); }catch(e){}   // a malformed hash must not stop the page
@@ -1985,6 +2087,8 @@ function boot(){
   if(/[?&]embed(=1)?(&|$)/.test(location.search)) document.documentElement.classList.add('embed');
   renderDates(); initMapControls(); buildMap(); initQuick(); initPicker(); renderParcel(); renderPlan(); renderPrice();
   centerMap(); requestAnimationFrame(centerMap);
+  /* the page was reloaded with the planner open: its history entry is still there, so open it again */
+  try{ if(history.state && history.state.planner && S.parcel){ histOpen=true; openPlanner(); } }catch(e){}
 }
 if(hot && hot.ready) hot.ready(boot); else boot();
 

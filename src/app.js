@@ -11,7 +11,12 @@ const setText = (el,t) => { t=String(t); if(el.textContent!==t) el.textContent=t
 const setHtml = (el,h) => { if(el._h!==h){ el._h=h; el.innerHTML=h; } };
 const nightsWord = n => n===1?'noc':n<5?'noci':'nocí';
 let toastT;
-function toast(msg){ const t=$('#toast'); t.hidden=false; t.textContent=msg; clearTimeout(toastT); toastT=setTimeout(()=>{ t.hidden=true; }, 4200); }
+let undoFn=null;
+function toast(msg, act){
+  const t=$('#toast'); t.hidden=false; t.textContent=msg; undoFn=act ? act.fn : null;
+  if(act){ const b=document.createElement('button'); b.type='button'; b.textContent=act.label; b.addEventListener('click', ()=>{ const kb=document.activeElement===b; t.hidden=true; undoFn=null; act.fn(); if(kb && plannerOpen){ const n=$('#placedWrap .pr')||$('#plClose'); if(n) n.focus({preventScroll:true}); } }); t.appendChild(b); }
+  clearTimeout(toastT); toastT=setTimeout(()=>{ t.hidden=true; undoFn=null; }, act ? 7000 : 4200);
+}
 
 /* ---------- Parcel types (real data from campingpiestany.sk; M is "cca 75–80 m²" on the camp site, planned here as 7 × 11 m) ---------- */
 const TYPES = {
@@ -40,7 +45,7 @@ const ZONES = [
   {id:'VS2',type:'V',name:'Voľné státie 2',pts:'705,1000 1055,995 1062,1058 712,1062', lx:880, ly:1030, cap:6},
   {id:'VS3',type:'V',name:'Voľné státie 3',pts:'718,1070 1070,1066 1080,1128 740,1138', lx:900, ly:1100, cap:5},
   {id:'ST1',type:'S',name:'Stanová lúka',pts:'640,760 1000,735 1000,915 690,920', lx:820, ly:838, cap:14},
-  {id:'ST2',type:'S',name:'Stany',pts:'1318,890 1405,885 1410,1000 1325,1005', lx:1364, ly:945, cap:4, fs:15}
+  {id:'ST2',type:'S',name:'Stany',pts:'1318,890 1405,885 1410,1000 1325,1005', lx:1357, ly:945, cap:4, short:true}
 ];
 const FACIL = [ // [name, x, y, side L/R, leader length]
   ['Bazén 11 m',760,352],['Reštaurácia Na Panvici',560,470],['Kuchynka',958,425],['Ubytovňa',1005,528,'L'],
@@ -168,6 +173,17 @@ function passFilter(k){ const f=S.f, t=TYPES[k]; if(f.type!=='all' && f.type!==k
 
 /* ---------- Map (static SVG built once; availability, filters and selection only toggle classes) ---------- */
 let mapBuilt = false;
+/* line icons for the tool buttons: drawn, so they look the same on every phone */
+const UI = d => '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">'+d+'</svg>';
+const IC = {
+  rot:UI('<path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/>'),
+  dup:UI('<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/>'),
+  x:UI('<path d="M6 6l12 12M18 6 6 18"/>'),
+  fit:UI('<path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>'),
+  plus:UI('<path d="M12 5v14M5 12h14"/>'),
+  minus:UI('<path d="M5 12h14"/>')
+};
+document.querySelectorAll('[data-ico]').forEach(b=>{ b.innerHTML=IC[b.dataset.ico]||''; });
 const ICO = {
   elec:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9 1 3 9h4l-1 6 7-9H9z" fill="currentColor"/></svg>',
   water:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1c3 4 5 6.5 5 9a5 5 0 0 1-10 0c0-2.5 2-5 5-9z" fill="currentColor"/></svg>',
@@ -181,8 +197,8 @@ const hookText = t => [t.elec===true?'elektrina':t.elec?'elektrina po dohode':nu
 function placeLabel(id){ const z=zoneOf(id); if(z) return z.name; const p=PARCELS.find(p=>p.id===id); return p ? TYPES[p.type].name+' '+id.replace(/\D/g,'') : id; }
 function buildMap(){
   const facs = FACIL.map(f=>{ const s=f[3]==='L'?-1:1, l=f[4]||14; return '<g class="fac"><circle cx="'+f[1]+'" cy="'+f[2]+'" r="5"/><line x1="'+f[1]+'" y1="'+f[2]+'" x2="'+(f[1]+s*l)+'" y2="'+(f[2]-l)+'"/><text x="'+(f[1]+s*(l+3))+'" y="'+(f[2]-l-3)+'" text-anchor="'+(s<0?'end':'start')+'">'+esc(f[0])+'</text></g>'; }).join('');
-  const plots = PARCELS.map(p=>'<g class="plot" data-id="'+p.id+'" data-type="'+p.type+'" tabindex="0" role="button" transform="rotate('+p.rot+' '+p.cx+' '+p.cy+')"><rect x="'+(p.cx-p.w/2)+'" y="'+(p.cy-p.h/2)+'" width="'+p.w+'" height="'+p.h+'"/><text x="'+p.cx+'" y="'+p.cy+'" style="font-size:'+Math.min(22,Math.round(p.w*0.42))+'px" transform="rotate('+(-p.rot)+' '+p.cx+' '+p.cy+')">'+p.id+'</text></g>').join('');
-  const zones = ZONES.map(z=>'<g class="plot zone" data-id="'+z.id+'" data-type="'+z.type+'" tabindex="0" role="button"><path d="M'+z.pts.split(' ').join('L')+'Z"/><text x="'+z.lx+'" y="'+(z.ly-11)+'" style="font-size:'+(z.fs||19)+'px">'+esc(z.name)+'</text><text x="'+z.lx+'" y="'+(z.ly+13)+'" class="mapsub zcount" style="font-size:'+(z.fs?11:14)+'px"></text></g>').join('');
+  const plots = PARCELS.map(p=>'<g class="plot" data-id="'+p.id+'" data-type="'+p.type+'" tabindex="0" role="button" transform="rotate('+p.rot+' '+p.cx+' '+p.cy+')"><rect x="'+(p.cx-p.w/2)+'" y="'+(p.cy-p.h/2)+'" width="'+p.w+'" height="'+p.h+'"/><line class="bx" x1="'+(p.cx-p.w/2)+'" y1="'+(p.cy+p.h/2)+'" x2="'+(p.cx+p.w/2)+'" y2="'+(p.cy-p.h/2)+'"/><text x="'+p.cx+'" y="'+p.cy+'" style="font-size:'+Math.min(22,Math.round(p.w*0.42))+'px" transform="rotate('+(-p.rot)+' '+p.cx+' '+p.cy+')">'+p.id+'</text></g>').join('');
+  const zones = ZONES.map(z=>'<g class="plot zone" data-id="'+z.id+'" data-type="'+z.type+'" tabindex="0" role="button"><path d="M'+z.pts.split(' ').join('L')+'Z"/><text x="'+z.lx+'" y="'+(z.ly-10)+'">'+esc(z.name)+'</text><text x="'+z.lx+'" y="'+(z.ly+14)+'" class="mapsub zcount"></text></g>').join('');
   $('#mapbox').innerHTML = '<svg viewBox="380 236 1200 1030" role="group" aria-label="Mapa kempu Pullmann s parcelami">'
     +'<defs><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="hz" width="10" height="10"/><line class="hl" x1="0" y1="0" x2="0" y2="10"/></pattern></defs>'
     +'<path class="water" d="M380,236 L520,236 L395,660 L380,700Z"/><text class="maplabel" x="400" y="520" font-size="30" transform="rotate(-72 400 520)">Váh</text>'
@@ -190,8 +206,7 @@ function buildMap(){
     +'<path class="road" d="M1160,1060 C1050,1030 760,1040 650,1000"/><path class="road" d="M1130,560 C1000,620 870,640 600,760"/><path class="road" d="M940,350 L560,470"/>'
     +'<path class="road" d="M1200,1225 L1160,1060 L1130,560 C1120,460 1040,360 940,350 C1050,330 1200,340 1290,400 C1380,470 1392,620 1376,800 C1366,890 1290,960 1230,990 C1200,1010 1175,1030 1160,1060"/>'
     +'<text class="maplabel mapgold" x="1235" y="1258" font-size="22">▲ Vstup</text>'
-    +'<text class="maplabel" x="1535" y="300" font-size="15" transform="rotate(90 1535 300)" opacity=".7">Piešťany 1 km ◄ · ► Hlohovec</text>'
-    +'<text class="mapsub" x="430" y="1250" font-size="13">mierka približná, podľa oficiálnej mapy kempu 2023</text>'
+    +'<text class="maplabel" x="1535" y="300" font-size="19" transform="rotate(90 1535 300)">Piešťany 1 km ◄ · ► Hlohovec</text>'
     +zones+plots+facs+'</svg>';
   const tip=$('#tip'), panel=$('#sec-map'); let tipT;
   const placeTip = (x,y) => { const r=panel.getBoundingClientRect(); if(x+250>r.width) x-=264; if(y+130>r.height) y-=124; tip.style.left=Math.max(4,x)+'px'; tip.style.top=Math.max(4,y)+'px'; };
@@ -225,7 +240,7 @@ function updateMapState(){
     const pass = passFilter(k) && (!hard || fits[k]);
     g.classList.toggle('busy', free<=0); g.classList.toggle('sel', S.parcel===id); g.classList.toggle('dim', !pass);
     g.setAttribute('aria-label', placeLabel(id)+', '+(z ? (free>0 ? 'voľných miest: '+free+' z '+z.cap : 'bez voľného miesta') : (free>0?'voľná':'obsadená'))+(pass?'':', nevyhovuje filtru')+(S.parcel===id?', vybrané miesto':''));
-    if(z) g.querySelector('.zcount').textContent = free+' / '+z.cap+' voľných';
+    if(z) g.querySelector('.zcount').textContent = free+' / '+z.cap+(z.short?'':' voľných');
     if(free>0){ freeCount++; if(pass) okCount++; }
   });
   $('#mapTag').textContent = 'voľných '+freeCount+', vyhovuje '+okCount;
@@ -353,6 +368,25 @@ function changed(){ renderPlan(); renderPrice(); persist(); }
 function rotate(uid){ const o=byId(uid); if(!o) return; const B=box(o), cx=B.x+B.w/2, cy=B.y+B.h/2; o.rot=(o.rot+90)%360; const b=box(o); o.x=snapV(cx-b.w/2); o.y=snapV(cy-b.h/2); const t=curType(), c=S.set.clear||0; if(b.w<=t.w-2*c+0.001) o.x=Math.max(c, Math.min(t.w-c-b.w, o.x)); if(b.h<=t.h-2*c+0.001) o.y=Math.max(c, Math.min(t.h-c-b.h, o.y)); clampIn(o); S.items.filter(k=>k.host===uid).forEach(k=>attach(k,o)); S.sel=uid; changed(); }
 /* move an object together with the gear attached to it */
 function moveBy(o,dx,dy){ const x0=o.x, y0=o.y; o.x=snapV(o.x+dx); o.y=snapV(o.y+dy); clampIn(o); S.items.filter(k=>k.host===o.uid).forEach(k=>{ k.x=r2(k.x+o.x-x0); k.y=r2(k.y+o.y-y0); }); }
+/* deleting and emptying can be taken back. If something else was edited in the meantime, only what was removed returns and the newer edits stay. */
+function undoable(msg, fn){
+  const before=JSON.stringify(S.items); fn();
+  const after=JSON.stringify(S.items), left={}; S.items.forEach(o=>{ left[o.uid]=1; });
+  toast(msg, {label:'Vrátiť späť', fn:()=>{
+    const old=JSON.parse(before);
+    if(JSON.stringify(S.items)===after) S.items=old;
+    else {
+      const was={}; old.forEach(o=>{ was[o.uid]=o; });
+      const gone=old.filter(o=>!left[o.uid] && !byId(o.uid)), back=uid=>gone.some(g=>g.uid===uid);
+      S.items.forEach(k=>{ const w=was[k.uid]; if(w && w.host!=null && k.host==null && back(w.host) && k.x===w.x && k.y===w.y && k.rot===w.rot) k.host=w.host; });   // gear that has not moved hangs on its vehicle again
+      S.items=S.items.concat(gone);
+      gone.forEach(o=>{ if(o.host==null) return; const h=byId(o.host), kind=CATBY[mdl(o).cat].attach; if(h && !S.items.some(k=>k!==o && k.host===h.uid && CATBY[mdl(k).cat].attach===kind)) attach(o,h); else delete o.host; });
+      if(S.items.filter(o=>o.primary).length>1) gone.forEach(o=>{ delete o.primary; });
+    }
+    S.sel=null; changed();
+  }});
+}
+function delAsk(uid){ const o=byId(uid); if(!o) return; undoable('Odstránené: '+o.name+'.', ()=>del(uid)); }
 function del(uid){ S.items=S.items.filter(i=>i.uid!==uid); S.items.forEach(k=>{ if(k.host===uid) delete k.host; }); if(S.sel===uid) S.sel=null; changed(); }
 function dup(uid){ const o=byId(uid); if(!o) return; const n=addItem(mdl(o),o.L,o.W,o.name); if(n.host==null){ n.rot=o.rot; if(!place(n)){ n.x=snapV(o.x+0.5); n.y=snapV(o.y+0.5); clampIn(n); } } changed(); }
 
@@ -478,18 +512,18 @@ function renderPlaced(bad){
   const keep=row ? {i:[...wrap.querySelectorAll('.pr')].indexOf(row), k:act===row ? 'sel' : act.dataset.rot!==undefined ? 'rot' : 'del'} : null;
   const back=()=>{ if(!keep) return; const rows=wrap.querySelectorAll('.pr'), r=rows[Math.min(keep.i,rows.length-1)], n=r ? (keep.k==='sel' ? r : r.querySelector('[data-'+keep.k+']')) : $('#vAdd'); if(n) n.focus({preventScroll:true}); };
   if(!S.items.length){ $('#placedWrap').innerHTML='<p class="empty">Vyberte kategóriu, kliknite na jeden z troch modelov a stlačte Pridať.</p>'; back(); return; }
-  $('#placedWrap').innerHTML = '<div class="placed">'+S.items.map((o,i)=>'<div class="pr'+(bad[o.uid]?' bad':'')+(S.sel===o.uid?' sel':'')+'" data-sel="'+o.uid+'" role="button" tabindex="0" aria-label="Označiť '+esc(o.name)+'"><span class="no">'+(i+1)+'.</span><b>'+esc(o.name)+'</b><span class="dm">'+num(o.L)+' × '+num(o.W)+' m</span><button type="button" data-rot="'+o.uid+'" aria-label="Otočiť '+esc(o.name)+'">⟳</button><button type="button" data-del="'+o.uid+'" aria-label="Zmazať '+esc(o.name)+'">✕</button></div>').join('')+'</div>';
+  $('#placedWrap').innerHTML = '<div class="placed">'+S.items.map((o,i)=>'<div class="pr'+(bad[o.uid]?' bad':'')+(S.sel===o.uid?' sel':'')+'" data-sel="'+o.uid+'" role="button" tabindex="0" aria-label="Označiť '+esc(o.name)+'"><span class="no">'+(i+1)+'.</span><b>'+esc(o.name)+'</b><span class="dm">'+num(o.L)+' × '+num(o.W)+' m</span><button type="button" data-rot="'+o.uid+'" aria-label="Otočiť '+esc(o.name)+'">'+IC.rot+'</button><button type="button" data-del="'+o.uid+'" aria-label="Zmazať '+esc(o.name)+'">'+IC.x+'</button></div>').join('')+'</div>';
   $('#placedWrap').querySelectorAll('[data-rot]').forEach(b=>b.addEventListener('click',e=>{ e.stopPropagation(); rotate(+b.dataset.rot); }));
-  $('#placedWrap').querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',e=>{ e.stopPropagation(); del(+b.dataset.del); }));
+  $('#placedWrap').querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',e=>{ e.stopPropagation(); delAsk(+b.dataset.del); }));
   $('#placedWrap').querySelectorAll('[data-sel]').forEach(r=>{ const sel=()=>{ S.sel=+r.dataset.sel; renderPlan(); }; r.addEventListener('click',sel); r.addEventListener('keydown',e=>{ if(e.target===r && (e.key==='Enter'||e.key===' ')){ e.preventDefault(); sel(); } }); });
   back();
 }
-$('#obtools').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b || S.sel==null) return; const a=b.dataset.act; if(a==='rot') rotate(S.sel); else if(a==='del'){ del(S.sel); const n=$('#placedWrap .pr')||$('#vAdd'); if(n) n.focus({preventScroll:true}); } else if(a==='dup') dup(S.sel); });
+$('#obtools').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b || S.sel==null) return; const a=b.dataset.act; if(a==='rot') rotate(S.sel); else if(a==='del'){ delAsk(S.sel); const n=$('#placedWrap .pr')||$('#vAdd'); if(n) n.focus({preventScroll:true}); } else if(a==='dup') dup(S.sel); });
 $('#zIn').addEventListener('click', ()=>{ S.view.z=Math.min(4,(S.view.z||1)*1.4); renderPlan(); });
 $('#zOut').addEventListener('click', ()=>{ S.view.z=Math.max(1,(S.view.z||1)/1.4); if(S.view.z<1.01){ S.view.z=1; S.view.cx=null; } renderPlan(); });
 $('#zReset').addEventListener('click', ()=>{ S.view={z:1,cx:null,cy:null}; renderPlan(); });
 let rsT; window.addEventListener('resize', ()=>{ clearTimeout(rsT); rsT=setTimeout(()=>{ if(plannerOpen) renderPlan(); },150); });
-$('#clearBtn').addEventListener('click',()=>{ if(!S.items.length) return; S.items=[]; S.sel=null; changed(); toast(curType().zone ? 'Plocha je prázdna.' : 'Parcela je prázdna.'); });
+$('#clearBtn').addEventListener('click',()=>{ if(!S.items.length) return; undoable(curType().zone ? 'Plocha je prázdna.' : 'Parcela je prázdna.', ()=>{ S.items=[]; S.sel=null; changed(); }); });
 $('#autoBtn').addEventListener('click',()=>{ if(!S.items.length) return; const ok=autoLayout(); changed(); if(!ok) toast('Všetko sa naraz nezmestí. Uberte výbavu alebo zvoľte väčšie miesto.'); });
 
 /* ---------- Pickers: a category and its three models drawn at one common scale ---------- */
@@ -530,7 +564,7 @@ function setPrimary(m){
   Q.hit=null; changed();
 }
 function initQuick(){
-  $('#qCat').innerHTML = catOptions(QUICKIDS, '<option value="">Bez vozidla (doplním v plánovači)</option>');
+  $('#qCat').innerHTML = catOptions(QUICKIDS, '<option value="">Zatiaľ bez vozidla</option>');
   $('#qCat').addEventListener('change', e=>{ Q.cat=e.target.value; Q.touched=true; Q.hit=null; if(!Q.cat && primary()) setPrimary(null); else renderQuick(); });
   $('#qCards').addEventListener('click', e=>{ const b=e.target.closest('.card'); if(!b) return; Q.touched=true; setPrimary(MODEL[b.dataset.mid]); const n=$('#qCards .card.on'); if(n) n.focus(); });
   $('#qSearch').addEventListener('input', e=>{ const f=findCat(e.target.value, QUICKIDS); if(f){ Q.cat=f.cat; Q.hit=f.mid||null; Q.touched=true; renderQuick(); } else if(Q.hit){ Q.hit=null; renderQuick(); } });
@@ -577,7 +611,7 @@ function addFromPicker(){
   else if(cat.attach && !hosted(it)) toast(cat.attach==='roof' ? 'Na parcele nie je auto s voľnou strechou, strešný stan preto leží samostatne. Pridajte auto a stan naň presuňte.' : 'Na parcele nie je vozidlo s voľnou pravou stranou, '+it.name+' preto stojí samostatne.');
 }
 function initPicker(){
-  $('.tabs').addEventListener('click', e=>{ const b=e.target.closest('.tab'); if(!b) return; PK.tab=b.dataset.tab; PK.mid=null; $('#vSearch').value=''; $('#vSearch').placeholder = PK.tab==='veh' ? 'Kodiaq, karavan, SUV…' : 'stan, markíza, gril…'; renderPicker(); });
+  $('.tabs').addEventListener('click', e=>{ const b=e.target.closest('.tab'); if(!b) return; PK.tab=b.dataset.tab; PK.mid=null; $('#vSearch').value=''; $('#vSearch').placeholder = PK.tab==='veh' ? 'napr. Kodiaq' : 'napr. markíza'; renderPicker(); });
   $('#vCat').addEventListener('change', e=>{ PK.cat[PK.tab]=e.target.value; PK.mid=null; renderPicker(); });
   $('#vCards').addEventListener('click', e=>{ const b=e.target.closest('.card'); if(!b) return; PK.mid=b.dataset.mid; renderPicker(); const n=$('#vCards .card.on'); if(n) n.focus(); });
   $('#vCards').addEventListener('dblclick', e=>{ if(e.target.closest('.card')) addFromPicker(); });
@@ -595,16 +629,38 @@ function initPicker(){
 }
 
 /* ---------- Full-screen planner ---------- */
+/* the Back button (and the back swipe on a phone) closes the planner instead of leaving the page */
+let histOpen=false, histWait=false, histT;
+function histPush(){
+  if(histOpen || histWait) return;
+  try{ history.scrollRestoration='manual'; history.pushState({planner:1},''); histOpen=true; }catch(e){}
+}
+function histPop(){
+  if(!histOpen) return;
+  histOpen=false; histWait=true; clearTimeout(histT); histT=setTimeout(()=>{ histWait=false; }, 700);
+  try{ history.back(); }catch(e){ histWait=false; }
+}
+window.addEventListener('popstate', ev=>{
+  if(histWait){   // our own step back after closing with a button
+    histWait=false;
+    try{ history.replaceState(null,'', S.parcel ? '#'+S.parcel : location.pathname+location.search); }catch(e){}
+    if(plannerOpen) histPush(); else try{ history.scrollRestoration='auto'; }catch(e){}
+    return;
+  }
+  if(plannerOpen){ histOpen=false; closePlanner(false, true); try{ history.scrollRestoration='auto'; }catch(e){} return; }
+  if(ev.state && ev.state.planner && S.parcel){ histOpen=true; openPlanner(); }   // Forward: back into the planner
+});
 function openPlanner(){
   const i=parcelInfo(); if(!i) return;
   lastFocus=document.activeElement;
   const t=i.type; $('#plTitle').textContent=i.label;
   $('#plMeta').textContent = (t.zone ? sizeText(t) : sizeText(t)+' · '+m2(t.area))+' · '+hookText(t)+' · '+fmt(t.price)+' / noc';
   $('#sShapeWrap').hidden=!t.zone;
-  $('#planner').hidden=false; plannerOpen=true; document.body.style.overflow='hidden'; $('.wrap').inert=true; $('#sticky').inert=true; S.view={z:1,cx:null,cy:null};
+  $('#planner').hidden=false; plannerOpen=true; histPush(); document.body.style.overflow='hidden'; $('.wrap').inert=true; $('#sticky').inert=true; S.view={z:1,cx:null,cy:null};
   renderPicker(); renderPlan(); setTimeout(()=>{ $('#plClose').focus(); }, 50);
 }
-function closePlanner(goBook){
+function closePlanner(goBook, fromBack){
+  if(!fromBack) histPop();
   $('#planner').hidden=true; plannerOpen=false; document.body.style.overflow=''; $('.wrap').inert=false; $('#sticky').inert=false; $('#obtools').hidden=true;
   drag=null; S.sel=null; renderPlan(); renderPrice(); persist();
   if(goBook){ $('#sec-book').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); setTimeout(()=>{ $('#fName').focus({preventScroll:true}); }, 500); }
@@ -617,15 +673,16 @@ document.addEventListener('keydown', e=>{
   if(!plannerOpen) return;
   if(e.key==='Escape'){ closePlanner(false); return; }
   if(e.key==='Tab'){ /* keep focus inside the dialog */
-    const f=[...$('#planner').querySelectorAll('button,select,input,summary,a[href],[tabindex="0"]')].filter(el=>!el.disabled && el.offsetParent!==null); if(!f.length) return;
+    const f=[...$('#planner').querySelectorAll('button,select,input,summary,a[href],[tabindex="0"]'), ...$('#toast').querySelectorAll('button')].filter(el=>!el.disabled && el.offsetParent!==null); if(!f.length) return;   // the undo button in the toast counts too
     const first=f[0], last=f[f.length-1];
     if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); } else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
     return; }
   const tag=(e.target.tagName||'').toLowerCase(); if(tag==='input'||tag==='select'||tag==='textarea') return;
+  if((e.ctrlKey||e.metaKey) && (e.key==='z'||e.key==='Z') && undoFn){ e.preventDefault(); const f=undoFn; undoFn=null; $('#toast').hidden=true; f(); return; }
   const o=byId(S.sel); if(!o) return;
   const step=e.shiftKey ? 1 : (S.set.snap||0.25); let used=true;
   if(e.key==='ArrowLeft') moveBy(o,-step,0); else if(e.key==='ArrowRight') moveBy(o,step,0); else if(e.key==='ArrowUp') moveBy(o,0,-step); else if(e.key==='ArrowDown') moveBy(o,0,step);
-  else if(e.key==='r'||e.key==='R'){ e.preventDefault(); rotate(o.uid); return; } else if(e.key==='Delete'||e.key==='Backspace'){ e.preventDefault(); del(o.uid); return; } else used=false;
+  else if(e.key==='r'||e.key==='R'){ e.preventDefault(); rotate(o.uid); return; } else if(e.key==='Delete'||e.key==='Backspace'){ e.preventDefault(); delAsk(o.uid); return; } else used=false;
   if(used){ e.preventDefault(); changed(); }
 });
 function renderSummary(bad){
@@ -662,6 +719,7 @@ function calc(){
 }
 function crewText(){ return S.adults+' dosp.'+(S.kids?', '+S.kids+' deti 3–12 r.':'')+(S.babies?', '+S.babies+' do 3 r.':'')+(S.dogs?', psy: '+S.dogs:''); }
 function renderPrice(){
+  if(!$('#bookForm [aria-invalid]')) $('#fErr').hidden=true;   // a general error (date, place, nothing to park) goes away once the cause changes
   const c=calc(), st=$('#stPrice'), si=$('#stInfo');
   $('#st2').classList.toggle('done', !!S.parcel); $('#st3').classList.toggle('done', !!S.parcel && S.items.length>0);
   const off = c && (!inSeason() || S.dIn<todayIso());
@@ -700,6 +758,22 @@ $('#fElec').addEventListener('change', renderPrice);
 $('#fEarly').addEventListener('change', renderPrice);
 
 /* ---------- Booking request (no backend yet: the summary goes out by e-mail) ---------- */
+/* an error about one field sits right under that field; problems with the date or the place stay above the button */
+function formError(msg, sel, quiet){
+  const err=$('#fErr'); $('#bookForm').querySelectorAll('[aria-invalid]').forEach(el=>{ el.removeAttribute('aria-invalid'); el.removeAttribute('aria-describedby'); });
+  if(!msg){ err.hidden=true; return; }
+  const el=sel ? $(sel) : null, own=el && el.closest('#bookForm'), at=own ? (el.closest('.row') || el.closest('label')) : null;
+  if(at) at.insertAdjacentElement('afterend', err); else $('#sendBtn').insertAdjacentElement('beforebegin', err);
+  err.classList.toggle('end', !!(at && at.classList.contains('c2') && el.closest('label')!==at.firstElementChild));   // the field in the right column: the text sits under it
+  err.textContent=msg; err.hidden=false;
+  if(own){ el.setAttribute('aria-invalid','true'); el.setAttribute('aria-describedby','fErr'); }
+  if(el && !quiet) el.focus();
+}
+$('#bookForm').addEventListener('input', e=>{ if(e.target.getAttribute('aria-invalid')) formError(''); });
+const phoneOk = v => v.replace(/\D/g,'').length>=7, mailOk = v => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
+[['#fPhone', phoneOk, 'Telefónne číslo je príliš krátke.'], ['#fMail', mailOk, 'E-mail nemá správny tvar, napríklad meno@domena.sk.']].forEach(a=>{
+  $(a[0]).addEventListener('blur', ()=>{ const v=$(a[0]).value.trim(); if(v && !a[1](v)) formError(a[2], a[0], true); });
+});
 $('#bookForm').addEventListener('submit', e=>{
   e.preventDefault();
   const c=calc(), err=$('#fErr'), name=$('#fName').value.trim(), phone=$('#fPhone').value.trim(), mail=$('#fMail').value.trim();
@@ -710,12 +784,12 @@ $('#bookForm').addEventListener('submit', e=>{
   else if(oneNightWeekend()){ problem='V hlavnej sezóne kemp neprijíma víkendové pobyty na 1 noc. Pridajte ďalšiu noc.'; focus='#dOut'; }
   else if(placeFree(S.parcel)<=0) problem='Vybrané miesto je v tomto termíne obsadené. Vyberte v mape iné.';
   else if(!name){ problem='Vyplňte meno a priezvisko.'; focus='#fName'; }
-  else if(phone.replace(/\D/g,'').length<7){ problem='Vyplňte telefónne číslo.'; focus='#fPhone'; }
-  else if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){ problem='Vyplňte platný e-mail.'; focus='#fMail'; }
+  else if(!phoneOk(phone)){ problem='Vyplňte telefónne číslo.'; focus='#fPhone'; }
+  else if(!mailOk(mail)){ problem='Vyplňte platný e-mail, napríklad meno@domena.sk.'; focus='#fMail'; }
   else if(!$('#fRules').checked){ problem='Potvrďte súhlas s ubytovacím poriadkom.'; focus='#fRules'; }
   else if(!S.items.length) problem='Pridajte aspoň jedno vozidlo alebo stan, aby recepcia vedela, čo pre vás pripraviť.';
-  if(problem){ err.textContent=problem; err.hidden=false; if(focus) $(focus).focus(); return; }
-  err.hidden=true;
+  if(problem){ formError(problem, focus); if(focus && !$(focus).closest('#bookForm')) toast(problem); return; }
+  formError('');
   const code='PL-'+S.dIn.replace(/-/g,'').slice(2)+'-'+String(Math.floor(hash(name+mail+S.dIn)*9000)+1000);
   const t=c.info.type, note=$('#fNote').value.trim(), r=verdict(t, badMap(t));
   const lines=[
@@ -744,6 +818,8 @@ $('#bookForm').addEventListener('submit', e=>{
   $('#editBtn').addEventListener('click', ()=>{ $('#confirm').hidden=true; $('#bookForm').hidden=false; $('#st4').classList.remove('done'); S.sent=null; persist(); $('#fName').focus(); });
 });
 
+$('.skip').addEventListener('click', e=>{ e.preventDefault(); const m=$('#planovac'); m.focus({preventScroll:true}); m.scrollIntoView(); });
+
 /* ---------- Boot ---------- */
 function boot(){
   let hid=''; try{ hid=decodeURIComponent((location.hash||'').slice(1)); }catch(e){}   // a malformed hash must not stop the page
@@ -753,5 +829,7 @@ function boot(){
   if(/[?&]embed(=1)?(&|$)/.test(location.search)) document.documentElement.classList.add('embed');
   renderDates(); initMapControls(); buildMap(); initQuick(); initPicker(); renderParcel(); renderPlan(); renderPrice();
   centerMap(); requestAnimationFrame(centerMap);
+  /* the page was reloaded with the planner open: its history entry is still there, so open it again */
+  try{ if(history.state && history.state.planner && S.parcel){ histOpen=true; openPlanner(); } }catch(e){}
 }
 if(hot && hot.ready) hot.ready(boot); else boot();

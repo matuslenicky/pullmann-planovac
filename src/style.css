@@ -54,7 +54,7 @@ body{margin:0; color:var(--fg); font-family:var(--sans); font-size:16px; line-he
 .in{max-width:var(--max); margin-inline:auto}
 h1,h2,h3{margin:0; font-weight:500; text-transform:uppercase; text-wrap:balance; line-height:1.2}
 h1{font-size:clamp(26px,3.4vw,34px); letter-spacing:.02em; color:var(--green-text)}
-h2{font-size:19px; letter-spacing:.03em; color:var(--green-text)}
+h2{font-size:20px; letter-spacing:.03em; color:var(--green-text)}
 h3{font-size:14px; font-weight:700; letter-spacing:.05em; color:var(--fg)}
 p{margin:0}
 a{color:var(--green-text)}
@@ -63,11 +63,19 @@ a{color:var(--green-text)}
 .small{font-size:14px}
 .note{font-size:13px; color:var(--faint); line-height:1.45}
 button{font:inherit; color:inherit; cursor:pointer}
-input,select{font:inherit; color:var(--fg); background:var(--field); border:1px solid var(--line-strong); border-radius:var(--radius); padding:8px 10px; min-height:44px; width:100%}
+button,a,input,select,summary,label{touch-action:manipulation}
+input,select{font:inherit; font-size:16px; color:var(--fg); background:var(--field); border:1px solid var(--line-strong); border-radius:var(--radius); padding:8px 10px; min-height:44px; width:100%}
 select{appearance:auto; cursor:pointer}
 input[type=date],input[type=number]{font-variant-numeric:tabular-nums}
 input::placeholder{color:var(--faint); opacity:1}
 input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--green-text); outline-offset:2px}
+.site a:focus-visible,.site-foot a:focus-visible,.toast button:focus-visible{outline-color:#fff}
+input[aria-invalid="true"]{border-color:var(--bad); box-shadow:inset 0 0 0 1px var(--bad)}
+.req{color:var(--bad)}
+.skip{position:absolute; left:-9999px; top:8px; z-index:100; min-height:44px; display:inline-flex; align-items:center; padding:8px 14px; background:var(--paper); color:var(--green-text); border:2px solid var(--green-text); border-radius:var(--radius)}
+.skip:focus{left:var(--gutter)}
+.embed .skip{display:none}
+.intro:focus{outline:none}
 label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25; color:var(--muted)}
 
 /* ---------- Notice, header and footer (as on the camp's site) ---------- */
@@ -77,7 +85,7 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .brand{display:flex; align-items:center; min-height:40px}
 .brand img{height:60px; width:auto; display:block}
 .site nav{display:flex; gap:2px 22px; flex-wrap:wrap}
-.site nav a{color:#fff; font-size:13px; font-weight:700; letter-spacing:.02em; text-transform:uppercase; text-decoration:none; padding-block:12px 10px; border-bottom:2px solid transparent}
+.site nav a{color:#fff; font-size:13px; font-weight:700; letter-spacing:.02em; text-transform:uppercase; text-decoration:none; padding-block:13px 11px; border-bottom:2px solid transparent}
 .site nav a.cur{border-bottom-color:var(--gold)}
 @media (hover:hover){ .site nav a:hover{border-bottom-color:rgba(255,255,255,.7)} }
 @media (max-width:700px){
@@ -89,7 +97,7 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .site-foot{background:var(--green); color:#fff; margin-inline:calc(-1 * var(--gutter)); padding-inline:var(--gutter); font-size:14px}
 .site-foot .in{display:flex; gap:8px 32px; flex-wrap:wrap; padding-block:26px}
 .site-foot a{color:#fff}
-@media (max-width:1000px){ .site-foot .in{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))} .site-foot a{display:inline-block; padding-block:10px} }
+@media (max-width:1000px){ .site-foot .in{row-gap:0; padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))} .site-foot a{display:inline-block; padding-block:12px} }
 
 /* inside the camp's own site (?embed=1) the host page brings the header and the footer */
 .embed .site,.embed .site-foot{display:none}
@@ -98,7 +106,7 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 
 /* ---------- Intro and steps ---------- */
 .intro{padding-block:34px 0}
-.lead{margin-top:10px; max-width:68ch; font-size:17px}
+.lead{margin-top:10px; max-width:68ch; font-size:18px}
 .steps{list-style:none; margin:18px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:8px 26px; font-size:14px; color:var(--muted)}
 .step{display:flex; align-items:center; gap:8px}
 .step .n{width:24px; height:24px; flex:none; border-radius:50%; border:1px solid var(--line-strong); display:grid; place-items:center; font-size:12px; font-weight:700; font-variant-numeric:tabular-nums}
@@ -127,21 +135,28 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .num button{background:transparent; border:0; min-height:44px; font-size:18px; color:var(--green-text)}
 @media (hover:hover){ .num button:hover{background:var(--green-soft)} }
 .num output{display:grid; place-items:center; font-size:16px; color:var(--fg); font-variant-numeric:tabular-nums}
-.toggle{display:flex; align-items:center; gap:10px; min-height:40px; padding-block:6px; cursor:pointer; color:var(--fg); font-size:15px; line-height:1.3}
+.toggle{display:flex; align-items:center; gap:10px; min-height:44px; padding-block:6px; cursor:pointer; color:var(--fg); font-size:16px; line-height:1.3}
 .toggle input{width:18px; height:18px; min-height:0; margin:0; flex:none; accent-color:var(--green)}
-.btn{border:1px solid var(--line-strong); background:var(--paper); color:var(--fg); padding:9px 16px; border-radius:var(--radius); min-height:44px; font-size:15px; display:inline-flex; align-items:center; justify-content:center; gap:8px; text-decoration:none}
+.btn{border:1px solid var(--line-strong); background:var(--paper); color:var(--fg); padding:9px 16px; border-radius:var(--radius); min-height:44px; font-size:16px; display:inline-flex; align-items:center; justify-content:center; gap:8px; text-decoration:none}
 @media (hover:hover){ .btn:hover{background:var(--green-soft)} }
 .btn.primary{background:var(--green); color:#fff; border-color:var(--green)}
 @media (hover:hover){ .btn.primary:hover{background:var(--green-deep); border-color:var(--green-deep)} }
+.btn.accent{border-color:var(--green); color:var(--green-text)}
 .btn.light{background:#fff; color:#344946; border-color:#fff}
 @media (hover:hover){ .btn.light:hover{background:#ecefee} }
-.btn.icon{min-width:44px; padding:0; background:transparent; color:#fff; border-color:rgba(255,255,255,.45)}
+.btn.icon{min-width:44px; padding:0; display:inline-grid; place-items:center; background:transparent; color:#fff; border-color:rgba(255,255,255,.45)}
 @media (hover:hover){ .btn.icon:hover{background:rgba(255,255,255,.14)} }
 .btn[disabled]{opacity:.5; cursor:not-allowed}
-.btn.sm{min-height:40px; padding:6px 12px; font-size:14px}
+.btn.sm{min-height:44px; padding:6px 12px; font-size:14px}
 .btn.wide{width:100%; min-height:48px; font-size:16px}
 .btnrow{display:flex; gap:8px; flex-wrap:wrap}
-.err{color:var(--bad); font-size:14px}
+.err{color:var(--bad); font-size:14px} .err.end{text-align:right}
+.pb > .err{margin-top:-8px}
+.ico{width:20px; height:20px; display:block; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; pointer-events:none}
+/* every control answers a press, and changes of state are eased, not snapped */
+.btn,.fchips button,.card,.tab,.num button,.placed .pr,.placed .pr button,.zoom button,.obtools button,input,select{transition:background-color .15s ease-out,border-color .15s ease-out,color .15s ease-out,box-shadow .15s ease-out}
+.btn:active,.fchips button:active,.tab:active,.num button:active,.card:active,.placed .pr button:active,.zoom button:active,.obtools button:active,.toast button:active{filter:brightness(.93)}
+.btn[disabled]:active{filter:none}
 
 /* ---------- Three models of a category, drawn nose-up at one common scale ---------- */
 .cards{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px}
@@ -159,27 +174,30 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .card .cg{fill:none; stroke:var(--line); stroke-width:1px; vector-effect:non-scaling-stroke}
 #sec-date .card svg{height:150px}
 .pl-dims{display:grid; grid-template-columns:1fr 1fr auto; gap:8px; align-items:end}
-@media (max-width:600px){ .card{padding-inline:4px} .card .dm{font-size:11px; letter-spacing:-.02em} }
+@media (max-width:600px){ .card{padding-inline:4px} .card .dm{letter-spacing:-.01em} }
 
 /* ---------- Map of the camp ---------- */
 #sec-map{position:relative}
 .mapbar{display:flex; gap:10px 12px; flex-wrap:wrap; align-items:center; justify-content:space-between; margin-bottom:12px}
-.fchips{display:flex; gap:6px; flex-wrap:wrap}
-.fchips button{border:1px solid var(--line-strong); background:var(--paper); min-height:40px; min-width:40px; padding:6px 12px; border-radius:var(--radius); font-size:14px; color:var(--fg)}
+.fchips{display:flex; gap:8px; flex-wrap:wrap}
+.fchips button{border:1px solid var(--line-strong); background:var(--paper); min-height:44px; min-width:44px; padding:6px 12px; border-radius:var(--radius); font-size:14px; color:var(--fg)}
 @media (hover:hover){ .fchips button:hover{background:var(--green-soft)} }
 .fchips button.on{background:var(--green); color:#fff; border-color:var(--green)}
 .mapbtns{display:flex; gap:8px; flex-wrap:wrap}
-@media (max-width:430px){ .fchips{gap:5px} .fchips button{padding-inline:8px; font-size:13px} }   /* all six types on one line */
+@media (max-width:430px){   /* a phone: six types as a tidy 3 × 2 grid, the two buttons share a row */
+  .fchips{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); width:100%}
+  .mapbtns{width:100%} .mapbtns .btn{flex:1}
+}
 .mapbox{position:relative; overflow-x:auto; background:var(--m-ground); border:1px solid var(--line); border-radius:var(--radius)}
 .mapbox svg{display:block; width:100%; height:auto; max-width:100%; touch-action:manipulation}
-@media (max-width:700px){ .mapbox svg{min-width:820px; max-width:none} }
+@media (max-width:700px){ .mapbox svg{min-width:910px; max-width:none} }   /* wide enough for every pitch to be a 44 px touch target */
 .outline{fill:var(--m-camp); stroke:var(--m-camp-line); stroke-width:2}
 .water{fill:var(--m-water); stroke:none}
 .road{fill:none; stroke:var(--m-road); stroke-width:12; stroke-linecap:round; stroke-linejoin:round}
 .maplabel{fill:var(--m-ink); font-weight:500; text-transform:uppercase; letter-spacing:.06em}
 .mapsub{fill:var(--m-ink); letter-spacing:.04em}
 .mapgold{fill:var(--green-text); font-weight:700}
-.fac text{fill:var(--m-ink); font-size:12.5px; letter-spacing:.04em; text-transform:uppercase; pointer-events:none; paint-order:stroke; stroke:var(--m-camp); stroke-width:3px; stroke-linejoin:round}
+.fac text{fill:var(--m-ink); font-size:19px; pointer-events:none; paint-order:stroke; stroke:var(--m-camp); stroke-width:4px; stroke-linejoin:round}
 .fac circle{fill:var(--m-ink); stroke:var(--m-camp); stroke-width:1.5}
 .fac line{stroke:var(--m-ink); stroke-width:1; opacity:.6}
 .hz{fill:var(--m-zone)} .hl{stroke:var(--m-zone-hatch); stroke-width:1.6}
@@ -188,18 +206,20 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .plot text{fill:var(--m-free-ink); font-weight:700; font-size:22px; pointer-events:none; text-anchor:middle; dominant-baseline:central}
 .plot.zone path,.plot.zone rect{fill:url(#hatch)}
 .plot.zone text{font-size:19px}
-.plot.zone .zcount{font-weight:400; letter-spacing:.02em}
+.plot.zone .zcount{font-weight:400; font-size:19px}
+.plot .bx{display:none; pointer-events:none}
 @media (hover:hover){ .plot:hover rect,.plot:hover path{stroke:var(--m-sel); stroke-width:2.6} }
 .plot.busy{cursor:not-allowed}
 .plot.busy rect,.plot.busy path{fill:var(--m-busy); stroke:var(--m-busy-line)}
-.plot.busy text{fill:var(--m-busy-ink)}
+.plot.busy text{fill:var(--m-busy-ink); paint-order:stroke; stroke:var(--m-busy); stroke-width:5px; stroke-linejoin:round}
+.plot.busy .bx{display:block; stroke:var(--m-busy-ink); stroke-opacity:.75; stroke-width:1.5}   /* taken: crossed out, not only tinted */
 .plot.dim rect,.plot.dim path{fill:var(--m-dim); stroke:var(--m-dim-line)}
 .plot.dim text{fill:var(--m-dim-ink)}
 .plot.sel rect,.plot.sel path{fill:var(--m-sel); stroke:var(--m-sel); stroke-width:2.6}
 .plot.sel text{fill:var(--m-sel-ink)}
 .legend{display:flex; gap:6px 18px; flex-wrap:wrap; margin-top:10px; font-size:13px; color:var(--muted)}
 .legend i{display:inline-block; width:14px; height:14px; border:1px solid var(--m-free-line); vertical-align:-2px; margin-right:6px; border-radius:2px; background:var(--m-free)}
-.legend i.busy{background:var(--m-busy); border-color:var(--m-busy-line)}
+.legend i.busy{background:linear-gradient(to top right,transparent calc(50% - .8px),var(--m-busy-ink) calc(50% - .8px),var(--m-busy-ink) calc(50% + .8px),transparent calc(50% + .8px)),var(--m-busy); border-color:var(--m-busy-line)}
 .legend i.sel{background:var(--m-sel); border-color:var(--m-sel)}
 .legend i.dim{background:var(--m-dim); border-color:var(--m-dim-line)}
 .mapnote{font-size:13px; color:var(--faint); margin-top:6px}
@@ -236,7 +256,7 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .summ .list span{border:1px solid var(--line-strong); background:var(--paper); border-radius:var(--radius); padding:3px 9px; font-size:13px}
 .summ .list span.bad{border-color:var(--bad); color:var(--bad); background:var(--bad-soft)}
 #openPlanner{margin-top:14px}
-.verdict{display:flex; align-items:center; gap:10px; padding:10px 12px; background:var(--ok-soft); color:var(--ok); font-weight:700; font-size:15px; line-height:1.35; border-radius:var(--radius)}
+.verdict{display:flex; align-items:center; gap:10px; padding:10px 12px; background:var(--ok-soft); color:var(--ok); font-weight:700; font-size:16px; line-height:1.35; border-radius:var(--radius)}
 .verdict.bad{background:var(--bad-soft); color:var(--bad)}
 .verdict.warn{background:var(--warn-soft); color:var(--warn)}
 .verdict svg{width:18px; height:18px; flex:none}
@@ -245,11 +265,11 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .bsum div:last-child{grid-column:1/-1}
 .bsum small{display:block; font-size:12px; color:var(--muted)}
 .bsum b{font-weight:700; overflow-wrap:anywhere}
-table{width:100%; border-collapse:collapse; font-size:15px}
+table{width:100%; border-collapse:collapse; font-size:16px}
 #price td{padding:8px 0; vertical-align:top; border-bottom:1px solid var(--line)}
 #price td:last-child{text-align:right; white-space:nowrap; padding-left:12px; font-variant-numeric:tabular-nums}
 #price tr.total td{border-bottom:0; font-size:20px; font-weight:700; padding-top:12px; color:var(--green-text)}
-details.more summary{cursor:pointer; font-size:14px; color:var(--green-text); min-height:40px; display:flex; align-items:center; gap:8px; list-style:none}
+details.more summary{cursor:pointer; font-size:14px; color:var(--green-text); min-height:44px; display:flex; align-items:center; gap:8px; list-style:none}
 details.more summary::-webkit-details-marker{display:none}
 details.more summary::before{content:"+"; width:18px; text-align:center; font-weight:700}
 details.more[open] summary::before{content:"−"}
@@ -264,10 +284,14 @@ pre.sum{font-family:Consolas,"Courier New",monospace; font-size:12px; white-spac
 .sticky b{font-size:20px; color:var(--green-text); font-variant-numeric:tabular-nums}
 .sticky .s1 small{display:block; font-size:12px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 @media (max-width:1000px){ .sticky{display:flex} }
-.toast{position:fixed; left:50%; bottom:calc(84px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); z-index:80; width:max-content; max-width:min(92vw,520px); background:var(--head-2); color:#fff; border:1px solid rgba(255,255,255,.16); border-radius:var(--radius); padding:10px 14px; font-size:15px; line-height:1.35; box-shadow:var(--shadow); text-align:center; text-wrap:balance}
+.toast{position:fixed; left:50%; bottom:calc(84px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); z-index:80; width:max-content; max-width:min(92vw,520px); background:var(--head-2); color:#fff; border:1px solid rgba(255,255,255,.28); border-radius:var(--radius); padding:10px 14px; font-size:16px; line-height:1.35; box-shadow:var(--shadow); text-align:center; text-wrap:balance; display:flex; align-items:center; justify-content:center; gap:12px; animation:toastIn .18s ease-out}
+.planner:not([hidden]) ~ .toast{bottom:calc(16px + env(safe-area-inset-bottom,0px))}   /* no price bar inside the planner */
+.toast button{flex:none; min-height:44px; padding:6px 12px; background:transparent; color:#fff; border:1px solid rgba(255,255,255,.55); border-radius:var(--radius); font-size:14px; font-weight:700; white-space:nowrap}
+@keyframes toastIn{from{opacity:0; transform:translate(-50%,8px)} to{opacity:1; transform:translate(-50%,0)}}
+@keyframes plIn{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none}}
 
 /* ---------- Full-screen parcel planner ---------- */
-.planner{position:fixed; inset:0; z-index:50; background:var(--bg); display:grid; grid-template-rows:auto minmax(0,1fr); padding-top:env(safe-area-inset-top,0px)}
+.planner{position:fixed; inset:0; z-index:50; background:var(--bg); display:grid; grid-template-rows:auto minmax(0,1fr); padding-top:env(safe-area-inset-top,0px); animation:plIn .2s ease-out}
 .pl-head{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:10px var(--gutter); background:var(--head-2); color:#fff}
 .pl-head h2{color:#fff; font-size:clamp(17px,2vw,20px)}
 .pl-title{min-width:0; display:grid; gap:2px}
@@ -281,11 +305,11 @@ pre.sum{font-family:Consolas,"Courier New",monospace; font-size:12px; white-spac
 .pl-sec{padding:16px 18px; border-bottom:1px solid var(--line); display:grid; gap:10px}
 .pl-sec h3{color:var(--green-text)}
 .tabs{display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--line-strong); border-radius:var(--radius); overflow:hidden; background:var(--paper)}
-.tab{border:0; background:transparent; min-height:42px; font-size:15px; color:var(--muted)}
+.tab{border:0; background:transparent; min-height:44px; font-size:16px; color:var(--muted)}
 .tab.on{background:var(--green); color:#fff}
 .sechead{display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap}
-.sechead .mini{display:flex; gap:6px}
-details.settings summary{list-style:none; cursor:pointer; display:flex; align-items:baseline; align-content:center; gap:10px; flex-wrap:wrap; min-height:40px}
+.sechead .mini{display:flex; gap:8px}
+details.settings summary{list-style:none; cursor:pointer; display:flex; align-items:baseline; align-content:center; gap:10px; flex-wrap:wrap; min-height:44px}
 details.settings summary::-webkit-details-marker{display:none}
 details.settings summary::before{content:"+"; color:var(--green-text); font-weight:700; width:14px; text-align:center}
 details.settings[open] summary::before{content:"−"}
@@ -301,20 +325,20 @@ details.settings[open] summary::before{content:"−"}
 .placed .pr b{font-weight:700; min-width:0; overflow-wrap:anywhere; line-height:1.2}
 .placed .pr .no{font-size:12px; color:var(--green-text); min-width:18px; font-variant-numeric:tabular-nums}
 .placed .pr .dm{color:var(--muted); font-size:12px; white-space:nowrap; font-variant-numeric:tabular-nums}
-.placed .pr button{border:1px solid var(--line-strong); background:var(--paper); min-width:40px; min-height:40px; border-radius:var(--radius); font-size:15px; color:var(--green-text)}
+.placed .pr button{border:1px solid var(--line-strong); background:var(--paper); min-width:44px; min-height:44px; border-radius:var(--radius); color:var(--green-text); display:grid; place-items:center; padding:0}
 @media (hover:hover){ .placed .pr button:hover{background:var(--green-soft)} }
 .empty{color:var(--faint); font-size:14px}
 .srclist p{font-size:13px; margin:0 0 8px; color:var(--muted); line-height:1.9}
 .srclist b{color:var(--fg)}
 .srclist a{padding-block:3px}
-.obtools{position:absolute; display:flex; gap:2px; background:var(--head-2); border:1px solid rgba(255,255,255,.28); border-radius:22px; padding:2px; box-shadow:var(--shadow); z-index:3; transform:translate(-50%,-100%)}
-.obtools button{border:0; background:transparent; color:#fff; min-width:40px; min-height:40px; border-radius:50%; font-size:17px}
+.obtools{position:absolute; display:flex; gap:4px; background:var(--head-2); border:1px solid rgba(255,255,255,.28); border-radius:26px; padding:3px; box-shadow:var(--shadow); z-index:3; transform:translate(-50%,-100%)}
+.obtools button{border:0; background:transparent; color:#fff; min-width:44px; min-height:44px; border-radius:50%; display:grid; place-items:center; padding:0}
 @media (hover:hover){ .obtools button:hover{background:rgba(255,255,255,.16)} }
 .obtools button[data-act="del"]{color:#ffb9b6}
-.zoom{position:absolute; right:12px; bottom:12px; display:grid; gap:4px; z-index:2}
-.zoom button{width:40px; height:40px; border-radius:var(--radius); border:1px solid rgba(255,255,255,.4); background:var(--bp-deep); color:#fff; font-size:18px}
+.zoom{position:absolute; right:12px; bottom:12px; display:grid; gap:8px; z-index:2}
+.zoom button{width:44px; height:44px; border-radius:var(--radius); border:1px solid rgba(255,255,255,.4); background:var(--bp-deep); color:#fff; display:grid; place-items:center; padding:0}
 @media (hover:hover){ .zoom button:hover{background:var(--head-2)} }
-.pl-hint{position:absolute; left:12px; bottom:12px; font-size:12px; line-height:1.5; color:#fff; background:var(--bp-deep); padding:6px 12px; border-radius:var(--radius); max-width:calc(100% - 84px); pointer-events:none}
+.pl-hint{position:absolute; left:12px; bottom:12px; font-size:12px; line-height:1.5; color:#fff; background:var(--bp-deep); padding:6px 12px; border-radius:var(--radius); max-width:calc(100% - 88px); pointer-events:none}
 @media (max-width:900px){
   .pl-head{display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:2px 12px; padding-inline:16px}
   .pl-title{display:contents}
@@ -323,7 +347,7 @@ details.settings[open] summary::before{content:"−"}
   .pl-actions{grid-column:2; grid-row:1 / span 2}
   .pl-meta{grid-column:1 / -1; grid-row:3; white-space:normal}
   .pl-title .k3{display:none}
-  .pl-body{grid-template-columns:1fr; grid-template-rows:minmax(0,44vh) minmax(0,1fr)}
+  .pl-body{grid-template-columns:1fr; grid-template-rows:minmax(0,44vh) minmax(0,1fr); grid-template-rows:minmax(0,44dvh) minmax(0,1fr)}
   .pl-side{border-left:0; border-top:1px solid var(--line)}
   .pl-dims{grid-template-columns:1fr 1fr} .pl-dims button{grid-column:1/-1}
   .pl-hint{display:none}
@@ -388,4 +412,4 @@ details.settings[open] summary::before{content:"−"}
 .card .ob .k{fill:var(--ink)}
 .card .ob .s{fill:rgba(217,188,115,.22); stroke:var(--gold-text)}
 
-@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important; animation:none!important; scroll-behavior:auto!important} }

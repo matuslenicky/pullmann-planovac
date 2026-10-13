@@ -1,4 +1,5 @@
 <div class="wrap">
+  <a class="skip" href="#planovac">Preskočiť na obsah</a>
   <p class="demo" role="note"><b>Ukážka návrhu.</b> Toto nie je oficiálna stránka kempu. Obsadenosť je vymyslená a rezervácia sa nikam neodosiela.</p>
 
   <header class="site">
@@ -17,7 +18,7 @@
   </header>
 
   <main class="in">
-    <section class="intro" id="planovac">
+    <section class="intro" id="planovac" tabindex="-1">
       <h1>Plánovač parcely</h1>
       <p class="lead">Vyberte termín, povedzte, s čím prídete, a kliknite na parcelu v mape. Hneď uvidíte, či sa zmestíte a koľko pobyt stojí.</p>
       <ol class="steps" aria-label="Postup">
@@ -48,7 +49,7 @@
             <h3 class="sub">S čím prídete</h3>
             <div class="row c2">
               <label><span>Kategória</span><select id="qCat"></select></label>
-              <label><span>Hľadať model</span><input id="qSearch" placeholder="Kodiaq, karavan, SUV…" autocomplete="off" enterkeyhint="search"></label>
+              <label><span>Hľadať model</span><input id="qSearch" placeholder="napr. Kodiaq" autocomplete="off" enterkeyhint="search"></label>
             </div>
             <div class="cards" id="qCards" role="group" aria-label="Tri modely na porovnanie" hidden></div>
             <div class="pl-dims" id="qDims" hidden>
@@ -64,7 +65,7 @@
           <div class="ph"><h2>2. Mapa kempu</h2><span class="tag" id="mapTag">kliknite na parcelu</span></div>
           <div class="mapbar">
             <div class="fchips" id="fType" role="group" aria-label="Typ miesta"><button type="button" data-f="all" class="on">Všetky</button><button type="button" data-f="M">M</button><button type="button" data-f="L">L</button><button type="button" data-f="XL">XL</button><button type="button" data-f="V">Voľné státie</button><button type="button" data-f="S">Stany</button></div>
-            <span class="mapbtns"><button class="btn sm primary" id="recBtn" type="button">Odporučiť miesto</button><button class="btn sm" id="viewToggle" type="button" aria-pressed="false">Zoznam</button></span>
+            <span class="mapbtns"><button class="btn sm accent" id="recBtn" type="button">Odporučiť miesto</button><button class="btn sm" id="viewToggle" type="button" aria-pressed="false">Zoznam</button></span>
           </div>
           <p class="mapnote mobhint" id="mapHint">Mapu posúvajte prstom do strán.</p>
           <div class="mapbox" id="mapbox"></div>
@@ -76,7 +77,7 @@
             <span><i class="sel"></i>vybraná</span>
             <span><i class="dim"></i>nezmestíte sa alebo mimo filtra</span>
           </div>
-          <p class="mapnote">Obsadenosť je ukážková. Miesto vo voľnom státí a na stanovej lúke prideľuje recepcia.</p>
+          <p class="mapnote">Obsadenosť je ukážková. Miesto vo voľnom státí a na stanovej lúke prideľuje recepcia. Mierka mapy je približná, podľa oficiálnej mapy kempu z roku 2023.</p>
         </section>
       </div>
 
@@ -107,16 +108,17 @@
             <form id="bookForm" novalidate>
               <div class="pb">
                 <div class="row c2">
-                  <label><span>Meno a priezvisko</span><input id="fName" autocomplete="name" required></label>
-                  <label><span>Telefón</span><input id="fPhone" type="tel" autocomplete="tel" required></label>
+                  <label><span>Meno a priezvisko<span class="req" aria-hidden="true"> *</span></span><input id="fName" autocomplete="name" required></label>
+                  <label><span>Telefón<span class="req" aria-hidden="true"> *</span></span><input id="fPhone" type="tel" autocomplete="tel" required></label>
                 </div>
-                <label><span>E-mail</span><input id="fMail" type="email" autocomplete="email" required></label>
+                <label><span>E-mail<span class="req" aria-hidden="true"> *</span></span><input id="fMail" type="email" autocomplete="email" required></label>
                 <label><span>Poznámka (ŠPZ, požiadavky, čas príchodu)</span><input id="fNote"></label>
                 <div>
                   <label class="toggle"><input type="checkbox" id="fElec" checked> Pripojenie na elektrinu (5 € / noc)</label>
                   <label class="toggle"><input type="checkbox" id="fEarly"> Skorý príchod alebo neskorý odchod do 4 h (10 €, XL 15 €, po dohode)</label>
-                  <label class="toggle"><input type="checkbox" id="fRules" required> Súhlasím s ubytovacím poriadkom (nočný kľud 23:00–07:00)</label>
+                  <label class="toggle"><input type="checkbox" id="fRules" required> <span>Súhlasím s ubytovacím poriadkom (nočný kľud 23:00–07:00)<span class="req" aria-hidden="true"> *</span></span></label>
                 </div>
+                <p class="note">Údaje označené <span class="req" aria-hidden="true">*</span> sú povinné.</p>
                 <p class="err" id="fErr" role="alert" hidden></p>
                 <button class="btn primary wide" type="submit" id="sendBtn">Odoslať nezáväznú rezerváciu</button>
                 <p class="note">Rezervácia je záväzná až po e-mailovom potvrdení recepcie. Miesto držíme v deň príchodu do 18:00. Zmeny hláste najneskôr 3 dni vopred. Recepcia od 8:00: <a class="mono" href="tel:+421911201089">+421 911 201 089</a>.</p>
@@ -142,13 +144,13 @@
 <div class="planner" id="planner" hidden role="dialog" aria-modal="true" aria-labelledby="plTitle">
   <div class="pl-head">
     <div class="pl-title"><div class="eyebrow">3. Rozloženie<span class="k3"> na parcele</span></div><h2 id="plTitle">Parcela</h2><div class="pl-meta" id="plMeta"></div></div>
-    <div class="pl-actions"><button class="btn light" id="plDone" type="button">Hotovo, pokračovať</button><button class="btn icon" id="plClose" type="button" aria-label="Zavrieť plánovač">✕</button></div>
+    <div class="pl-actions"><button class="btn light" id="plDone" type="button">Hotovo, pokračovať</button><button class="btn icon" id="plClose" type="button" aria-label="Zavrieť plánovač" data-ico="x"></button></div>
   </div>
   <div class="pl-body">
     <div class="pl-stage">
       <div class="plan" id="plan"></div>
-      <div class="obtools" id="obtools" hidden><button type="button" data-act="rot" title="Otočiť o 90° (R)" aria-label="Otočiť o 90 stupňov">⟳</button><button type="button" data-act="dup" title="Duplikovať" aria-label="Duplikovať">⧉</button><button type="button" data-act="del" title="Zmazať (Delete)" aria-label="Zmazať">✕</button></div>
-      <div class="zoom"><button type="button" id="zIn" aria-label="Priblížiť">+</button><button type="button" id="zOut" aria-label="Oddialiť">−</button><button type="button" id="zReset" aria-label="Zobraziť celú parcelu">⤢</button></div>
+      <div class="obtools" id="obtools" hidden><button type="button" data-act="rot" title="Otočiť o 90° (R)" aria-label="Otočiť o 90 stupňov" data-ico="rot"></button><button type="button" data-act="dup" title="Duplikovať" aria-label="Duplikovať" data-ico="dup"></button><button type="button" data-act="del" title="Zmazať (Delete)" aria-label="Zmazať" data-ico="x"></button></div>
+      <div class="zoom"><button type="button" id="zIn" aria-label="Priblížiť" data-ico="plus"></button><button type="button" id="zOut" aria-label="Oddialiť" data-ico="minus"></button><button type="button" id="zReset" aria-label="Zobraziť celú parcelu" data-ico="fit"></button></div>
       <div class="pl-hint" id="plHint">Objekt ťahajte myšou alebo prstom. Klik naň zobrazí otočenie, kópiu a zmazanie.</div>
     </div>
     <aside class="pl-side">
@@ -156,7 +158,7 @@
         <div class="tabs" role="group" aria-label="Čo pridať"><button type="button" class="tab on" data-tab="veh" aria-pressed="true">Vozidlo</button><button type="button" class="tab" data-tab="gear" aria-pressed="false">Stan a výbava</button></div>
         <div class="row c2">
           <label><span>Kategória</span><select id="vCat"></select></label>
-          <label><span>Hľadať</span><input id="vSearch" placeholder="Kodiaq, karavan, gril…" autocomplete="off" enterkeyhint="search"></label>
+          <label><span>Hľadať</span><input id="vSearch" placeholder="napr. Kodiaq" autocomplete="off" enterkeyhint="search"></label>
         </div>
         <div class="cards" id="vCards" role="group" aria-label="Tri modely na porovnanie"></div>
         <div class="pl-dims">

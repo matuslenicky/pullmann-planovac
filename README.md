@@ -28,7 +28,7 @@ Pred ostrým nasadením treba doplniť skutočnú obsadenosť a odosielanie reze
 | `src/data/` | preverené rozmery 75 položiek so zdrojmi |
 | `build.js` | zloží zo `src/` všetky tri HTML súbory |
 | `gen-dims.js`, `gen-outline.js` | generujú `src/dims.js` a `src/outline.js` z dát |
-| `tests/` | scenáre v headless Chrome: počítač, mobil 390 px, tmavý režim, klávesnica, pravidlá, offline |
+| `tests/` | scenáre v headless Chrome: počítač, mobil 390 px, tmavý režim, klávesnica, pravidlá, offline, pravidlá ovládania (dotykové ciele, Späť, vrátenie zmazania) |
 
 ## Práca s projektom
 
@@ -36,7 +36,7 @@ Treba len Node 22 alebo novší, žiadne závislosti.
 
 ```
 node build.js        # po každej zmene v src/
-node tests/run.js    # spustí vlastný Chrome, prejde 9 scenárov a Chrome zase zavrie
+node tests/run.js    # spustí vlastný Chrome, prejde 10 scenárov a Chrome zase zavrie
 ```
 
 Úpravy sa robia v `src/`. Súbory `index.html`, `Pullmann-planovac.html`, `planovac.html`, `src/dims.js` a `src/outline.js` sú generované, ručne sa nemenia.
