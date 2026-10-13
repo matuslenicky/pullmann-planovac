@@ -3,47 +3,49 @@
 /* Layout: the camp's own website, kept quiet. Grey header bar with the logo, white page, green uppercase headings,
    flat green buttons, green footer, system sans like the original. Only the parcel plan is a (softened) blueprint. */
 :root{
-  --bg:#ffffff; --paper:#ffffff; --paper-2:#f5f5f3; --ink:#3c3d3d; --fg:#444545; --muted:#676868; --faint:#6e6f6f;
-  --green:#496662; --green-deep:#344946; --green-soft:#e9efed; --green-text:#44605c;
+  /* page: the values the camp's own site computes to (text, greys, green, red) and the gold of its logo */
+  --bg:#ffffff; --paper:#ffffff; --paper-2:#e0e0e0; --ink:#363636; --fg:#4b4c4c; --muted:#717171; --faint:#717171;
+  --green:#496662; --green-deep:#344946; --green-soft:#e9edec; --green-text:#496662;
   --head:#666666; --head-2:#424242;
-  --gold:#d9bc73; --gold-soft:#f8f3e4; --gold-text:#80631b;
-  --line:#e2e2df; --line-strong:#c9c9c5;
-  --ok:#3b7453; --ok-soft:#e8f2ec; --warn:#7d6113; --warn-soft:#f8f2dd; --bad:#a23f3f; --bad-soft:#f7e6e5;
+  --gold:#d9bc73; --gold-soft:#f8f3e6;
+  --line:#d9d9d9; --line-strong:#bfbfbf; --field-line:#bfbfbf;
+  --ok:#496662; --ok-soft:#e9edec; --warn:#4b4c4c; --warn-soft:#f8f3e6; --bad:#d63637; --bad-soft:#ffffff;
   --field:#ffffff; --shadow:0 6px 22px rgba(0,0,0,.10);
-  /* map of the camp: pale ground, soft greens, the chosen parcel in the brand green */
-  --m-ground:#f1f3f0; --m-camp:#e4ebe6; --m-camp-line:#c5d0c8; --m-road:#d9d5cd; --m-water:#d5e6ee; --m-ink:#5d6763;
-  --m-free:#cfe6d6; --m-free-line:#8fb79d; --m-free-ink:#2c4a38; --m-busy:#ecd9d8; --m-busy-line:#d3b1b0; --m-busy-ink:#7b4c4b;
-  --m-dim:#ebebe8; --m-dim-line:#d2d2ce; --m-dim-ink:#7c7d7b; --m-sel:#496662; --m-sel-ink:#ffffff; --m-zone:#dcebe1; --m-zone-hatch:#b5cfbd;
+  /* map: the colours of the camp's official map (pullmann_mapa_web_2023.png) */
+  --m-ground:#638d73; --m-camp:#288354; --m-camp-line:rgba(255,255,255,.75); --m-road:#6d6e6e; --m-water:#60c7eb; --m-water-ink:#344946; --m-ink:#ffffff; --m-halo:#344946; --m-pin:#ebc87d;
+  --m-free:#ffffff; --m-free-line:#288354; --m-free-ink:#288354; --m-busy:#cccccc; --m-busy-line:#ffffff; --m-busy-ink:#4b4c4c;
+  --m-dim:rgba(255,255,255,.14); --m-dim-line:rgba(255,255,255,.6); --m-dim-ink:rgba(255,255,255,.85); --m-sel:#ebc87d; --m-sel-ink:#344946; --m-zone:#ffffff; --m-zone-hatch:#bfdacc;
   /* blueprint, used only inside the parcel plan */
   --bp:#44698f; --bp-deep:#365577; --bp-grid:rgba(255,255,255,.14); --bp-grid-strong:rgba(255,255,255,.28);
   --bp-accent:#f0d591; --bp-accent-ink:#2a3d55; --bp-bad:#ffb9b6; --bp-bad-fill:rgba(255,140,135,.22); --bp-body:#5f84ab; --bp-bad-body:#8a7396;
   --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",sans-serif;
   --radius:3px; --gutter:clamp(16px,4vw,40px); --max:1160px;
 }
+/* the camp's site has no dark theme: this one keeps its hues and only turns the lights down */
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --bg:#1d1f1f; --paper:#242727; --paper-2:#2a2d2d; --ink:#e9eae8; --fg:#dfe1df; --muted:#b3b6b4; --faint:#a0a3a1;
+  --bg:#1d1f1f; --paper:#242727; --paper-2:#2d3030; --ink:#e9eae8; --fg:#dfe1df; --muted:#b3b6b4; --faint:#b3b6b4;
   --green:#4f706b; --green-deep:#3d5955; --green-soft:#2c3836; --green-text:#a3c2bc;
   --head:#3a3c3c; --head-2:#2b2d2d;
-  --gold:#d9bc73; --gold-soft:#39342a; --gold-text:#dcc07a;
-  --line:#373b3a; --line-strong:#535857;
-  --ok:#8ccfa6; --ok-soft:#243329; --warn:#e2bf6a; --warn-soft:#383121; --bad:#f0a3a0; --bad-soft:#402827;
+  --gold:#d9bc73; --gold-soft:#39342a;
+  --line:#3a3e3d; --line-strong:#5a5f5e; --field-line:#5a5f5e;
+  --ok:#a3c2bc; --ok-soft:#2c3836; --warn:#dfe1df; --warn-soft:#39342a; --bad:#f0a3a0; --bad-soft:#402827;
   --field:#1f2222; --shadow:0 6px 22px rgba(0,0,0,.45);
-  --m-ground:#252928; --m-camp:#2d3835; --m-camp-line:#465450; --m-road:#4a4741; --m-water:#2c4552; --m-ink:#b9c2be;
-  --m-free:#3f6b52; --m-free-line:#5e8e73; --m-free-ink:#eaf5ee; --m-busy:#5a3f3e; --m-busy-line:#7a5857; --m-busy-ink:#f0d9d8;
-  --m-dim:#333736; --m-dim-line:#454a49; --m-dim-ink:#9a9f9d; --m-sel:#d9bc73; --m-sel-ink:#22302d; --m-zone:#31453a; --m-zone-hatch:#4a6555;
+  --m-ground:#2a3b31; --m-camp:#1a4a33; --m-camp-line:rgba(255,255,255,.45); --m-road:#4b4c4c; --m-water:#2b6c85; --m-water-ink:#d7eef7; --m-ink:#ffffff; --m-halo:#12241b; --m-pin:#d9bc73;
+  --m-free:#e3ece6; --m-free-line:#1a4a33; --m-free-ink:#1a4a33; --m-busy:#6d6e6e; --m-busy-line:#e3ece6; --m-busy-ink:#ffffff;
+  --m-dim:rgba(255,255,255,.08); --m-dim-line:rgba(255,255,255,.5); --m-dim-ink:rgba(255,255,255,.8); --m-sel:#d9bc73; --m-sel-ink:#2b2d2d; --m-zone:#e3ece6; --m-zone-hatch:#b5cfc0;
   --bp:#2f4d6e; --bp-deep:#243c57; --bp-body:#476a90; --bp-bad-body:#6d5a7c; color-scheme:dark;
 }}
 :root[data-theme="dark"]{
-  --bg:#1d1f1f; --paper:#242727; --paper-2:#2a2d2d; --ink:#e9eae8; --fg:#dfe1df; --muted:#b3b6b4; --faint:#a0a3a1;
+  --bg:#1d1f1f; --paper:#242727; --paper-2:#2d3030; --ink:#e9eae8; --fg:#dfe1df; --muted:#b3b6b4; --faint:#b3b6b4;
   --green:#4f706b; --green-deep:#3d5955; --green-soft:#2c3836; --green-text:#a3c2bc;
   --head:#3a3c3c; --head-2:#2b2d2d;
-  --gold:#d9bc73; --gold-soft:#39342a; --gold-text:#dcc07a;
-  --line:#373b3a; --line-strong:#535857;
-  --ok:#8ccfa6; --ok-soft:#243329; --warn:#e2bf6a; --warn-soft:#383121; --bad:#f0a3a0; --bad-soft:#402827;
+  --gold:#d9bc73; --gold-soft:#39342a;
+  --line:#3a3e3d; --line-strong:#5a5f5e; --field-line:#5a5f5e;
+  --ok:#a3c2bc; --ok-soft:#2c3836; --warn:#dfe1df; --warn-soft:#39342a; --bad:#f0a3a0; --bad-soft:#402827;
   --field:#1f2222; --shadow:0 6px 22px rgba(0,0,0,.45);
-  --m-ground:#252928; --m-camp:#2d3835; --m-camp-line:#465450; --m-road:#4a4741; --m-water:#2c4552; --m-ink:#b9c2be;
-  --m-free:#3f6b52; --m-free-line:#5e8e73; --m-free-ink:#eaf5ee; --m-busy:#5a3f3e; --m-busy-line:#7a5857; --m-busy-ink:#f0d9d8;
-  --m-dim:#333736; --m-dim-line:#454a49; --m-dim-ink:#9a9f9d; --m-sel:#d9bc73; --m-sel-ink:#22302d; --m-zone:#31453a; --m-zone-hatch:#4a6555;
+  --m-ground:#2a3b31; --m-camp:#1a4a33; --m-camp-line:rgba(255,255,255,.45); --m-road:#4b4c4c; --m-water:#2b6c85; --m-water-ink:#d7eef7; --m-ink:#ffffff; --m-halo:#12241b; --m-pin:#d9bc73;
+  --m-free:#e3ece6; --m-free-line:#1a4a33; --m-free-ink:#1a4a33; --m-busy:#6d6e6e; --m-busy-line:#e3ece6; --m-busy-ink:#ffffff;
+  --m-dim:rgba(255,255,255,.08); --m-dim-line:rgba(255,255,255,.5); --m-dim-ink:rgba(255,255,255,.8); --m-sel:#d9bc73; --m-sel-ink:#2b2d2d; --m-zone:#e3ece6; --m-zone-hatch:#b5cfc0;
   --bp:#2f4d6e; --bp-deep:#243c57; --bp-body:#476a90; --bp-bad-body:#6d5a7c; color-scheme:dark;
 }
 
@@ -66,7 +68,7 @@ a{color:var(--green-text)}
 .note{font-size:13px; color:var(--faint); line-height:1.45}
 button{font:inherit; color:inherit; cursor:pointer}
 button,a,input,select,summary,label{touch-action:manipulation}
-input,select{font:inherit; font-size:16px; color:var(--fg); background:var(--field); border:1px solid var(--line-strong); border-radius:var(--radius); padding:8px 10px; min-height:44px; width:100%}
+input,select{font:inherit; font-size:16px; color:var(--fg); background:var(--field); border:1px solid var(--field-line); border-radius:var(--radius); padding:8px 10px; min-height:44px; width:100%}
 select{appearance:auto; cursor:pointer}
 input[type=date],input[type=number]{font-variant-numeric:tabular-nums}
 input::placeholder{color:var(--faint); opacity:1}
@@ -120,7 +122,9 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .col{display:grid; gap:38px; min-width:0}
 @media (max-width:1000px){ .grid{grid-template-columns:1fr; gap:34px; padding-block:26px 40px} .col{gap:34px} }
 .panel{min-width:0}
-.panel.box{background:var(--paper-2); border:1px solid var(--line); border-radius:var(--radius); padding:20px}
+.panel.box{background:var(--paper-2); border:1px solid var(--line); border-radius:var(--radius); padding:20px; --muted:var(--fg); --faint:var(--fg); --field-line:#7e7e7e}   /* #7e7e7e is the camp site's grey button: a field edge that still shows on the grey box */
+.panel.box .err{background:var(--paper); padding:6px 10px; border-radius:var(--radius)}
+.panel.box .verdict,.panel.box .chip.on,.panel.box .confirm{background:var(--paper)}   /* the red needs a white ground to stay readable */
 @media (max-width:600px){ .panel.box{padding:16px} }
 .ph{display:flex; justify-content:space-between; align-items:baseline; gap:6px 12px; flex-wrap:wrap; padding-bottom:10px; margin-bottom:16px; border-bottom:1px solid var(--line)}
 .ph .tag{font-size:13px; color:var(--muted); font-variant-numeric:tabular-nums}
@@ -165,14 +169,14 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .card{border:1px solid var(--line); background:var(--paper); border-radius:var(--radius); padding:8px 6px; display:grid; gap:2px; justify-items:center; align-content:start; text-align:center; min-width:0; color:var(--fg)}
 @media (hover:hover){ .card:hover{border-color:var(--green)} }
 .card.on{border-color:var(--green); background:var(--green-soft); box-shadow:inset 0 0 0 1px var(--green)}
-.card.hit{border-color:var(--gold-text); box-shadow:inset 0 0 0 1px var(--gold-text)}
+.card.hit{border-color:var(--gold); box-shadow:inset 0 0 0 2px var(--gold); background:var(--gold-soft)}
 .card svg{width:100%; height:132px; display:block; margin-bottom:4px; pointer-events:none}
 .card .nm{font-size:14px; font-weight:700; line-height:1.2; overflow-wrap:anywhere}
 .card .dm{font-size:12px; color:var(--muted); font-variant-numeric:tabular-nums; white-space:nowrap}
 .card .tg{font-size:12px; color:var(--muted); line-height:1.25}
 .card .tg.ok{color:var(--ok)} .card .tg.no{color:var(--bad)}
 .card.on .dm,.card.on .tg{color:var(--fg)}
-.card.on .tg.ok{color:var(--ok)} .card.on .tg.no{color:var(--bad)}
+.card.on .tg.ok{color:var(--ok)} .card.on .tg.no{color:var(--bad); background:var(--paper); padding:1px 5px; border-radius:2px}
 .card .cg{fill:none; stroke:var(--line); stroke-width:1px; vector-effect:non-scaling-stroke}
 #sec-date .card svg{height:150px}
 .pl-dims{display:grid; grid-template-columns:1fr 1fr auto; gap:8px; align-items:end}
@@ -197,17 +201,19 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .water{fill:var(--m-water); stroke:none}
 .road{fill:none; stroke:var(--m-road); stroke-width:12; stroke-linecap:round; stroke-linejoin:round}
 .maplabel{fill:var(--m-ink); font-weight:500; text-transform:uppercase; letter-spacing:.06em}
+.maplabel.onwater{fill:var(--m-water-ink)}
+.roadside{fill:var(--m-road)}
 .mapsub{fill:var(--m-ink); letter-spacing:.04em}
-.mapgold{fill:var(--green-text); font-weight:700}
-.fac text{fill:var(--m-ink); font-size:19px; pointer-events:none; paint-order:stroke; stroke:var(--m-camp); stroke-width:4px; stroke-linejoin:round}
-.fac circle{fill:var(--m-ink); stroke:var(--m-camp); stroke-width:1.5}
-.fac line{stroke:var(--m-ink); stroke-width:1; opacity:.6}
+.mapgold{font-weight:700; paint-order:stroke; stroke:var(--m-halo); stroke-width:5px; stroke-linejoin:round}
+.fac text{fill:var(--m-ink); font-size:19px; pointer-events:none; paint-order:stroke; stroke:var(--m-halo); stroke-width:4px; stroke-linejoin:round}
+.fac circle{fill:var(--m-pin); stroke:var(--m-halo); stroke-width:1.5}
+.fac line{stroke:var(--m-ink); stroke-width:1; opacity:.75}
 .hz{fill:var(--m-zone)} .hl{stroke:var(--m-zone-hatch); stroke-width:1.6}
 .plot{cursor:pointer}
 .plot rect,.plot path{fill:var(--m-free); stroke:var(--m-free-line); stroke-width:1.5; transition:fill .15s}
 .plot text{fill:var(--m-free-ink); font-weight:700; font-size:22px; pointer-events:none; text-anchor:middle; dominant-baseline:central}
 .plot.zone path,.plot.zone rect{fill:url(#hatch)}
-.plot.zone text{font-size:19px}
+.plot.zone text{font-size:19px; paint-order:stroke; stroke:var(--m-zone); stroke-width:4px; stroke-linejoin:round}
 .plot.zone .zcount{font-weight:400; font-size:19px}
 .plot .bx{display:none; pointer-events:none}
 @media (hover:hover){ .plot:hover rect,.plot:hover path{stroke:var(--m-sel); stroke-width:2.6} }
@@ -215,15 +221,15 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .plot.busy rect,.plot.busy path{fill:var(--m-busy); stroke:var(--m-busy-line)}
 .plot.busy text{fill:var(--m-busy-ink); paint-order:stroke; stroke:var(--m-busy); stroke-width:5px; stroke-linejoin:round}
 .plot.busy .bx{display:block; stroke:var(--m-busy-ink); stroke-opacity:.75; stroke-width:1.5}   /* taken: crossed out, not only tinted */
-.plot.dim rect,.plot.dim path{fill:var(--m-dim); stroke:var(--m-dim-line)}
-.plot.dim text{fill:var(--m-dim-ink)}
-.plot.sel rect,.plot.sel path{fill:var(--m-sel); stroke:var(--m-sel); stroke-width:2.6}
-.plot.sel text{fill:var(--m-sel-ink)}
+.plot.dim rect,.plot.dim path{fill:var(--m-dim); stroke:var(--m-dim-line); stroke-dasharray:6 5}
+.plot.dim text{fill:var(--m-dim-ink); stroke:none}
+.plot.sel rect,.plot.sel path{fill:var(--m-sel); stroke:var(--m-ink); stroke-width:3}
+.plot.sel text{fill:var(--m-sel-ink); stroke:none}
 .legend{display:flex; gap:6px 18px; flex-wrap:wrap; margin-top:10px; font-size:13px; color:var(--muted)}
 .legend i{display:inline-block; width:14px; height:14px; border:1px solid var(--m-free-line); vertical-align:-2px; margin-right:6px; border-radius:2px; background:var(--m-free)}
-.legend i.busy{background:linear-gradient(to top right,transparent calc(50% - .8px),var(--m-busy-ink) calc(50% - .8px),var(--m-busy-ink) calc(50% + .8px),transparent calc(50% + .8px)),var(--m-busy); border-color:var(--m-busy-line)}
+.legend i.busy{background:linear-gradient(to top right,transparent calc(50% - .8px),var(--m-busy-ink) calc(50% - .8px),var(--m-busy-ink) calc(50% + .8px),transparent calc(50% + .8px)),var(--m-busy); border-color:var(--m-busy-ink)}
 .legend i.sel{background:var(--m-sel); border-color:var(--m-sel)}
-.legend i.dim{background:var(--m-dim); border-color:var(--m-dim-line)}
+.legend i.dim{background:var(--m-camp); border:1px dashed #fff; outline:1px solid var(--m-camp)}
 .mapnote{font-size:13px; color:var(--faint); margin-top:6px}
 .mobhint{display:none} @media (max-width:700px){ .mobhint{display:block; margin:0 0 8px} }
 .tip{position:absolute; z-index:5; background:var(--paper); color:var(--fg); padding:9px 11px; border-radius:var(--radius); font-size:13px; line-height:1.4; box-shadow:var(--shadow); pointer-events:none; max-width:240px; border:1px solid var(--line-strong)}
@@ -259,8 +265,9 @@ label{display:grid; gap:5px; align-content:end; font-size:13px; line-height:1.25
 .summ .list span.bad{border-color:var(--bad); color:var(--bad); background:var(--bad-soft)}
 #openPlanner{margin-top:14px}
 .verdict{display:flex; align-items:center; gap:10px; padding:10px 12px; background:var(--ok-soft); color:var(--ok); font-weight:700; font-size:16px; line-height:1.35; border-radius:var(--radius)}
-.verdict.bad{background:var(--bad-soft); color:var(--bad)}
-.verdict.warn{background:var(--warn-soft); color:var(--warn)}
+.verdict{box-shadow:inset 4px 0 0 var(--ok)}
+.verdict.bad{background:var(--bad-soft); color:var(--bad); box-shadow:inset 4px 0 0 var(--bad), inset 0 0 0 1px var(--line)}
+.verdict.warn{background:var(--warn-soft); color:var(--warn); box-shadow:inset 4px 0 0 var(--gold)}
 .verdict svg{width:18px; height:18px; flex:none}
 .bsum{display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px 16px}
 .bsum div{min-width:0}
@@ -319,7 +326,7 @@ details.settings[open] summary::before{content:"−"}
 .meter .lbl{display:flex; justify-content:space-between; gap:12px; font-size:14px; flex-wrap:wrap}
 .meter .bar{height:10px; border-radius:5px; background:var(--line); position:relative; overflow:hidden}
 .meter .fill{position:absolute; inset:0 auto 0 0; background:var(--ok); transition:width .25s}
-.meter .fill.warn{background:var(--warn)} .meter .fill.bad{background:var(--bad)}
+.meter .fill.warn{background:var(--gold)} .meter .fill.bad{background:var(--bad)}
 .placed{display:grid; gap:6px}
 .placed .pr{display:grid; grid-template-columns:auto 1fr auto auto auto; gap:8px; align-items:center; font-size:14px; border:1px solid var(--line); background:var(--paper); padding:6px 8px 6px 12px; border-radius:var(--radius); min-width:0; cursor:pointer}
 .placed .pr.sel{border-color:var(--green); background:var(--green-soft)}
@@ -412,7 +419,7 @@ details.settings[open] summary::before{content:"−"}
 .card .ob .d,.card .ob .h,.card .ob .t{stroke:var(--ink)}
 .card .ob .g{fill:rgba(73,102,98,.26); fill:color-mix(in srgb,var(--green) 30%,transparent); stroke:var(--ink)}
 .card .ob .k{fill:var(--ink)}
-.card .ob .s{fill:rgba(217,188,115,.22); stroke:var(--gold-text)}
+.card .ob .s{fill:rgba(217,188,115,.28); stroke:var(--gold); stroke-width:1.4px}
 
 @media (prefers-reduced-motion:reduce){ *{transition:none!important; animation:none!important; scroll-behavior:auto!important} }
 </style>
@@ -1450,12 +1457,12 @@ function buildMap(){
   const zones = ZONES.map(z=>'<g class="plot zone" data-id="'+z.id+'" data-type="'+z.type+'" tabindex="0" role="button"><path d="M'+z.pts.split(' ').join('L')+'Z"/><text x="'+z.lx+'" y="'+(z.ly-10)+'">'+esc(z.name)+'</text><text x="'+z.lx+'" y="'+(z.ly+14)+'" class="mapsub zcount"></text></g>').join('');
   $('#mapbox').innerHTML = '<svg viewBox="380 236 1200 1030" role="group" aria-label="Mapa kempu Pullmann s parcelami">'
     +'<defs><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="hz" width="10" height="10"/><line class="hl" x1="0" y1="0" x2="0" y2="10"/></pattern></defs>'
-    +'<path class="water" d="M380,236 L520,236 L395,660 L380,700Z"/><text class="maplabel" x="400" y="520" font-size="30" transform="rotate(-72 400 520)">Váh</text>'
+    +'<path class="water" d="M380,236 L520,236 L395,660 L380,700Z"/><text class="maplabel onwater" x="400" y="520" font-size="30" transform="rotate(-72 400 520)">Váh</text>'
     +'<polygon class="outline" points="640,255 1470,290 1548,1150 1180,1232 1050,1190 900,1150 710,1140 640,1000 400,715"/>'
     +'<path class="road" d="M1160,1060 C1050,1030 760,1040 650,1000"/><path class="road" d="M1130,560 C1000,620 870,640 600,760"/><path class="road" d="M940,350 L560,470"/>'
     +'<path class="road" d="M1200,1225 L1160,1060 L1130,560 C1120,460 1040,360 940,350 C1050,330 1200,340 1290,400 C1380,470 1392,620 1376,800 C1366,890 1290,960 1230,990 C1200,1010 1175,1030 1160,1060"/>'
     +'<text class="maplabel mapgold" x="1235" y="1258" font-size="22">▲ Vstup</text>'
-    +'<text class="maplabel" x="1535" y="300" font-size="19" transform="rotate(90 1535 300)">Piešťany 1 km ◄ · ► Hlohovec</text>'
+    +'<polygon class="roadside" points="1489,236 1529,236 1622,1266 1582,1266"/><text class="maplabel" x="1508" y="300" font-size="19" transform="rotate(84.8 1508 300)">Piešťany 1 km ◄ · ► Hlohovec</text>'
     +zones+plots+facs+'</svg>';
   const tip=$('#tip'), panel=$('#sec-map'); let tipT;
   const placeTip = (x,y) => { const r=panel.getBoundingClientRect(); if(x+250>r.width) x-=264; if(y+130>r.height) y-=124; tip.style.left=Math.max(4,x)+'px'; tip.style.top=Math.max(4,y)+'px'; };

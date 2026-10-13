@@ -201,12 +201,12 @@ function buildMap(){
   const zones = ZONES.map(z=>'<g class="plot zone" data-id="'+z.id+'" data-type="'+z.type+'" tabindex="0" role="button"><path d="M'+z.pts.split(' ').join('L')+'Z"/><text x="'+z.lx+'" y="'+(z.ly-10)+'">'+esc(z.name)+'</text><text x="'+z.lx+'" y="'+(z.ly+14)+'" class="mapsub zcount"></text></g>').join('');
   $('#mapbox').innerHTML = '<svg viewBox="380 236 1200 1030" role="group" aria-label="Mapa kempu Pullmann s parcelami">'
     +'<defs><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="hz" width="10" height="10"/><line class="hl" x1="0" y1="0" x2="0" y2="10"/></pattern></defs>'
-    +'<path class="water" d="M380,236 L520,236 L395,660 L380,700Z"/><text class="maplabel" x="400" y="520" font-size="30" transform="rotate(-72 400 520)">Váh</text>'
+    +'<path class="water" d="M380,236 L520,236 L395,660 L380,700Z"/><text class="maplabel onwater" x="400" y="520" font-size="30" transform="rotate(-72 400 520)">Váh</text>'
     +'<polygon class="outline" points="640,255 1470,290 1548,1150 1180,1232 1050,1190 900,1150 710,1140 640,1000 400,715"/>'
     +'<path class="road" d="M1160,1060 C1050,1030 760,1040 650,1000"/><path class="road" d="M1130,560 C1000,620 870,640 600,760"/><path class="road" d="M940,350 L560,470"/>'
     +'<path class="road" d="M1200,1225 L1160,1060 L1130,560 C1120,460 1040,360 940,350 C1050,330 1200,340 1290,400 C1380,470 1392,620 1376,800 C1366,890 1290,960 1230,990 C1200,1010 1175,1030 1160,1060"/>'
     +'<text class="maplabel mapgold" x="1235" y="1258" font-size="22">▲ Vstup</text>'
-    +'<text class="maplabel" x="1535" y="300" font-size="19" transform="rotate(90 1535 300)">Piešťany 1 km ◄ · ► Hlohovec</text>'
+    +'<polygon class="roadside" points="1489,236 1529,236 1622,1266 1582,1266"/><text class="maplabel" x="1508" y="300" font-size="19" transform="rotate(84.8 1508 300)">Piešťany 1 km ◄ · ► Hlohovec</text>'
     +zones+plots+facs+'</svg>';
   const tip=$('#tip'), panel=$('#sec-map'); let tipT;
   const placeTip = (x,y) => { const r=panel.getBoundingClientRect(); if(x+250>r.width) x-=264; if(y+130>r.height) y-=124; tip.style.left=Math.max(4,x)+'px'; tip.style.top=Math.max(4,y)+'px'; };

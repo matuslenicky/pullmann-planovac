@@ -10,6 +10,20 @@ Návrh novej sekcie pre web kempu Camping Pullmann v Piešťanoch: hosť si vybe
 
 Stránka je navrhnutá ako doplnková služba k webu campingpiestany.sk, nie ako samostatný web. Preberá jeho vzhľad: sivú hlavičku s logom, biele pozadie, zelené verzálkové nadpisy, zelenú pätičku a systémové písmo. Nenačítava nič z internetu, všetko je v jednom súbore. Modrý výkres s mriežkou je len v plánovači jednej parcely.
 
+Farby nie sú odhadnuté, sú zmerané na webe kempu a prenesené do premenných na začiatku `src/style.css`:
+
+| Kde | Farba | Odkiaľ |
+|---|---|---|
+| text, sekundárny text | `#4b4c4c`, `#717171` | odseky na úvodnej stránke a na stránke Rezervácie |
+| nadpisy, tlačidlá, pätička | `#496662`, tmavší pruh `#344946` | nadpisy, tlačidlo „Mapa kempu", pätička |
+| hlavička, tmavý pruh | `#666666`, `#424242` | hlavička podstránok, pruh s menu na úvode |
+| sivé plochy, linky, rámik polí | `#e0e0e0`, `#d9d9d9`, `#bfbfbf` | sivý pás na úvode, formulár rezervácie |
+| chyby a povinné polia | `#d63637` | hviezdička vo formulári rezervácie |
+| zlatá | `#d9bc73` | logo |
+| mapa: okolie, areál, rieka, cesty, body | `#638d73`, `#288354`, `#60c7eb`, `#6d6e6e`, `#ebc87d` | oficiálna mapa kempu z roku 2023 |
+
+Pôvodný web nemá tmavý režim. Tmavý režim plánovača drží tie isté odtiene, len stlmené. Modrý výkres v plánovači parcely je zámerne vlastný.
+
 Pripojiť sa dá dvoma spôsobmi:
 
 - ako podstránka: `index.html` sa nahrá na web kempu a pridá sa do menu,
