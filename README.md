@@ -4,7 +4,7 @@ Návrh novej sekcie pre web kempu Camping Pullmann v Piešťanoch: hosť si vybe
 
 **Toto nie je oficiálna stránka kempu.** Obsadenosť je vymyslená a rezervácia sa nikam neodosiela.
 
-Živá ukážka: https://nemetjakub.github.io/pullmann-planovac/
+Živá ukážka: https://matuslenicky.github.io/pullmann-planovac/
 
 ## Čo je v repozitári
 
