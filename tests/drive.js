@@ -25,8 +25,9 @@ async function run(scenarioFile, port) {
   /* a real phone is emulated (width, touch, device pixel ratio): a narrow desktop window is not a phone */
   const viewport = async (w, h, mobile, scale, dark) => { await send('Emulation.setDeviceMetricsOverride', { width: w, height: h, deviceScaleFactor: scale || 1, mobile: !!mobile });
     await send('Emulation.setTouchEmulationEnabled', { enabled: !!mobile }); await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-color-scheme', value: dark ? 'dark' : 'light' }] }); };
-  const nav = async (url, clear) => { await send('Page.navigate', { url: url || BASE }); await sleep(900);
-    if (clear) { await ev('try{localStorage.clear()}catch(e){}'); await send('Page.navigate', { url: url || BASE }); await sleep(1100); } };
+  const nav = async (url, clear) => { const wait = /^https?:/.test(url || '') ? 3500 : 1000;   // a deployed site needs time to arrive
+    await send('Page.navigate', { url: url || BASE }); await sleep(wait);
+    if (clear) { await ev('try{localStorage.clear()}catch(e){}'); await send('Page.navigate', { url: url || BASE }); await sleep(wait); } };
   const shot = async (name, full) => { fs.mkdirSync(OUT, { recursive: true }); const opt = { format: 'png' };
     if (full) { const m = JSON.parse(await ev('JSON.stringify({w:document.documentElement.scrollWidth,h:document.documentElement.scrollHeight})')); opt.clip = { x: 0, y: 0, width: m.w, height: Math.min(m.h, 9000), scale: 1 }; opt.captureBeyondViewport = true; }
     const s = await send('Page.captureScreenshot', opt); fs.writeFileSync(path.join(OUT, name), Buffer.from(s.data, 'base64')); };

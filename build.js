@@ -23,6 +23,7 @@ fs.writeFileSync(path.join(__dirname, 'planovac.html'), head + '\n\n' + main + '
 /* standalone: everything but the web fonts is inside the file, and those fall back to system fonts when offline */
 const doc = '<!doctype html>\n<html lang="sk">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
   + '<meta name="robots" content="noindex">\n<meta name="description" content="Ukážka návrhu: plánovač parcely pre kemp, nie oficiálna stránka.">\n'
+  + '<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%23344946%27/%3E%3Cpath d=%27M11 47 32 15l21 32z%27 fill=%27none%27 stroke=%27%23d9bc73%27 stroke-width=%275%27 stroke-linejoin=%27round%27/%3E%3Cpath d=%27M32 47V31%27 stroke=%27%23d9bc73%27 stroke-width=%275%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">\n'
   + head + '\n</head>\n<body>\n' + main + '\n</body>\n</html>\n';
 fs.writeFileSync(path.join(__dirname, 'index.html'), doc);
 fs.writeFileSync(path.join(__dirname, 'Pullmann-planovac.html'), doc);
