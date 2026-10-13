@@ -50,8 +50,8 @@ const ZONES = [
 const FACIL = [ // [name, x, y, side L/R, leader length]
   ['Bazén 11 m',760,352],['Reštaurácia Na Panvici',560,470],['Kuchynka',958,425],['Ubytovňa',1005,528,'L'],
   ['Bar pia–ned',1062,665,'L'],['Sprchy · WC',1112,702,'L'],['WC',1115,830],['Detské ihrisko',1030,882,'R'],
-  ['Chem. WC · pitná voda',1126,1000,'R',10],['Odpad',1225,962,'R',40],['Recepcia · info',1238,1105],['Chatka pod lipami',1176,1082,'R'],
-  ['Ohnisko',1050,300,'L',14],['Petang',1105,300,'R',34],['Ping-pong',1160,300,'L',14],['Workout',1232,300,'R',34],['Zvieratá',1400,1050]
+  ['Chem. WC · voda',1126,1000,'R',10],['Odpad',1225,962,'R',14],['Recepcia · info',1238,1105],['Chatka pod lipami',1176,1082,'R',36],
+  ['Ohnisko',1028,300,'L',34],['Petang',1100,300,'L',34],['Ping-pong',1168,300,'R',34],['Workout',1272,300,'R',34],['Zvieratá',1400,1050]
 ];
 const CATBY = {}; CATALOG.forEach(c=>{ CATBY[c.id]=c; });
 const GROUPS = [['Osobné autá',['small','hatch','sedan','kombi','suv','mpv','pickup']],['Dodávky a autobusy',['van','minibus']],['Obytné',['campervan','motorhome','caravan']],['Ostatné',['trailer','moto']],
@@ -201,7 +201,7 @@ function buildMap(){
   const zones = ZONES.map(z=>'<g class="plot zone" data-id="'+z.id+'" data-type="'+z.type+'" tabindex="0" role="button"><path d="M'+z.pts.split(' ').join('L')+'Z"/><text x="'+z.lx+'" y="'+(z.ly-10)+'">'+esc(z.name)+'</text><text x="'+z.lx+'" y="'+(z.ly+14)+'" class="mapsub zcount"></text></g>').join('');
   $('#mapbox').innerHTML = '<svg viewBox="380 236 1200 1030" role="group" aria-label="Mapa kempu Pullmann s parcelami">'
     +'<defs><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="hz" width="10" height="10"/><line class="hl" x1="0" y1="0" x2="0" y2="10"/></pattern></defs>'
-    +'<path class="water" d="M380,236 L520,236 L395,660 L380,700Z"/><text class="maplabel onwater" x="400" y="520" font-size="30" transform="rotate(-72 400 520)">Váh</text>'
+    +'<path class="water" d="M380,236 L520,236 L395,660 L380,700Z"/><text class="maplabel onwater" x="412" y="530" font-size="30" transform="rotate(-72 412 530)">Váh</text>'
     +'<polygon class="outline" points="640,255 1470,290 1548,1150 1180,1232 1050,1190 900,1150 710,1140 640,1000 400,715"/>'
     +'<path class="road" d="M1160,1060 C1050,1030 760,1040 650,1000"/><path class="road" d="M1130,560 C1000,620 870,640 600,760"/><path class="road" d="M940,350 L560,470"/>'
     +'<path class="road" d="M1200,1225 L1160,1060 L1130,560 C1120,460 1040,360 940,350 C1050,330 1200,340 1290,400 C1380,470 1392,620 1376,800 C1366,890 1290,960 1230,990 C1200,1010 1175,1030 1160,1060"/>'
